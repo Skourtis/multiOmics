@@ -1,0 +1,65 @@
+library(pacman)
+p_load(tidyverse, openxlsx)
+sample_info <- read.csv("./Project_Datasets/sample_info.csv", stringsAsFactors = FALSE)
+#Raw from https://depmap.org/portal/download/ downloaded 2/11/2020
+
+#Raw from https://portals.broadinstitute.org/ccle/data CCLE_metabolomics_20190502.csv 2/11/2020
+Metabolites <- openxlsx::read.xlsx("./Project_Datasets/CCLE_metabolites_landscape_of_cancer.xlsx",
+                         sheet = "1-clean data")[-760,] %>% 
+    mutate(X1 = str_match(X1,"^([:graph:]*?)_")[,2]) %>%
+    column_to_rownames("X1")%>% t()
+
+#Raw from https://gygi.med.harvard.edu/publications/ccle 2/11/2020
+CCLE_proteins <- openxlsx::read.xlsx("./Project_datasets/Table_S2_Protein_Quant_Normalized.xlsx", sheet =2) %>%
+   .[,!str_detect(colnames(.),"Peptides|Column")]
+colnames(CCLE_proteins) <- str_remove_all(colnames(CCLE_proteins),"_TenPx..")
+rownames(CCLE_proteins) <- NULL
+CCLE_proteins <- CCLE_proteins %>%
+    column_to_rownames(var = "Uniprot_Acc")
+CCLE_proteins <- CCLE_proteins[,-c(1:5)]
+colnames(CCLE_proteins) <- str_match(colnames(CCLE_proteins),"^([:graph:]*?)_")[,2]
+CCLE_proteins <- CCLE_proteins[,which(!duplicated(colnames(CCLE_proteins)))]
+
+#Raw from https://depmap.org/portal/download/ 2/11/2020
+RNA_seq <- read.csv("./Project_Datasets/CCLE_expression.csv") 
+RNA_seq <- inner_join(sample_info[,1:2],RNA_seq, by = c("DepMap_ID" = "X"))[,-1] %>%
+    column_to_rownames(var = "stripped_cell_line_name") %>% t() %>%
+    magrittr::set_rownames(str_match(rownames(.), "^([:graph:]*?)\\.")[,2])
+
+#Raw from https://depmap.org/portal/download/ 2/11/2020
+Achilles <- read.csv("./Project_Datasets/Achilles_gene_effect.csv")
+Achilles <- inner_join(sample_info[,1:2],Achilles, by = "DepMap_ID")[,-1] %>%
+    column_to_rownames(var = "stripped_cell_line_name") %>% t() %>%
+    magrittr::set_rownames(str_match(rownames(.), "^([:graph:]*?)\\.")[,2])
+
+#Raw from https://depmap.org/portal/download/ 2/11/2020
+RNAi <- read.csv("./Project_Datasets/D2_combined_gene_dep_scores.csv")
+RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) %>%
+    column_to_rownames(var = "Gene_name") %>% 
+    setNames(str_match(colnames(.), "^([:graph:]*?)_")[,2])
+
+
+#Raw from  https://www.nature.com/articles/s41467-019-09695-9#Sec28 2/11/2020
+NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4)
+
+NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.xlsx", sheet =6) %>%
+    .[]
+
+# Mutations <- read.xlsx("./Project_Datasets/CCLE_mutations.xlsx", sheet = 2)[,c("Hugo_Symbol", "DepMap_ID")] %>%
+#     left_join(sample_info[,1:2]) %>%
+#     mutate(Value  = 1)
+# 
+# Mutations<- Mutations[,c(1,3:4)] %>%
+#     group_by(Hugo_Symbol, stripped_cell_line_name) %>%
+#     dplyr::summarise(abundance = sum(Value)) %>%
+#     tidyr::pivot_wider(names_from = stripped_cell_line_name, values_from = abundance, 
+#                        values_fill = 0) %>%
+#     column_to_rownames("Hugo_Symbol")
+
+save(RNA_seq, 
+     RNAi, 
+     CCLE_proteins, 
+     sample_info,
+     Metabolites,
+     Achilles,
+     file = "./Project_Datasets/OMICS.rda")
