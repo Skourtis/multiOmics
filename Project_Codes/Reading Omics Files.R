@@ -43,7 +43,9 @@ RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) 
 NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4)
 
 NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.xlsx", sheet =6) %>%
-    .[]
+    .[,-c(2:8)] %>% remove_rownames() %>%
+    column_to_rownames(var = "protein.accession.number") %>%
+    setNames(str_remove(colnames(.), "^[:graph:]*?_"))
 
 # Mutations <- read.xlsx("./Project_Datasets/CCLE_mutations.xlsx", sheet = 2)[,c("Hugo_Symbol", "DepMap_ID")] %>%
 #     left_join(sample_info[,1:2]) %>%
@@ -62,4 +64,6 @@ save(RNA_seq,
      sample_info,
      Metabolites,
      Achilles,
+     NCI_60_proteins,
+     
      file = "./Project_Datasets/OMICS.rda")
