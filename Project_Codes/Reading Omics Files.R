@@ -49,10 +49,13 @@ NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.x
     .[,-c(2:8)] %>% remove_rownames() %>%
     column_to_rownames(var = "protein.accession.number") %>%
     setNames(str_remove(colnames(.), "^[:graph:]*?_"))
+<<<<<<< HEAD
 
 #Raw from https://discover.nci.nih.gov/cellminer/loadDownload.do 3/11/2020 - RNAseq Composite expression
 NCI_60_RNA <- readxl::read_xls("./Project_Datasets/RNA__RNA_seq_composite_expression.xls", skip = 10) %>%
     .[,-c(1,3:6)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*:|-| "))
+=======
+>>>>>>> 7b69a1eaf0a144b838dce7cf03ff40ce2a5a7461
 
 # Mutations <- read.xlsx("./Project_Datasets/CCLE_mutations.xlsx", sheet = 2)[,c("Hugo_Symbol", "DepMap_ID")] %>%
 #     left_join(sample_info[,1:2]) %>%
@@ -74,6 +77,7 @@ save(RNA_seq,
      sample_info,
      Metabolites,
      Achilles,
+<<<<<<< HEAD
      file = "./Project_Datasets/CCLE_OMICS.rda")
      
 save(NCI_60_proteins,
@@ -84,3 +88,8 @@ save(NCI_60_proteins,
 
 pb_new_release("Skourtis/multiOmics", "v1")
 pb_track() %>% pb_upload(repo = "Skourtis/multiOmics")
+=======
+     NCI_60_proteins,
+     
+     file = "./Project_Datasets/OMICS.rda")
+>>>>>>> 7b69a1eaf0a144b838dce7cf03ff40ce2a5a7461
