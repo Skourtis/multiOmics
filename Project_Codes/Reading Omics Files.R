@@ -1,5 +1,7 @@
 library(pacman)
-p_load(tidyverse, openxlsx)
+p_load(tidyverse, openxlsx, piggyback)
+# devtools::install_github("ropensci/piggyback@87f71e8")
+piggyback::pb_track("Project_Datasets/*")
 sample_info <- read.csv("./Project_Datasets/sample_info.csv", stringsAsFactors = FALSE)
 #Raw from https://depmap.org/portal/download/ downloaded 2/11/2020
 
@@ -42,8 +44,15 @@ RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) 
 #Raw from  https://www.nature.com/articles/s41467-019-09695-9#Sec28 2/11/2020
 NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4)
 
+#Raw from https://www.sciencedirect.com/science/article/pii/S2589004219304407#mmc2 3/11/2020 SWATH paper 2019
 NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.xlsx", sheet =6) %>%
-    .[]
+    .[,-c(2:8)] %>% remove_rownames() %>%
+    column_to_rownames(var = "protein.accession.number") %>%
+    setNames(str_remove(colnames(.), "^[:graph:]*?_"))
+
+#Raw from https://discover.nci.nih.gov/cellminer/loadDownload.do 3/11/2020 - RNAseq Composite expression
+NCI_60_RNA <- readxl::read_xls("./Project_Datasets/RNA__RNA_seq_composite_expression.xls", skip = 10) %>%
+    .[,-c(1,3:6)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*:|-| "))
 
 # Mutations <- read.xlsx("./Project_Datasets/CCLE_mutations.xlsx", sheet = 2)[,c("Hugo_Symbol", "DepMap_ID")] %>%
 #     left_join(sample_info[,1:2]) %>%
@@ -56,10 +65,22 @@ NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.x
 #                        values_fill = 0) %>%
 #     column_to_rownames("Hugo_Symbol")
 
+#Raw from https://github.com/J-Andy/Protein-expression-in-human-cancer/tree/master/data 3/11/2020
+Vizcaino_Proteome <- read.delim("./Project_Datasets/proteinGroups_cellLines_ppbNorm_min50validValues_svdImputeMissing_removeBatchEffect.txt")
+
 save(RNA_seq, 
      RNAi, 
      CCLE_proteins, 
      sample_info,
      Metabolites,
      Achilles,
-     file = "./Project_Datasets/OMICS.rda")
+     file = "./Project_Datasets/CCLE_OMICS.rda")
+     
+save(NCI_60_proteins,
+     NCI_60_metabolites,
+     NCI_60_RNA,
+     Vizcaino_Proteome,
+     file = "./Project_Datasets/NCI60_OMICS.rda")
+
+pb_new_release("Skourtis/multiOmics", "v1")
+pb_track() %>% pb_upload(repo = "Skourtis/multiOmics")

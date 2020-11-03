@@ -3,8 +3,8 @@
 .Rapp.history
 
 #RawFiles
-/Project_Datasets/*.xlsx
-/Project_Datasets/*.csv
+/Project_Datasets/*
+
 
 # Session Data files
 .RData

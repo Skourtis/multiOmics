@@ -1,0 +1,46 @@
+---
+title: "Dataset_Comparison_CCLE_NCI"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::html_clean:
+    highlight: kate
+
+---
+
+
+```{r setup, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75,
+              root.dir = "./../")
+```
+# Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
+Using https://rdrr.io/cran/MatrixCorrelation/ different methods available
+CCLE vs NCI = which omics agrees most between datasets = Visualisation?
+Transcriptomic vs Transcriptomic
+Proteome vs Proteome
+Metabolome vs Metabolome
+
+Gene/Metabolite specific comparison, is this related to abundance? Enrichment when subsetting for quartiles of abundance.
+Plot against null permutation. Enrichment for essential genes? - plot Overlapping distributions
+
+Cell Line comparison. Do some Tissues/ Cell lines agree more between them than others?
+
+Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
+
+
+```{r Data_load_Subset}
+load()
+
+```
+# Other Title
