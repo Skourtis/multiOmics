@@ -9,8 +9,7 @@ output:
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
-library(knitr)
-library(rmdformats)
+pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation )
 
 ## Global options
 options(max.print="75")
@@ -40,7 +39,82 @@ Plot in double matrix of transcripromis vs proteomics correlations ordered by pa
 
 
 ```{r Data_load_Subset}
-load()
+load(file = "./../Project_Datasets/CCLE_OMICS.rda")
+load(file = "./../Project_Datasets/NCI60_OMICS.rda")
 
+Correlation_pairwise <- function(x,y){
+    cor(as.matrix,y,use = "pairwise", method = "pearson")
+}
+#compare 2 datasets with common Feature (rows) and Sample names (Columns)
+### Change rerun value
+Dataset_correlation <- function(Dataset1,Dataset2){
+    Comparison_type <- paste(deparse(substitute(Dataset1)),deparse(substitute(Dataset2)))
+    Dataset1 <- as.data.frame(Dataset1)
+    Dataset2 <- as.data.frame(Dataset2)
+    Common_Cell_lines <- intersect(colnames(Dataset1),colnames(Dataset2)) #Common Samples
+    Common_proteins <- intersect(rownames(Dataset1),rownames(Dataset2)) #Common Features
+    
+    #subsetting and ordering the Datasets
+    Dataset1_sub <- Dataset1 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
+    .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
+    Dataset2_sub <- Dataset2 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
+    .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
+    
+    #Correlating corresponding Samples Correlation of only paired values which allows for NA values
+    Cell_line_correlation <- map2_dbl(
+        Dataset1_sub, 
+        Dataset2_sub, 
+        Correlation_pairwise) 
+    
+    Cell_line_perm <- purrr::rerun(2, 
+                                   map2_dbl(
+                                       Dataset1_sub[,sample(ncol(Dataset1_sub))],#Shuffle column-wise and performing sample correlation as above
+                                       Dataset2_sub,
+                                       Correlation_pairwise)) %>% unlist()
+    
+    gene_correlation <- pmap(
+        list(pmap(Dataset1_sub, c, use.names = T), # unlisting feature rows into vectors into lists and correlating
+             pmap(Dataset2_sub, c, use.names = T)),
+        Correlation_pairwise) %>% unlist() %>% setNames(Common_proteins) 
+    
+    gene_correlation_perm <- purrr::rerun(2, #permutation by row shuflfing and correlation
+                                          pmap(list(pmap(Dataset1_sub[sample(nrow(Dataset1_sub)),], 
+                                                         c, use.names = T), #Shuffle row-wise
+                                                    pmap(Dataset2_sub, c, use.names = T)),
+                                               Correlation_pairwise) %>% unlist()) %>% unlist()
+    
+    # Imputing both datasets with Media to derive overall correlation
+    Dataset1_sub_imp <- naniar::impute_median_all(Dataset1_sub)
+    Dataset2_sub_imp <- naniar::impute_median_all(Dataset2_sub)
+    
+    Matri_Corr <- MatrixCorrelation::r1(Dataset1_sub_imp,Dataset2_sub_imp) # whole matrix correlation
+    
+    Matrix_perm <- purrr::rerun(10, #whole matrix permutation of Dataset 1 col-wise shuffle and Dataset 2 row-wise shuffle and correlation
+                            MatrixCorrelation::r1(Dataset1_sub_imp[,sample(ncol(Dataset1_sub_imp))],
+                                                  Dataset2_sub_imp[sample(nrow(Dataset2_sub_imp)),])) %>% 
+        unlist() # permutation
+    
+    Hist_plot <- function(Data,Perm){
+        Sample_Corr <- data.frame(Samples = c(Data,unlist(Perm)),
+                              Type = rep(c("Data","Perm"), times = c(length(Data),length(unlist(Perm)))))
+        p <- ggplot2::ggplot(Sample_Corr,aes(Samples, fill = Type)) + geom_histogram(alpha = 0.5, position = 'identity') +
+            ggtitle(paste(Comparison_type,deparse(substitute(Data))))
+    }
+    
+    lsit <- list(Sample_Corr = list(Cell_line_correlation, Cell_line_perm, Hist_plot(Cell_line_correlation,Cell_line_perm) ),
+         Feature_Corr = list(gene_correlation, gene_correlation_perm, Hist_plot(gene_correlation,gene_correlation_perm)),
+         Matrix_Corr= list(Matri_Corr, Matrix_perm, Hist_plot(Matri_Corr,Matrix_perm)))
+    
+}
+
+
+### Transcriptomic Comparison ###
+CCLE_NCI_transcr <- Dataset_correlation(RNA_seq,NCI_60_RNA)
+
+### Proteomic Comparison ###
+CCLE_NCI_prot <- Dataset_correlation(CCLE_proteins,NCI_60_proteins)
+
+### Metabolic Comparison ###
+CCLE_NCI_met <- Dataset_correlation(Metabolites,NCI_60_metabolites)
 ```
 # Other Title

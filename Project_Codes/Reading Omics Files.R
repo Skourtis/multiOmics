@@ -42,7 +42,9 @@ RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) 
 
 
 #Raw from  https://www.nature.com/articles/s41467-019-09695-9#Sec28 2/11/2020
-NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4)
+NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4) %>%
+    .[str_detect(.$`Annotation.ID`,"H|C"),-c(1:3,5)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*?_"))  %>%
+    na.omit() %>% remove_rownames() %>% column_to_rownames("Annotation.ID")
 
 #Raw from https://www.sciencedirect.com/science/article/pii/S2589004219304407#mmc2 3/11/2020 SWATH paper 2019
 NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.xlsx", sheet =6) %>%
@@ -52,7 +54,8 @@ NCI_60_proteins <- read.xlsx("./Project_Datasets/1-s2.0-S2589004219304407-mmc2.x
 
 #Raw from https://discover.nci.nih.gov/cellminer/loadDownload.do 3/11/2020 - RNAseq Composite expression
 NCI_60_RNA <- readxl::read_xls("./Project_Datasets/RNA__RNA_seq_composite_expression.xls", skip = 10) %>%
-    .[,-c(1,3:6)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*:|-| "))
+    .[,-c(2:6)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*:|-| ")) %>%
+    column_to_rownames("Genenamed")
 
 # Mutations <- read.xlsx("./Project_Datasets/CCLE_mutations.xlsx", sheet = 2)[,c("Hugo_Symbol", "DepMap_ID")] %>%
 #     left_join(sample_info[,1:2]) %>%
