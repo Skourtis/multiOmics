@@ -5,11 +5,13 @@ piggyback::pb_track("Project_Datasets/*")
 sample_info <- read.csv("./Project_Datasets/sample_info.csv", stringsAsFactors = FALSE)
 #Raw from https://depmap.org/portal/download/ downloaded 2/11/2020
 
+
 #Raw from https://portals.broadinstitute.org/ccle/data CCLE_metabolomics_20190502.csv 2/11/2020
 Metabolites <- openxlsx::read.xlsx("./Project_Datasets/CCLE_metabolites_landscape_of_cancer.xlsx",
                          sheet = "1-clean data")[-760,] %>% 
     mutate(X1 = str_match(X1,"^([:graph:]*?)_")[,2]) %>%
     column_to_rownames("X1")%>% t()
+
 
 #Raw from https://gygi.med.harvard.edu/publications/ccle 2/11/2020
 CCLE_proteins <- openxlsx::read.xlsx("./Project_datasets/Table_S2_Protein_Quant_Normalized.xlsx", sheet =2) %>%
@@ -42,7 +44,7 @@ RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) 
 
 
 #Raw from  https://www.nature.com/articles/s41467-019-09695-9#Sec28 2/11/2020
-NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4) %>%
+NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4, na.strings = "NaN") %>%
     .[str_detect(.$`Annotation.ID`,"H|C"),-c(1:3,5)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*?_"))  %>%
     na.omit() %>% remove_rownames() %>% column_to_rownames("Annotation.ID")
 

@@ -9,7 +9,7 @@ output:
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
-pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation )
+pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation)
 
 ## Global options
 options(max.print="75")
@@ -24,16 +24,7 @@ opts_knit$set(width=75,
               root.dir = "./../")
 ```
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
-Using https://rdrr.io/cran/MatrixCorrelation/ different methods available
-CCLE vs NCI = which omics agrees most between datasets = Visualisation?
-Transcriptomic vs Transcriptomic
-Proteome vs Proteome
-Metabolome vs Metabolome
-
-Gene/Metabolite specific comparison, is this related to abundance? Enrichment when subsetting for quartiles of abundance.
-Plot against null permutation. Enrichment for essential genes? - plot Overlapping distributions
-
-Cell Line comparison. Do some Tissues/ Cell lines agree more between them than others?
+Log2 ->  Z transformation
 
 Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
 
@@ -42,23 +33,57 @@ Plot in double matrix of transcripromis vs proteomics correlations ordered by pa
 load(file = "./../Project_Datasets/CCLE_OMICS.rda")
 load(file = "./../Project_Datasets/NCI60_OMICS.rda")
 
+#Raw from http://tko.ccbr.utoronto.ca/ 4/11/2020
+Essential_genes <- read.xlsx("./../Project_Datasets/reference_essentials_and_nonessentials_sym_hgnc_entrez.xlsx")$Gene
+
 Correlation_pairwise <- function(x,y){
     cor(as.matrix,y,use = "pairwise", method = "pearson")
 }
+
+# Get lower triangle of the correlation matrix
+  get_lower_tri<-function(cormat){
+    cormat[lower.tri(cormat)] <- NA
+    return(cormat)
+  }
+# Get upper triangle of the correlation matrix
+  get_upper_tri<-function(cormat){
+    cormat[upper.tri(cormat)] <- NA
+    return(cormat)
+  }
 #compare 2 datasets with common Feature (rows) and Sample names (Columns)
 ### Change rerun value
 Dataset_correlation <- function(Dataset1,Dataset2){
+    #Dataset1 = CCLE_proteins
+    #Dataset2 = NCI_60_proteins
     Comparison_type <- paste(deparse(substitute(Dataset1)),deparse(substitute(Dataset2)))
     Dataset1 <- as.data.frame(Dataset1)
     Dataset2 <- as.data.frame(Dataset2)
     Common_Cell_lines <- intersect(colnames(Dataset1),colnames(Dataset2)) #Common Samples
     Common_proteins <- intersect(rownames(Dataset1),rownames(Dataset2)) #Common Features
     
-    #subsetting and ordering the Datasets
+        #subsetting and ordering the Datasets
     Dataset1_sub <- Dataset1 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
     Dataset2_sub <- Dataset2 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
+    
+    cormat1 <- round(cor(t(Dataset1_sub[1:100,])),2) %>% get_lower_tri() %>%
+        reshape2::melt(na.rm = T) 
+    cormat2 <- round(cor(t(Dataset2_sub[1:100,])),2) %>% get_upper_tri() %>%
+        reshape2::melt(na.rm = T)
+    Combined_df <- rbind(cormat1,cormat2)
+    Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
+    
+    ggplot(data = Combined_df, aes(Var2, Var1, fill = value))+
+        geom_tile(color = "white")+
+        scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                             midpoint = 0, limit = c(-1,1), space = "Lab", 
+                             name="Pearson\nCorrelation") +
+        theme_minimal()+ 
+        theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                         size = 12, hjust = 1))+
+        coord_fixed()
+    
     
     #Correlating corresponding Samples Correlation of only paired values which allows for NA values
     Cell_line_correlation <- map2_dbl(
@@ -101,20 +126,53 @@ Dataset_correlation <- function(Dataset1,Dataset2){
             ggtitle(paste(Comparison_type,deparse(substitute(Data))))
     }
     
-    lsit <- list(Sample_Corr = list(Cell_line_correlation, Cell_line_perm, Hist_plot(Cell_line_correlation,Cell_line_perm) ),
-         Feature_Corr = list(gene_correlation, gene_correlation_perm, Hist_plot(gene_correlation,gene_correlation_perm)),
+    Feature_quartiles <- rowMeans(Dataset2_sub, na.rm = T) %>% data.frame(Feature = names(.),
+                                                           Mean_Abundance = .) %>%
+        mutate(quartile = as.factor(ntile(Mean_Abundance, 4))) %>% left_join(stack(gene_correlation), by = c("Feature" = "ind"))
+    
+    Feature_expression_cor_plot <- ggplot(Feature_quartiles, aes(values,after_stat(density), colour =quartile)) +
+        geom_freqpoly(binwidth = 0.1) +
+        ggtitle(paste("Feature Expression",Comparison_type))
+    
+    Sample_lineage <-  Cell_line_correlation %>% data.frame(Sample = names(.), Correlation = .) %>%
+        left_join(sample_info[,c("stripped_cell_line_name", "lineage")], by = c("Sample" = "stripped_cell_line_name"))
+    
+    Sample_lineage_cor_plot <- ggplot(Sample_lineage, aes(Correlation,after_stat(density), colour = lineage)) +
+        geom_freqpoly(binwidth = 0.01) +
+        ggtitle(paste("Sample Lineage",Comparison_type))
+    
+    
+    list(Sample_Corr = list(Sample_lineage, Cell_line_perm, Hist_plot(Cell_line_correlation,Cell_line_perm),Sample_lineage_cor_plot),
+         Feature_Corr = list(Feature_quartiles, gene_correlation_perm, Hist_plot(gene_correlation, gene_correlation_perm),
+                             Feature_expression_cor_plot),
          Matrix_Corr= list(Matri_Corr, Matrix_perm, Hist_plot(Matri_Corr,Matrix_perm)))
     
 }
+#Plotting_Essentiality
 
 
 ### Transcriptomic Comparison ###
 CCLE_NCI_transcr <- Dataset_correlation(RNA_seq,NCI_60_RNA)
+Essential_vs_Not_Genes <- CCLE_NCI_transcr$Feature_Corr[[1]] %>%
+    mutate(Essentiality = if_else(Feature %in% Essential_genes, "Essential", "Not_Essential"))
 
+ggplot(Essential_vs_Not_Genes, aes(values,after_stat(density), colour = Essentiality)) +
+        geom_freqpoly(binwidth = 0.1) +
+        ggtitle(paste("mRNA essentiality Correlation"))
 ### Proteomic Comparison ###
 CCLE_NCI_prot <- Dataset_correlation(CCLE_proteins,NCI_60_proteins)
 
+
+
 ### Metabolic Comparison ###
-CCLE_NCI_met <- Dataset_correlation(Metabolites,NCI_60_metabolites)
+Metabolite_mapping <- read.csv("./../Project_Datasets/CCLE_metabolites_mapped.csv")
+NCI_60_m <- rownames(NCI_60_metabolites) %>% .[!str_detect(.," ")]
+Common_Metabolites <- Metabolite_mapping[Metabolite_mapping$KEGG %in% NCI_60_m,]
+CCLE_Met_Common <- Metabolites[rownames(Metabolites) %in% Common_Metabolites$Query,]
+NCI_60_metabolites_common <- NCI_60_metabolites[rownames(NCI_60_metabolites) %in% c(Common_Metabolites$HMDB,Common_Metabolites$KEGG),]
+rownames(NCI_60_metabolites_common) <- Common_Metabolites[match(rownames(NCI_60_metabolites_common),Common_Metabolites$KEGG),] %>% .$Query
+
+CCLE_NCI_met <- Dataset_correlation(CCLE_Met_Common,NCI_60_metabolites_common)
+
 ```
 # Other Title
