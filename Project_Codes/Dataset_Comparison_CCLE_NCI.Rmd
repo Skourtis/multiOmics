@@ -9,7 +9,7 @@ output:
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
-pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation)
+pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation, graphite)
 
 ## Global options
 options(max.print="75")
@@ -25,7 +25,7 @@ opts_knit$set(width=75,
 ```
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
 Log2 ->  Z transformation
-
+RPPA?
 Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
 
 
@@ -53,8 +53,8 @@ Correlation_pairwise <- function(x,y){
 #compare 2 datasets with common Feature (rows) and Sample names (Columns)
 ### Change rerun value
 Dataset_correlation <- function(Dataset1,Dataset2){
-    #Dataset1 = CCLE_proteins
-    #Dataset2 = NCI_60_proteins
+    Dataset1 = CCLE_proteins
+    Dataset2 = NCI_60_proteins
     Comparison_type <- paste(deparse(substitute(Dataset1)),deparse(substitute(Dataset2)))
     Dataset1 <- as.data.frame(Dataset1)
     Dataset2 <- as.data.frame(Dataset2)
