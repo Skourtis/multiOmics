@@ -1,0 +1,1238 @@
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P21397,Amine oxidase [flavin-containing] A,HMDBP00169,,X60809,MAOA,Xp11.3
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000004,Glycine and Serine Metabolism,Metabolic,O75600,"2-amino-3-ketobutyrate coenzyme A ligase, mitochondrial",HMDBP00049,,AK123190,GCAT,22q13.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q9UI17,"Dimethylglycine dehydrogenase, mitochondrial",HMDBP00203,,AC020937,DMGDH,5q14.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q9UL12,"Sarcosine dehydrogenase, mitochondrial",HMDBP00793,,AF140736,SARDH,9q33-q34
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P23378,"Glycine dehydrogenase [decarboxylating], mitochondrial",HMDBP00795,,M63635,GLDC,9p22
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P48728,"Aminomethyltransferase, mitochondrial",HMDBP00688,,AK296177,AMT,3p21.2-p21.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P34897,"Serine hydroxymethyltransferase, mitochondrial",HMDBP00792,,AC137834,SHMT2,12q12-q14
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P21549,Serine--pyruvate aminotransferase,HMDBP00789,,CH471063,AGXT,2q37.3
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P50440,"Glycine amidinotransferase, mitochondrial",HMDBP00463,,AK294995,GATM,15q21.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q14353,Guanidinoacetate N-methyltransferase,HMDBP00426,,BC016760,GAMT,19p13.3
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P13196,"5-aminolevulinate synthase, nonspecific, mitochondrial",HMDBP00022,,AB063322,ALAS1,3p21.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q93088,Betaine--homocysteine S-methyltransferase 1,HMDBP00559,,AF118373,BHMT,5q14.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q14749,Glycine N-methyltransferase,HMDBP00403,,BC032627,GNMT,6p12
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q8IVS8,Glycerate kinase,HMDBP07384,,AY189286,GLYCTK,3p21.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,O43175,D-3-phosphoglycerate dehydrogenase,HMDBP00922,,BC011262,PHGDH,1p12
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q9Y617,Phosphoserine aminotransferase,HMDBP00851,,AY131232,PSAT1,9q21.2
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P78330,Phosphoserine phosphatase,HMDBP00887,,BX537439,PSPH,7p11.2
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P20132,L-serine dehydratase/L-threonine deaminase,HMDBP00671,,CH471054,SDS,12q24.13
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P34896,"Serine hydroxymethyltransferase, cytosolic",HMDBP00794,,L23928,SHMT1,17p11.2
+SMP0000004,Glycine and Serine Metabolism,Metabolic,Q9GZT4,Serine racemase,HMDBP08975,,AY034081,SRR,17p13
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P35520,Cystathionine beta-synthase,HMDBP00779,,BC011381,CBS,21q22.3
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P32929,Cystathionine gamma-lyase,HMDBP00538,,BC015807,CTH,1p31.1
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P49591,"Serine--tRNA ligase, cytoplasmic",HMDBP00646,,BC009390,SARS,1p13.3
+SMP0000004,Glycine and Serine Metabolism,Metabolic,P41250,Glycine--tRNA ligase,HMDBP00565,,AK295490,GARS,7p15
+SMP0000005,Pterine Biosynthesis,Metabolic,P30793,GTP cyclohydrolase 1,HMDBP00938,,U66095,GCH1,14q22.1-q22.2
+SMP0000005,Pterine Biosynthesis,Metabolic,P30047,GTP cyclohydrolase 1 feedback regulatory protein,HMDBP01961,,AK311872,GCHFR,15q15
+SMP0000005,Pterine Biosynthesis,Metabolic,Q03393,6-pyruvoyl tetrahydrobiopterin synthase,HMDBP00435,,EF445018,PTS,11q22.3
+SMP0000005,Pterine Biosynthesis,Metabolic,P35270,Sepiapterin reductase,HMDBP00436,,AK222942,SPR,2p14-p12
+SMP0000005,Pterine Biosynthesis,Metabolic,P15121,Aldose reductase,HMDBP00088,,M34720,AKR1B1,7q35
+SMP0000005,Pterine Biosynthesis,Metabolic,P16152,Carbonyl reductase [NADPH] 1,HMDBP00075,,BC015640,CBR1,21q22.13
+SMP0000005,Pterine Biosynthesis,Metabolic,P00374,Dihydrofolate reductase,HMDBP00790,,X00855,DHFR,5q11.2-q13.2
+SMP0000005,Pterine Biosynthesis,Metabolic,P09417,Dihydropteridine reductase,HMDBP00545,,M16447,QDPR,4p15.31
+SMP0000006,Tyrosine Metabolism,Metabolic,P17735,Tyrosine aminotransferase,HMDBP00277,,X52518,TAT,16q22.1
+SMP0000006,Tyrosine Metabolism,Metabolic,P17174,"Aspartate aminotransferase, cytoplasmic",HMDBP00283,,BC000498,GOT1,10q24.1-q25.1
+SMP0000006,Tyrosine Metabolism,Metabolic,P32754,4-hydroxyphenylpyruvate dioxygenase,HMDBP00841,,CH471054,HPD,12q24-qter
+SMP0000006,Tyrosine Metabolism,Metabolic,O43708,Maleylacetoacetate isomerase,HMDBP00817,,AF053543,GSTZ1,14q24.3
+SMP0000006,Tyrosine Metabolism,Metabolic,P16930,Fumarylacetoacetase,HMDBP00713,,M55150,FAH,15q25.1
+SMP0000006,Tyrosine Metabolism,Metabolic,P20711,Aromatic-L-amino-acid decarboxylase,HMDBP00278,,M84588,DDC,7p12.2
+SMP0000006,Tyrosine Metabolism,Metabolic,P30838,"Aldehyde dehydrogenase, dimeric NADP-preferring",HMDBP00292,,M77477,ALDH3A1,17p11.2
+SMP0000006,Tyrosine Metabolism,Metabolic,P14679,Tyrosinase,HMDBP00087,,AF237809,TYR,11q14-q21
+SMP0000006,Tyrosine Metabolism,Metabolic,P09172,Dopamine beta-hydroxylase,HMDBP00253,,X13255,DBH,9q34
+SMP0000006,Tyrosine Metabolism,Metabolic,P40126,L-dopachrome tautomerase,HMDBP00209,,BC028311,DCT,13q32
+SMP0000006,Tyrosine Metabolism,Metabolic,P11086,Phenylethanolamine N-methyltransferase,HMDBP00406,,BC037246,PNMT,17q
+SMP0000006,Tyrosine Metabolism,Metabolic,P21397,Amine oxidase [flavin-containing] A,HMDBP00169,,X60809,MAOA,Xp11.3
+SMP0000006,Tyrosine Metabolism,Metabolic,P07327,Alcohol dehydrogenase 1A,HMDBP00784,,BT019812,ADH1A,4q23
+SMP0000006,Tyrosine Metabolism,Metabolic,P46952,"3-hydroxyanthranilate 3,4-dioxygenase",HMDBP01128,,BC029510,HAAO,2p21
+SMP0000006,Tyrosine Metabolism,Metabolic,Q93099,"Homogentisate 1,2-dioxygenase",HMDBP00842,,AK313563,HGD,3q13.33
+SMP0000006,Tyrosine Metabolism,Metabolic,P14174,Macrophage migration inhibitory factor,HMDBP00100,,CR456520,MIF,22q11.23
+SMP0000006,Tyrosine Metabolism,Metabolic,P19801,Amiloride-sensitive amine oxidase [copper-containing],HMDBP00390,,BC014093,ABP1,7q36.1
+SMP0000006,Tyrosine Metabolism,Metabolic,P21964,Catechol O-methyltransferase,HMDBP00272,,BC011935,COMT,22q11.21
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q96KN2,Beta-Ala-His dipeptidase,HMDBP00473,,BC110295,CNDP1,18q22.3
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q99259,Glutamate decarboxylase 1,HMDBP00703,,M70434,GAD1,2q31
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q9UBR1,Beta-ureidopropionase,HMDBP00544,,AF169555,UPB1,22q11.2
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q14117,Dihydropyrimidinase,HMDBP00543,,D78011,DPYS,8q22
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q12882,Dihydropyrimidine dehydrogenase [NADP(+)],HMDBP00727,,BT006740,DPYD,1p22
+SMP0000007,beta-Alanine Metabolism,Metabolic,P80404,"4-aminobutyrate aminotransferase, mitochondrial",HMDBP00248,,U80226,ABAT,16p13.2
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q02252,"Methylmalonate-semialdehyde dehydrogenase [acylating], mitochondrial",HMDBP00051,,AJ249994,ALDH6A1,14q24.3
+SMP0000007,beta-Alanine Metabolism,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000007,beta-Alanine Metabolism,Metabolic,Q16853,Membrane primary amine oxidase,HMDBP00393,,AK315129,AOC3,17q21
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P17174,"Aspartate aminotransferase, cytoplasmic",HMDBP00283,,BC000498,GOT1,10q24.1-q25.1
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,Q96RQ9,L-amino-acid oxidase,HMDBP08281,,AF293463,IL4I1,19q13.3-q13.4
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P17735,Tyrosine aminotransferase,HMDBP00277,,X52518,TAT,16q22.1
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P00439,Phenylalanine-4-hydroxylase,HMDBP00280,,K03020,PAH,12q22-q24.2
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P54577,"Tyrosine--tRNA ligase, cytoplasmic",HMDBP00606,,U40714,YARS,1p35.1
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,Q9Y285,Phenylalanine--tRNA ligase alpha subunit,HMDBP00274,,BC006495,FARSA,19p13.2
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,Q9NSD9,Phenylalanine--tRNA ligase beta subunit,HMDBP00522,,AF042346,FARSB,2q36.1
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P32754,4-hydroxyphenylpyruvate dioxygenase,HMDBP00841,,CH471054,HPD,12q24-qter
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,Q93099,"Homogentisate 1,2-dioxygenase",HMDBP00842,,AK313563,HGD,3q13.33
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,O43708,Maleylacetoacetate isomerase,HMDBP00817,,AF053543,GSTZ1,14q24.3
+SMP0000008,Phenylalanine and Tyrosine Metabolism,Metabolic,P16930,Fumarylacetoacetase,HMDBP00713,,M55150,FAH,15q25.1
+SMP0000009,Ammonia Recycling,Metabolic,P20132,L-serine dehydratase/L-threonine deaminase,HMDBP00671,,CH471054,SDS,12q24.13
+SMP0000009,Ammonia Recycling,Metabolic,Q7L266,Isoaspartyl peptidase/L-asparaginase,HMDBP03342,,AF411076,ASRGL1,11q12.3
+SMP0000009,Ammonia Recycling,Metabolic,P08243,Asparagine synthetase [glutamine-hydrolyzing],HMDBP00583,,L35940,ASNS,7q21.3
+SMP0000009,Ammonia Recycling,Metabolic,P42357,Histidine ammonia-lyase,HMDBP00683,,AK303544,HAL,12q22-q24.1
+SMP0000009,Ammonia Recycling,Metabolic,P31327,"Carbamoyl-phosphate synthase [ammonia], mitochondrial",HMDBP00359,,CH471063,CPS1,2q35
+SMP0000009,Ammonia Recycling,Metabolic,A8YXX4,Glutamine synthetase,HMDBP07381,,AY947343,PIG59,
+SMP0000009,Ammonia Recycling,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000009,Ammonia Recycling,Metabolic,Q9UI32,"Glutaminase liver isoform, mitochondrial",HMDBP00675,,CH471054,GLS2,12q13
+SMP0000009,Ammonia Recycling,Metabolic,P48728,"Aminomethyltransferase, mitochondrial",HMDBP00688,,AK296177,AMT,3p21.2-p21.1
+SMP0000009,Ammonia Recycling,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000009,Ammonia Recycling,Metabolic,P23378,"Glycine dehydrogenase [decarboxylating], mitochondrial",HMDBP00795,,M63635,GLDC,9p22
+SMP0000009,Ammonia Recycling,Metabolic,P23434,"Glycine cleavage system H protein, mitochondrial",HMDBP03058,,BC000790,GCSH,""
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,P35557,Glucokinase,HMDBP00210,,AF041020,GCK,7p15.3-p15.1
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,P36871,Phosphoglucomutase-1,HMDBP01107,,BC090856,PGM1,1p31
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,Q16851,UTP--glucose-1-phosphate uridylyltransferase,HMDBP01074,,BC002954,UGP2,2p14-p13
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,O60701,UDP-glucose 6-dehydrogenase,HMDBP00907,,AJ272278,UGDH,4p15.1
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,Q8NBZ7,UDP-glucuronic acid decarboxylase 1,HMDBP03150,,AK075170,UXS1,2q12.2
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,P07902,Galactose-1-phosphate uridylyltransferase,HMDBP01092,,L46363,GALT,9p13
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,P51570,Galactokinase,HMDBP01379,,BC001166,GALK1,17q24
+SMP0000010,Nucleotide Sugars Metabolism,Metabolic,Q14376,UDP-glucose 4-epimerase,HMDBP00904,,BC050685,GALE,1p36-p35
+SMP0000011,Inositol Metabolism,Metabolic,Q9NPH2,Inositol-3-phosphate synthase 1,HMDBP05901,,AL137749,ISYNA1,19p13.11
+SMP0000011,Inositol Metabolism,Metabolic,Q8NFU5,Inositol polyphosphate multikinase,HMDBP01286,,BC065709,IPMK,10q21.1
+SMP0000011,Inositol Metabolism,Metabolic,Q13572,Inositol-tetrakisphosphate 1-kinase,HMDBP07396,,BC007428,ITPK1,14q31
+SMP0000011,Inositol Metabolism,Metabolic,Q9H8X2,Inositol-pentakisphosphate 2-kinase,HMDBP09441,,AL137074,IPPK,9q22.31
+SMP0000011,Inositol Metabolism,Metabolic,Q9UNW1,Multiple inositol polyphosphate phosphatase 1,HMDBP07395,,AL138767,MINPP1,10q23
+SMP0000011,Inositol Metabolism,Metabolic,P23677,Inositol-trisphosphate 3-kinase A,HMDBP00984,,BC026331,ITPKA,15q15.1
+SMP0000011,Inositol Metabolism,Metabolic,Q15735,"Phosphatidylinositol 4,5-bisphosphate 5-phosphatase A",HMDBP00363,,AK095944,INPP5J,22q12.2
+SMP0000011,Inositol Metabolism,Metabolic,P49441,Inositol polyphosphate 1-phosphatase,HMDBP00362,,L08488,INPP1,2q32
+SMP0000011,Inositol Metabolism,Metabolic,P29218,Inositol monophosphatase 1,HMDBP00863,,AC090255,IMPA1,8q21.13-q21.3
+SMP0000011,Inositol Metabolism,Metabolic,Q9UGB7,Inositol oxygenase,HMDBP00840,,AF230095,MIOX,22q13.3
+SMP0000011,Inositol Metabolism,Metabolic,Q96PE3,"Type I inositol 3,4-bisphosphate 4-phosphatase",HMDBP06156,,AC010134,INPP4A,2q11.2
+SMP0000011,Inositol Metabolism,Metabolic,Q8N3E9,"1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase delta-3",HMDBP04457,,AK074240,PLCD3,17q21.31
+SMP0000011,Inositol Metabolism,Metabolic,Q9Y2I7,1-phosphatidylinositol-3-phosphate 5-kinase,HMDBP01276,,CH471063,PIKFYVE,2q34
+SMP0000011,Inositol Metabolism,Metabolic,Q92562,Polyphosphoinositide phosphatase,,,AL133472,FIG4,
+SMP0000011,Inositol Metabolism,Metabolic,Q08AM6,Protein VAC14 homolog,,,CR457343,VAC14,
+SMP0000011,Inositol Metabolism,Metabolic,P42356,Phosphatidylinositol 4-kinase alpha,HMDBP01411,,AC007050,PI4KA,22q11.21
+SMP0000011,Inositol Metabolism,Metabolic,Q8NEB9,Phosphatidylinositol 3-kinase catalytic subunit type 3,HMDBP03992,,BC053651,PIK3C3,18q12.3
+SMP0000011,Inositol Metabolism,Metabolic,Q99570,Phosphoinositide 3-kinase regulatory subunit 4,HMDBP08851,,Y08991,PIK3R4,3q22.1
+SMP0000011,Inositol Metabolism,Metabolic,Q14457,Beclin-1,,,AF077301,,
+SMP0000011,Inositol Metabolism,Metabolic,Q9C0C7,Activating molecule in BECN1-regulated autophagy protein 1,,,AC024293,AMBRA1,
+SMP0000011,Inositol Metabolism,Metabolic,P42336,"Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha isoform",HMDBP01236,,BC113603,PIK3CA,3q26.3
+SMP0000011,Inositol Metabolism,Metabolic,Q8WUK0,Phosphatidylglycerophosphatase and protein-tyrosine phosphatase 1,HMDBP07398,,AC104942,PTPMT1,11p11.2
+SMP0000012,Catecholamine Biosynthesis,Metabolic,P07101,Tyrosine 3-monooxygenase,HMDBP00273,,M24787,TH,11p15.5
+SMP0000012,Catecholamine Biosynthesis,Metabolic,P20711,Aromatic-L-amino-acid decarboxylase,HMDBP00278,,M84588,DDC,7p12.2
+SMP0000012,Catecholamine Biosynthesis,Metabolic,P09172,Dopamine beta-hydroxylase,HMDBP00253,,X13255,DBH,9q34
+SMP0000012,Catecholamine Biosynthesis,Metabolic,P11086,Phenylethanolamine N-methyltransferase,HMDBP00406,,BC037246,PNMT,17q
+SMP0000013,Cysteine Metabolism,Metabolic,P48506,Glutamate--cysteine ligase catalytic subunit,HMDBP00512,,L39773,GCLC,6p12
+SMP0000013,Cysteine Metabolism,Metabolic,P48507,Glutamate--cysteine ligase regulatory subunit,HMDBP00513,,CR541833,GCLM,1p22.1
+SMP0000013,Cysteine Metabolism,Metabolic,Q16878,Cysteine dioxygenase type 1,HMDBP00948,,CH471086,CDO1,5q23.2
+SMP0000013,Cysteine Metabolism,Metabolic,P17174,"Aspartate aminotransferase, cytoplasmic",HMDBP00283,,BC000498,GOT1,10q24.1-q25.1
+SMP0000013,Cysteine Metabolism,Metabolic,P32929,Cystathionine gamma-lyase,HMDBP00538,,BC015807,CTH,1p31.1
+SMP0000013,Cysteine Metabolism,Metabolic,P25325,3-mercaptopyruvate sulfurtransferase,HMDBP00781,,Z73420,MPST,22q13.1
+SMP0000013,Cysteine Metabolism,Metabolic,Q6ZMR3,L-lactate dehydrogenase A-like 6A,HMDBP00893,,AY581313,LDHAL6A,11p15.1
+SMP0000013,Cysteine Metabolism,Metabolic,O60931,Cystinosin,HMDBP10818,,CH471108,CTNS,17p13
+SMP0000013,Cysteine Metabolism,Metabolic,P49589,"Cysteine--tRNA ligase, cytoplasmic",HMDBP09253,,BC002880,CARS,11p15.5
+SMP0000015,Glutathione Metabolism,Metabolic,P48637,Glutathione synthetase,HMDBP00791,,L42531,GSS,20q11.2
+SMP0000015,Glutathione Metabolism,Metabolic,P07203,Glutathione peroxidase 1,HMDBP00828,,Y00483,GPX1,3p21.3
+SMP0000015,Glutathione Metabolism,Metabolic,P00390,"Glutathione reductase, mitochondrial",HMDBP00196,,CH471080,GSR,8p21.1
+SMP0000015,Glutathione Metabolism,Metabolic,Q9H4Y5,Glutathione S-transferase omega-2,HMDBP00831,,AK296266,GSTO2,10q25.1
+SMP0000015,Glutathione Metabolism,Metabolic,Q6P531,Gamma-glutamyltransferase 6,HMDBP07358,,AK074646,GGT6,17p13.2
+SMP0000015,Glutathione Metabolism,Metabolic,P15144,Aminopeptidase N,HMDBP00448,,BC058928,ANPEP,""
+SMP0000015,Glutathione Metabolism,Metabolic,P55210,Caspase-7,,,,CASP7,
+SMP0000015,Glutathione Metabolism,Metabolic,P48506,Glutamate--cysteine ligase catalytic subunit,HMDBP00512,,L39773,GCLC,6p12
+SMP0000015,Glutathione Metabolism,Metabolic,P48507,Glutamate--cysteine ligase regulatory subunit,HMDBP00513,,CR541833,GCLM,1p22.1
+SMP0000015,Glutathione Metabolism,Metabolic,O14841,5-oxoprolinase,HMDBP00855,,AB122018,OPLAH,8q24.3
+SMP0000015,Glutathione Metabolism,Metabolic,O75223,Gamma-glutamylcyclotransferase,HMDBP09388,,AC005154,GGCT,7p15-p14
+SMP0000016,Propanoate Metabolism,Metabolic,Q96PE7,"Methylmalonyl-CoA epimerase, mitochondrial",HMDBP00256,,AF364547,MCEE,2p13.3
+SMP0000016,Propanoate Metabolism,Metabolic,P22033,"Methylmalonyl-CoA mutase, mitochondrial",HMDBP00257,,M37500,MUT,6p12.3
+SMP0000016,Propanoate Metabolism,Metabolic,O95822,"Malonyl-CoA decarboxylase, mitochondrial",HMDBP00016,,BC052592,MLYCD,16q24
+SMP0000016,Propanoate Metabolism,Metabolic,Q13085,Acetyl-CoA carboxylase 1,HMDBP00047,,AY315620,ACACA,17q21
+SMP0000016,Propanoate Metabolism,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000016,Propanoate Metabolism,Metabolic,Q02252,"Methylmalonate-semialdehyde dehydrogenase [acylating], mitochondrial",HMDBP00051,,AJ249994,ALDH6A1,14q24.3
+SMP0000016,Propanoate Metabolism,Metabolic,P80404,"4-aminobutyrate aminotransferase, mitochondrial",HMDBP00248,,U80226,ABAT,16p13.2
+SMP0000016,Propanoate Metabolism,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000016,Propanoate Metabolism,Metabolic,Q6NVY1,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial",HMDBP04709,,AK222979,HIBCH,2q32.2
+SMP0000016,Propanoate Metabolism,Metabolic,P11310,"Medium-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00104,,M91432,ACADM,1p31
+SMP0000016,Propanoate Metabolism,Metabolic,Q9NUB1,"Acetyl-coenzyme A synthetase 2-like, mitochondrial",HMDBP00042,,BC044588,ACSS1,20p11.23-p11.21
+SMP0000016,Propanoate Metabolism,Metabolic,Q9H6R3,"Acyl-CoA synthetase short-chain family member 3, mitochondrial",HMDBP11602,,CH471054,ACSS3,12q21.31
+SMP0000016,Propanoate Metabolism,Metabolic,P05165,"Propionyl-CoA carboxylase alpha chain, mitochondrial",HMDBP00259,,AY035795,PCCA,13q32
+SMP0000016,Propanoate Metabolism,Metabolic,P05166,"Propionyl-CoA carboxylase beta chain, mitochondrial",HMDBP00258,,M31167,PCCB,3q21-q22
+SMP0000016,Propanoate Metabolism,Metabolic,P11182,"Lipoamide acyltransferase component of branched-chain alpha-keto acid dehydrogenase complex, mitochondrial",HMDBP03078,,J03208,DBT,1p31
+SMP0000016,Propanoate Metabolism,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000016,Propanoate Metabolism,Metabolic,P21953,"2-oxoisovalerate dehydrogenase subunit beta, mitochondrial",HMDBP00299,,X52446,BCKDHB,6q14.1
+SMP0000016,Propanoate Metabolism,Metabolic,P12694,"2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial",HMDBP00300,,Z14093,BCKDHA,19q13.1-q13.2
+SMP0000016,Propanoate Metabolism,Metabolic,Q9BYZ2,L-lactate dehydrogenase A-like 6B,HMDBP03581,,AK058192,LDHAL6B,15q22.2
+SMP0000017,Vitamin B6 Metabolism,Metabolic,P05186,"Alkaline phosphatase, tissue-nonspecific isozyme",HMDBP00096,,AL359815,ALPL,1p36.12
+SMP0000017,Vitamin B6 Metabolism,Metabolic,Q9NVS9,Pyridoxine-5'-phosphate oxidase,HMDBP00674,,AF468030,PNPO,17q21.32
+SMP0000017,Vitamin B6 Metabolism,Metabolic,Q06278,Aldehyde oxidase,HMDBP00126,,CH471063,AOX1,2q33
+SMP0000017,Vitamin B6 Metabolism,Metabolic,O00764,Pyridoxal kinase,HMDBP01055,,U89606,PDXK,21q22.3
+SMP0000017,Vitamin B6 Metabolism,Metabolic,Q96GD0,Pyridoxal phosphate phosphatase,HMDBP03838,,BC064922,PDXP,22q12.3
+SMP0000018,Alpha Linolenic Acid and Linoleic Acid Metabolism,Metabolic,O95864,Fatty acid desaturase 2,HMDBP03232,,AK290291,FADS2,11q12.2
+SMP0000018,Alpha Linolenic Acid and Linoleic Acid Metabolism,Metabolic,Q9NYP7,Elongation of very long chain fatty acids protein 5,HMDBP11728,,AL034374,ELOVL5,6p21.1-p12.1
+SMP0000018,Alpha Linolenic Acid and Linoleic Acid Metabolism,Metabolic,O60427,Fatty acid desaturase 1,HMDBP02649,,AK314199,FADS1,11q12.2-q13.1
+SMP0000018,Alpha Linolenic Acid and Linoleic Acid Metabolism,Metabolic,Q9GZR5,Elongation of very long chain fatty acids protein 4,HMDBP04479,,AF277094,ELOVL4,6q14
+SMP0000018,Alpha Linolenic Acid and Linoleic Acid Metabolism,Metabolic,P0C869,Cytosolic phospholipase A2 beta,HMDBP09120,,AC020659,PLA2G4B,15q11.2-q21.3
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P00966,Argininosuccinate synthase,HMDBP00656,,L00083,ASS1,9q34.1
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P04424,Argininosuccinate lyase,HMDBP00697,,BC033146,ASL,7q11.21
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P31327,"Carbamoyl-phosphate synthase [ammonia], mitochondrial",HMDBP00359,,CH471063,CPS1,2q35
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P04181,"Ornithine aminotransferase, mitochondrial",HMDBP00400,,M29924,OAT,10q26
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P30038,"Delta-1-pyrroline-5-carboxylate dehydrogenase, mitochondrial",HMDBP00156,,U24266,ALDH4A1,1p36
+SMP0000020,Arginine and Proline Metabolism,Metabolic,O43272,"Proline dehydrogenase 1, mitochondrial",HMDBP02042,,U82381,PRODH,22q11.21
+SMP0000020,Arginine and Proline Metabolism,Metabolic,Q96C36,Pyrroline-5-carboxylate reductase 2,HMDBP00305,,BC020553,PYCR2,1q42.12
+SMP0000020,Arginine and Proline Metabolism,Metabolic,Q7Z4N8,Prolyl 4-hydroxylase subunit alpha-3,HMDBP09111,,BC117333,P4HA3,11q13.4
+SMP0000020,Arginine and Proline Metabolism,Metabolic,Q5T160,"Probable arginine--tRNA ligase, mitochondrial",HMDBP07360,,AK023550,RARS2,6q16.1
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P50440,"Glycine amidinotransferase, mitochondrial",HMDBP00463,,AK294995,GATM,15q21.1
+SMP0000020,Arginine and Proline Metabolism,Metabolic,Q14353,Guanidinoacetate N-methyltransferase,HMDBP00426,,BC016760,GAMT,19p13.3
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P12277,Creatine kinase B-type,HMDBP00720,,BC008323,CKB,14q32
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P05089,Arginase-1,HMDBP00298,,AY074488,ARG1,6q23
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P00480,"Ornithine carbamoyltransferase, mitochondrial",HMDBP00927,,AK292757,OTC,Xp21.1
+SMP0000020,Arginine and Proline Metabolism,Metabolic,Q9Y619,Mitochondrial ornithine transporter 1,HMDBP02312,,AL161614,SLC25A15,13q14
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P14920,D-amino-acid oxidase,HMDBP00206,,CH471054,DAO,12q24
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P17174,"Aspartate aminotransferase, cytoplasmic",HMDBP00283,,BC000498,GOT1,10q24.1-q25.1
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P29475,"Nitric oxide synthase, brain",HMDBP00928,,U17308,NOS1,12q24.2-q24.31
+SMP0000020,Arginine and Proline Metabolism,Metabolic,P07814,Bifunctional glutamate/proline--tRNA ligase,HMDBP00567,,BC126275,EPRS,1q41
+SMP0000021,Taurine and Hypotaurine Metabolism,Metabolic,Q16878,Cysteine dioxygenase type 1,HMDBP00948,,CH471086,CDO1,5q23.2
+SMP0000021,Taurine and Hypotaurine Metabolism,Metabolic,Q96SZ5,2-aminoethanethiol dioxygenase,HMDBP08667,,CH471083,ADO,10q21.3
+SMP0000021,Taurine and Hypotaurine Metabolism,Metabolic,Q9Y600,Cysteine sulfinic acid decarboxylase,HMDBP00936,,CH471054,CSAD,12q13.11-q14.3
+SMP0000021,Taurine and Hypotaurine Metabolism,Metabolic,Q99259,Glutamate decarboxylase 1,HMDBP00703,,M70434,GAD1,2q31
+SMP0000021,Taurine and Hypotaurine Metabolism,Metabolic,Q6P531,Gamma-glutamyltransferase 6,HMDBP07358,,AK074646,GGT6,17p13.2
+SMP0000023,Steroid Biosynthesis,Metabolic,Q9BWD1,"Acetyl-CoA acetyltransferase, cytosolic",HMDBP00013,,BC000408,ACAT2,6q25.3
+SMP0000023,Steroid Biosynthesis,Metabolic,Q01581,"Hydroxymethylglutaryl-CoA synthase, cytoplasmic",HMDBP00053,,CH471119,HMGCS1,5p14-p13
+SMP0000023,Steroid Biosynthesis,Metabolic,Q03426,Mevalonate kinase,HMDBP01053,,M88468,MVK,12q24
+SMP0000023,Steroid Biosynthesis,Metabolic,Q15126,Phosphomevalonate kinase,HMDBP01017,,L77213,PMVK,1q22
+SMP0000023,Steroid Biosynthesis,Metabolic,P53602,Diphosphomevalonate decarboxylase,HMDBP01016,,BC000011,MVD,16q24.3
+SMP0000023,Steroid Biosynthesis,Metabolic,Q13907,Isopentenyl-diphosphate Delta-isomerase 1,HMDBP01541,,AF271723,IDI1,10p15.3
+SMP0000023,Steroid Biosynthesis,Metabolic,P14324,Farnesyl pyrophosphate synthase,HMDBP00932,,AK291084,FDPS,1q22
+SMP0000023,Steroid Biosynthesis,Metabolic,O95749,Geranylgeranyl pyrophosphate synthase,HMDBP00931,,AB019036,GGPS1,1q43
+SMP0000023,Steroid Biosynthesis,Metabolic,P37268,Squalene synthase,HMDBP00260,,BC029641,FDFT1,8p23.1-p22
+SMP0000023,Steroid Biosynthesis,Metabolic,Q14534,Squalene monooxygenase,HMDBP00153,,BX647400,SQLE,8q24.1
+SMP0000023,Steroid Biosynthesis,Metabolic,P48449,Lanosterol synthase,HMDBP00430,,AJ239027,LSS,21q22.3
+SMP0000023,Steroid Biosynthesis,Metabolic,Q15392,Delta(24)-sterol reductase,HMDBP01935,,AF398337,DHCR24,1p32.3
+SMP0000023,Steroid Biosynthesis,Metabolic,Q16850,Lanosterol 14-alpha demethylase,HMDBP00265,,U51687,CYP51A1,7q21.2
+SMP0000023,Steroid Biosynthesis,Metabolic,O76062,Delta(14)-sterol reductase,HMDBP00262,,AK290935,TM7SF2,11q13
+SMP0000023,Steroid Biosynthesis,Metabolic,Q15800,Methylsterol monooxygenase 1,HMDBP00263,,BC010653,MSMO1,4q32-q34
+SMP0000023,Steroid Biosynthesis,Metabolic,Q15738,"Sterol-4-alpha-carboxylate 3-dehydrogenase, decarboxylating",HMDBP00264,,BC000245,NSDHL,Xq28
+SMP0000023,Steroid Biosynthesis,Metabolic,P56937,3-keto-steroid reductase,HMDBP00848,,AF162761,HSD17B7,1q23
+SMP0000023,Steroid Biosynthesis,Metabolic,Q15125,"3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase",HMDBP00949,,BC001549,EBP,Xp11.23-p11.22
+SMP0000023,Steroid Biosynthesis,Metabolic,O75845,Lathosterol oxidase,HMDBP00135,,BC012333,SC5DL,11q23.3
+SMP0000023,Steroid Biosynthesis,Metabolic,P04035,3-hydroxy-3-methylglutaryl-coenzyme A reductase,HMDBP00910,,AF273762,HMGCR,5q13.3-q14
+SMP0000023,Steroid Biosynthesis,Metabolic,P35610,Sterol O-acyltransferase 1,HMDBP00504,,CH471067,SOAT1,1q25
+SMP0000023,Steroid Biosynthesis,Metabolic,P38571,Lysosomal acid lipase/cholesteryl ester hydrolase,HMDBP00227,,AK314665,LIPA,10q23.2-q23.3
+SMP0000024,Porphyrin Metabolism,Metabolic,P13196,"5-aminolevulinate synthase, nonspecific, mitochondrial",HMDBP00022,,AB063322,ALAS1,3p21.1
+SMP0000024,Porphyrin Metabolism,Metabolic,P13716,Delta-aminolevulinic acid dehydratase,HMDBP01060,,M13928,ALAD,9q33.1
+SMP0000024,Porphyrin Metabolism,Metabolic,P08397,Porphobilinogen deaminase,HMDBP00358,,X04808,HMBS,11q23.3
+SMP0000024,Porphyrin Metabolism,Metabolic,P10746,Uroporphyrinogen-III synthase,HMDBP00357,,AL360176,UROS,10q25.2-q26.3
+SMP0000024,Porphyrin Metabolism,Metabolic,P06132,Uroporphyrinogen decarboxylase,HMDBP00250,,BT006737,UROD,1p34
+SMP0000024,Porphyrin Metabolism,Metabolic,P36551,"Coproporphyrinogen-III oxidase, mitochondrial",HMDBP00251,,Z34807,CPOX,3q12
+SMP0000024,Porphyrin Metabolism,Metabolic,P50336,Protoporphyrinogen oxidase,HMDBP01021,,AL590714,PPOX,1q22
+SMP0000024,Porphyrin Metabolism,Metabolic,Q8N4E7,"Ferritin, mitochondrial",HMDBP00470,,BC034419,FTMT,5q21.3
+SMP0000024,Porphyrin Metabolism,Metabolic,P22830,"Ferrochelatase, mitochondrial",HMDBP01058,,D00726,FECH,18q21.3
+SMP0000024,Porphyrin Metabolism,Metabolic,Q12887,"Protoheme IX farnesyltransferase, mitochondrial",HMDBP01631,,AC005389,COX10,""
+SMP0000024,Porphyrin Metabolism,Metabolic,Q7KZN9,Cytochrome c oxidase assembly protein COX15 homolog,HMDBP08634,,AL133353,COX15,""
+SMP0000024,Porphyrin Metabolism,Metabolic,P09601,Heme oxygenase 1,HMDBP00198,,CR456505,HMOX1,22q13.1
+SMP0000024,Porphyrin Metabolism,Metabolic,P53004,Biliverdin reductase A,HMDBP00700,,AC004985,BLVRA,7p13
+SMP0000024,Porphyrin Metabolism,Metabolic,O75310,UDP-glucuronosyltransferase 2B11,HMDBP00491,,BC069441,UGT2B11,4q13.2
+SMP0000024,Porphyrin Metabolism,Metabolic,P08236,Beta-glucuronidase,HMDBP00839,,S72462,GUSB,7q21.11
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q99943,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,HMDBP01581,,CR812478,AGPAT1,6p21.3
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q92903,Phosphatidate cytidylyltransferase 1,HMDBP00764,,AK314245,CDS1,4q21.23
+SMP0000025,Phospholipid Biosynthesis,Metabolic,O14735,CDP-diacylglycerol--inositol 3-phosphatidyltransferase,HMDBP00771,,BC001444,CDIPT,16p11.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P43304,"Glycerol-3-phosphate dehydrogenase, mitochondrial",HMDBP00197,,U40362,GPD2,2q24.1
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P22303,Acetylcholinesterase,HMDBP00524,,CH236956,ACHE,7q22
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P28329,Choline O-acetyltransferase,HMDBP00025,,AF305895,CHAT,10q11.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9NZC3,Glycerophosphodiester phosphodiesterase 1,HMDBP07388,,AF212862,GDE1,16p12-p11.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,O75608,Acyl-protein thioesterase 1,HMDBP00056,,BC010397,LYPLA1,8q11.23
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q8NCC3,Group XV phospholipase A2,HMDBP00057,,CH471092,PLA2G15,""
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9UNK4,Group IID secretory phospholipase A2,HMDBP00073,,AF188625,PLA2G2D,1p36.12
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P0C869,Cytosolic phospholipase A2 beta,HMDBP09120,,AC020659,PLA2G4B,15q11.2-q21.3
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q8TCT1,Phosphoethanolamine/phosphocholine phosphatase,HMDBP03097,,AC004797,PHOSPHO1,17q21.32
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q8WUD6,Cholinephosphotransferase 1,HMDBP02855,,CH471054,CHPT1,12q
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P23743,Diacylglycerol kinase alpha,HMDBP00233,,AF064771,DGKA,12q13.3
+SMP0000025,Phospholipid Biosynthesis,Metabolic,O14494,Lipid phosphate phosphohydrolase 1,HMDBP00237,,AF014402,PPAP2A,5q11
+SMP0000025,Phospholipid Biosynthesis,Metabolic,O14939,Phospholipase D2,HMDBP00080,,BC015033,PLD2,17p13.1
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9UBM1,Phosphatidylethanolamine N-methyltransferase,HMDBP00081,,AF294466,PEMT,17p11.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9BVG9,Phosphatidylserine synthase 2,HMDBP02960,,AL834357,PTDSS2,11p15.5
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9UG56,Phosphatidylserine decarboxylase proenzyme,HMDBP02255,,BC009315,PISD,22q12.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q32NB8,"CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase, mitochondrial",HMDBP03388,,CH471099,PGS1,17q25.3
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q8WUK0,Phosphatidylglycerophosphatase and protein-tyrosine phosphatase 1,HMDBP07398,,AC104942,PTPMT1,11p11.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9UJA2,Cardiolipin synthase,HMDBP03379,,AL035461,CRLS1,20p13-p12.3
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0000025,Phospholipid Biosynthesis,Metabolic,Q9HCL2,"Glycerol-3-phosphate acyltransferase 1, mitochondrial",HMDBP00838,,AL391986,GPAM,10q25.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P49585,Choline-phosphate cytidylyltransferase A,HMDBP00755,,CH471191,PCYT1A,3q29
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P35790,Choline kinase alpha,HMDBP00778,,BC036471,CHKA,11q13.2
+SMP0000025,Phospholipid Biosynthesis,Metabolic,P48651,Phosphatidylserine synthase 1,HMDBP02190,,BC004390,PTDSS1,8q22
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,O95497,Pantetheinase,HMDBP01934,,BC096266,VNN1,6q23-q24
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,Q8TE04,Pantothenate kinase 1,HMDBP01026,,BK000008,PANK1,10q23.31
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,Q9HAB8,Phosphopantothenate--cysteine ligase,HMDBP03007,,BC012383,PPCS,1p34.2
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,Q96CD2,Phosphopantothenoylcysteine decarboxylase,HMDBP03116,,AC015720,PPCDC,15q24.2
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,Q13057,Bifunctional coenzyme A synthase,HMDBP01886,,CH471152,COASY,17q12-q21
+SMP0000027,Pantothenate and CoA Biosynthesis,Metabolic,P22413,Ectonucleotide pyrophosphatase/phosphodiesterase family member 1,HMDBP00119,,AF110288,ENPP1,6q22-q23
+SMP0000028,Caffeine Metabolism,Metabolic,P05177,Cytochrome P450 1A2,HMDBP01560,,BC067426,CYP1A2,15q24.1
+SMP0000028,Caffeine Metabolism,Metabolic,P05181,Cytochrome P450 2E1,HMDBP01544,,J02625,CYP2E1,10q24.3-qter
+SMP0000028,Caffeine Metabolism,Metabolic,A4Z6T9,Arylamine N-acetyltransferase 2,HMDBP09128,,DQ904190,NAT2,8p22
+SMP0000028,Caffeine Metabolism,Metabolic,P08684,Cytochrome P450 3A4,HMDBP01018,,M18907,CYP3A4,7q21.1
+SMP0000028,Caffeine Metabolism,Metabolic,P10632,Cytochrome P450 2C8,HMDBP01562,,AK293328,CYP2C8,10q23.33
+SMP0000028,Caffeine Metabolism,Metabolic,P11712,Cytochrome P450 2C9,HMDBP01036,,AY341248,CYP2C9,10q24
+SMP0000028,Caffeine Metabolism,Metabolic,P47989,Xanthine dehydrogenase/oxidase,HMDBP00181,,U39487,XDH,2p23.1
+SMP0000028,Caffeine Metabolism,Metabolic,P11509,Cytochrome P450 2A6,HMDBP01567,,AF326721,CYP2A6,19q13.2
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,Q96I15,Selenocysteine lyase,HMDBP04824,,CH471063,SCLY,2q37.3
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,Q99611,"Selenide, water dikinase 2",HMDBP00658,,U43286,SEPHS2,16p11.2
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P32929,Cystathionine gamma-lyase,HMDBP00538,,BC015807,CTH,1p31.1
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P35520,Cystathionine beta-synthase,HMDBP00779,,BC011381,CBS,21q22.3
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P23526,Adenosylhomocysteinase,HMDBP00662,,AK290422,AHCY,20q11.22
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,Q8TCB7,Methyltransferase-like protein 6,HMDBP11825,,AC027125,METTL6,""
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P31153,S-adenosylmethionine synthase isoform type-2,HMDBP00405,,BC001686,MAT2A,2p11.2
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,Q9NZL9,Methionine adenosyltransferase 2 subunit beta,HMDBP03965,,AK312365,MAT2B,""
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P56192,"Methionine--tRNA ligase, cytoplasmic",HMDBP00623,,X94754,MARS,12q13
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,O43252,Bifunctional 3'-phosphoadenosine 5'-phosphosulfate synthase 1,HMDBP00345,,AF097716,PAPSS1,4q24
+SMP0000029,Selenoamino Acid Metabolism,Metabolic,P19440,Gamma-glutamyltranspeptidase 1,HMDBP00730,,BC069504,GGT1,22q11.23
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,P33121,Long-chain-fatty-acid--CoA ligase 1,HMDBP00577,,CH471056,ACSL1,4q35
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,Q9UJ83,2-hydroxyacyl-CoA lyase 1,HMDBP08729,,AJ131753,HACL1,3p25.1
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,O14832,"Phytanoyl-CoA dioxygenase, peroxisomal",HMDBP00270,,AF242384,PHYH,10p13
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,Q92968,Peroxisomal membrane protein PEX13,,,AF048755,,
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,O75381,Peroxisomal membrane protein PEX14,,,AF045186,,
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,P43155,Carnitine O-acetyltransferase,HMDBP00028,,X79827,CRAT,9q34.1
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,Q9UKG9,Peroxisomal carnitine O-octanoyltransferase,HMDBP00307,,CH236949,CROT,7q21.1
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,P33897,ATP-binding cassette sub-family D member 1,,,Z31006,,
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,Q9UBJ2,ATP-binding cassette sub-family D member 2,,,BC104901,,
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,O43772,Mitochondrial carnitine/acylcarnitine carrier protein,HMDBP02794,,Y10319,SLC25A20,3p21.31
+SMP0000030,Oxidation of Branched-Chain Fatty Acids,Metabolic,P23786,"Carnitine O-palmitoyltransferase 2, mitochondrial",HMDBP00311,,U09643,CPT2,1p32
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P11413,Glucose-6-phosphate 1-dehydrogenase,HMDBP00328,,M65228,G6PD,Xq28
+SMP0000031,Pentose Phosphate Pathway,Metabolic,O95336,6-phosphogluconolactonase,HMDBP00327,,AJ243972,PGLS,19p13.2
+SMP0000031,Pentose Phosphate Pathway,Metabolic,A9Z1X1,Putative uncharacterized protein PGD,HMDBP07405,,AK303898,PGD,1p36.3-p36.13
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P49247,Ribose-5-phosphate isomerase,HMDBP01611,,BC015529,RPIA,2p11.2
+SMP0000031,Pentose Phosphate Pathway,Metabolic,Q9H477,Ribokinase,HMDBP01088,,AY643715,RBKS,2p23.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P36871,Phosphoglucomutase-1,HMDBP01107,,BC090856,PGM1,1p31
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P21108,Ribose-phosphate pyrophosphokinase 3,HMDBP00566,,M57423,PRPS1L1,7p21.1
+SMP0000031,Pentose Phosphate Pathway,Metabolic,Q96AT9,Ribulose-phosphate 3-epimerase,HMDBP07173,,CH471063,RPE,2q32-q33.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P29401,Transketolase,HMDBP00805,,BC008615,TKT,3p14.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P37837,Transaldolase,HMDBP00802,,L19437,TALDO1,11p15.5-p15.4
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P04075,Fructose-bisphosphate aldolase A,HMDBP00978,,BC010660,ALDOA,16p11.2
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P09467,"Fructose-1,6-bisphosphatase 1",HMDBP00803,,M19922,FBP1,9q22.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P17858,"6-phosphofructokinase, liver type",HMDBP00758,,BC006422,PFKL,21q22.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,Q9Y315,Putative deoxyribose-phosphate aldolase,HMDBP00945,,AF132960,DERA,12p12.3
+SMP0000031,Pentose Phosphate Pathway,Metabolic,P06744,Glucose-6-phosphate isomerase,HMDBP00806,,AH002710,GPI,19q13.1
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P21953,"2-oxoisovalerate dehydrogenase subunit beta, mitochondrial",HMDBP00299,,X52446,BCKDHB,6q14.1
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P12694,"2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial",HMDBP00300,,Z14093,BCKDHA,19q13.1-q13.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P35914,"Hydroxymethylglutaryl-CoA lyase, mitochondrial",HMDBP00009,,AK313869,HMGCL,1p36.1-p35
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P54687,"Branched-chain-amino-acid aminotransferase, cytosolic",HMDBP00301,,CR749308,BCAT1,12p12.1
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P11182,"Lipoamide acyltransferase component of branched-chain alpha-keto acid dehydrogenase complex, mitochondrial",HMDBP03078,,J03208,DBT,1p31
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P26440,"Isovaleryl-CoA dehydrogenase, mitochondrial",HMDBP00166,,AF191216,IVD,15q14-q15
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P11310,"Medium-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00104,,M91432,ACADM,1p31
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q96RQ3,"Methylcrotonoyl-CoA carboxylase subunit alpha, mitochondrial",HMDBP00510,,AK023051,MCCC1,3q27
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q9HCC0,"Methylcrotonoyl-CoA carboxylase beta chain, mitochondrial",HMDBP00508,,AL079298,MCCC2,5q12-q13
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P16219,"Short-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00103,,U83992,ACADS,12q24.31
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P45954,"Short/branched chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP01613,,AF260678,ACADSB,10q26.13
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q9UKU7,"Isobutyryl-CoA dehydrogenase, mitochondrial",HMDBP05273,,AF260681,ACAD8,11q25
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q6NVY1,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial",HMDBP04709,,AK222979,HIBCH,2q32.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P31937,"3-hydroxyisobutyrate dehydrogenase, mitochondrial",HMDBP00395,,AC005091,HIBADH,7p15.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P80404,"4-aminobutyrate aminotransferase, mitochondrial",HMDBP00248,,U80226,ABAT,16p13.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q99714,3-hydroxyacyl-CoA dehydrogenase type-2,HMDBP00379,,BC008708,HSD17B10,Xp11.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q02252,"Methylmalonate-semialdehyde dehydrogenase [acylating], mitochondrial",HMDBP00051,,AJ249994,ALDH6A1,14q24.3
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P05165,"Propionyl-CoA carboxylase alpha chain, mitochondrial",HMDBP00259,,AY035795,PCCA,13q32
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P05166,"Propionyl-CoA carboxylase beta chain, mitochondrial",HMDBP00258,,M31167,PCCB,3q21-q22
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q96PE7,"Methylmalonyl-CoA epimerase, mitochondrial",HMDBP00256,,AF364547,MCEE,2p13.3
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P22033,"Methylmalonyl-CoA mutase, mitochondrial",HMDBP00257,,M37500,MUT,6p12.3
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q06278,Aldehyde oxidase,HMDBP00126,,CH471063,AOX1,2q33
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,Q13825,"Methylglutaconyl-CoA hydratase, mitochondrial",HMDBP00982,,AL513353,AUH,9q22.31
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P54868,"Hydroxymethylglutaryl-CoA synthase, mitochondrial",HMDBP00040,,U81856,HMGCS2,1p13-p12
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000032,"Valine, Leucine, and Isoleucine Degradation",Metabolic,P55809,"Succinyl-CoA:3-ketoacid coenzyme A transferase 1, mitochondrial",HMDBP00712,,AB029576,OXCT1,5p13.1
+SMP0000033,Methionine Metabolism,Metabolic,P34896,"Serine hydroxymethyltransferase, cytosolic",HMDBP00794,,L23928,SHMT1,17p11.2
+SMP0000033,Methionine Metabolism,Metabolic,P42898,Methylenetetrahydrofolate reductase,HMDBP00188,,AF105977,MTHFR,1p36.3
+SMP0000033,Methionine Metabolism,Metabolic,Q99707,Methionine synthase,HMDBP00160,,AL359185,MTR,1q43
+SMP0000033,Methionine Metabolism,Metabolic,P32929,Cystathionine gamma-lyase,HMDBP00538,,BC015807,CTH,1p31.1
+SMP0000033,Methionine Metabolism,Metabolic,P35520,Cystathionine beta-synthase,HMDBP00779,,BC011381,CBS,21q22.3
+SMP0000033,Methionine Metabolism,Metabolic,Q93088,Betaine--homocysteine S-methyltransferase 1,HMDBP00559,,AF118373,BHMT,5q14.1
+SMP0000033,Methionine Metabolism,Metabolic,P26358,DNA (cytosine-5)-methyltransferase 1,HMDBP05712,,AC020931,DNMT1,19p13.2
+SMP0000033,Methionine Metabolism,Metabolic,P17707,S-adenosylmethionine decarboxylase proenzyme,HMDBP00420,,CH471051,AMD1,6q21
+SMP0000033,Methionine Metabolism,Metabolic,P19623,Spermidine synthase,HMDBP00218,,M64231,SRM,1p36-p22
+SMP0000033,Methionine Metabolism,Metabolic,Q13126,S-methyl-5'-thioadenosine phosphorylase,HMDBP00397,,HE654777,MTAP,9p21
+SMP0000033,Methionine Metabolism,Metabolic,P23526,Adenosylhomocysteinase,HMDBP00662,,AK290422,AHCY,20q11.22
+SMP0000033,Methionine Metabolism,Metabolic,Q96RQ9,L-amino-acid oxidase,HMDBP08281,,AF293463,IL4I1,19q13.3-q13.4
+SMP0000033,Methionine Metabolism,Metabolic,P56192,"Methionine--tRNA ligase, cytoplasmic",HMDBP00623,,X94754,MARS,12q13
+SMP0000033,Methionine Metabolism,Metabolic,Q96DP5,"Methionyl-tRNA formyltransferase, mitochondrial",HMDBP07377,,BC033687,MTFMT,15q22.31
+SMP0000033,Methionine Metabolism,Metabolic,P31153,S-adenosylmethionine synthase isoform type-2,HMDBP00405,,BC001686,MAT2A,2p11.2
+SMP0000033,Methionine Metabolism,Metabolic,Q9NZL9,Methionine adenosyltransferase 2 subunit beta,HMDBP03965,,AK312365,MAT2B,""
+SMP0000033,Methionine Metabolism,Metabolic,Q8NE62,"Choline dehydrogenase, mitochondrial",HMDBP00201,,AC012467,CHDH,3p21.1
+SMP0000033,Methionine Metabolism,Metabolic,Q8IXL7,Methionine-R-sulfoxide reductase B3,HMDBP09183,,AK299065,MSRB3,12q14.3
+SMP0000033,Methionine Metabolism,Metabolic,Q9Y3D2,"Methionine-R-sulfoxide reductase B2, mitochondrial",HMDBP09182,,AF151889,MSRB2,10p12
+SMP0000034,Sphingolipid Metabolism,Metabolic,O15270,Serine palmitoyltransferase 2,HMDBP00888,,BC005123,SPTLC2,14q24.3
+SMP0000034,Sphingolipid Metabolism,Metabolic,O15269,Serine palmitoyltransferase 1,HMDBP00886,,AF286706,SPTLC1,9q22.2
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q06136,3-ketodihydrosphingosine reductase,HMDBP03056,,X63657,KDSR,18q21.3
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q9NRA0,Sphingosine kinase 2,HMDBP01083,,AL136701,SPHK2,19q13.2
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q8IWX5,Sphingosine-1-phosphate phosphatase 2,HMDBP11558,,BC134342,SGPP2,""
+SMP0000034,Sphingolipid Metabolism,Metabolic,O14494,Lipid phosphate phosphohydrolase 1,HMDBP00237,,AF014402,PPAP2A,5q11
+SMP0000034,Sphingolipid Metabolism,Metabolic,O95470,Sphingosine-1-phosphate lyase 1,HMDBP01052,,AJ011304,SGPL1,10q21
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q6QHC5,Sphingolipid delta(4)-desaturase/C4-hydroxylase DES2,HMDBP07414,,AY541700,DEGS2,14q32.2
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q8TDN7,Alkaline ceramidase 1,HMDBP10638,,BC112122,ACER1,19p13.3
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q8TCT0,Ceramide kinase,HMDBP01405,,AB079066,CERK,22q13.31
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q86VZ5,Phosphatidylcholine:ceramide cholinephosphotransferase 1,HMDBP00775,,AB154421,SGMS1,10q11.2
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q6UWV6,Ectonucleotide pyrophosphatase/phosphodiesterase family member 7,HMDBP01089,,AK126250,ENPP7,17q25.3
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q16880,2-hydroxyacylsphingosine 1-beta-galactosyltransferase,HMDBP01101,,BC075069,UGT8,4q26
+SMP0000034,Sphingolipid Metabolism,Metabolic,P54803,Galactocerebrosidase,HMDBP00315,,L38555,GALC,14q31
+SMP0000034,Sphingolipid Metabolism,Metabolic,P04062,Glucosylceramidase,HMDBP01795,,AL713999,GBA,1q21
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q16739,Ceramide glucosyltransferase,HMDBP00845,,AK314847,UGCG,9q31
+SMP0000034,Sphingolipid Metabolism,Metabolic,P16278,Beta-galactosidase,HMDBP10706,,AK222763,GLB1,
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q9UBX8,"Beta-1,4-galactosyltransferase 6",HMDBP07258,,BC074835,B4GALT6,18q11
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q99999,Galactosylceramide sulfotransferase,HMDBP00318,,BC019077,GAL3ST1,22q12.2
+SMP0000034,Sphingolipid Metabolism,Metabolic,P15289,Arylsulfatase A,HMDBP00320,,AY271820,ARSA,22q13.33
+SMP0000034,Sphingolipid Metabolism,Metabolic,P06280,Alpha-galactosidase A,HMDBP00723,,M20317,GLA,""
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q9UQ49,Sialidase-3,HMDBP00319,,AB008185,NEU3,11q13.5
+SMP0000034,Sphingolipid Metabolism,Metabolic,Q9NUN7,Alkaline ceramidase 3,HMDBP07413,,AF327353,ACER3,""
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P17516,Aldo-keto reductase family 1 member C4,HMDBP00074,,AL355303,AKR1C4,10p15.1
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P51857,3-oxo-5-beta-steroid 4-dehydrogenase,HMDBP00550,,AF283658,AKR1D1,7q32-q33
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q02318,"Sterol 26-hydroxylase, mitochondrial",HMDBP01037,,CH471063,CYP27A1,2q33-qter
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9Y2P5,Bile acyl-CoA synthetase,HMDBP03055,,AK123036,SLC27A5,19q13.43
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9UHK6,Alpha-methylacyl-CoA racemase,HMDBP02680,,FJ498906,AMACR,5p13
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q99424,Peroxisomal acyl-coenzyme A oxidase 2,HMDBP00164,,AK313512,ACOX2,3p14.3
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P51659,Peroxisomal multifunctional enzyme type 2,HMDBP00476,,AF057737,HSD17B4,5q21
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P22307,Non-specific lipid-transfer protein,HMDBP00440,,U11304,SCP2,1p32
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q14032,Bile acid-CoA:amino acid N-acyltransferase,HMDBP00549,,AL359893,BAAT,9q22.3
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9H2F3,3 beta-hydroxysteroid dehydrogenase type 7,HMDBP04980,,CH471192,HSD3B7,16p11.2
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9UNU6,7-alpha-hydroxycholest-4-en-3-one 12-alpha-hydroxylase,HMDBP06125,,AF090318,CYP8B1,3p22.1
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P22680,Cholesterol 7-alpha-monooxygenase,HMDBP00502,,BC101777,CYP7A1,8q11-q12
+SMP0000035,Bile Acid Biosynthesis,Metabolic,P38571,Lysosomal acid lipase/cholesteryl ester hydrolase,HMDBP00227,,AK314665,LIPA,10q23.2-q23.3
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9Y6A2,Cholesterol 24-hydroxylase,HMDBP05063,,BC022539,CYP46A1,14q32.1
+SMP0000035,Bile Acid Biosynthesis,Metabolic,Q9NYL5,24-hydroxycholesterol 7-alpha-hydroxylase,HMDBP05845,,AF237982,CYP39A1,6p21.1-p11.2
+SMP0000035,Bile Acid Biosynthesis,Metabolic,O75881,25-hydroxycholesterol 7-alpha-hydroxylase,HMDBP01629,,AF176800,CYP7B1,8q21.3
+SMP0000035,Bile Acid Biosynthesis,Metabolic,O95992,Cholesterol 25-hydroxylase,HMDBP03049,,AK314865,CH25H,10q23
+SMP0000036,D-Arginine and D-Ornithine Metabolism,Metabolic,P14920,D-amino-acid oxidase,HMDBP00206,,CH471054,DAO,12q24
+SMP0000037,Lysine Degradation,Metabolic,Q9UDR5,"Alpha-aminoadipic semialdehyde synthase, mitochondrial",HMDBP00852,,AJ007714,AASS,7q31.3
+SMP0000037,Lysine Degradation,Metabolic,P49419,Alpha-aminoadipic semialdehyde dehydrogenase,HMDBP00293,,AC099513,ALDH7A1,5q31
+SMP0000037,Lysine Degradation,Metabolic,Q8N5Z0,"Kynurenine/alpha-aminoadipate aminotransferase, mitochondrial",HMDBP00378,,AK055952,AADAT,4q33
+SMP0000037,Lysine Degradation,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000037,Lysine Degradation,Metabolic,Q16836,"Hydroxyacyl-coenzyme A dehydrogenase, mitochondrial",HMDBP00381,,AF001903,HADH,4q22-q26
+SMP0000037,Lysine Degradation,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000037,Lysine Degradation,Metabolic,P52569,Low affinity cationic amino acid transporter 2,HMDBP03488,,U76369,SLC7A2,8p22-p21.3
+SMP0000037,Lysine Degradation,Metabolic,Q9BXI2,Mitochondrial ornithine transporter 2,HMDBP03057,,BC100935,SLC25A2,5q31
+SMP0000037,Lysine Degradation,Metabolic,Q9P0Z9,Peroxisomal sarcosine oxidase,HMDBP00122,,BC008960,PIPOX,17q11.2
+SMP0000037,Lysine Degradation,Metabolic,Q92947,"Glutaryl-CoA dehydrogenase, mitochondrial",HMDBP00202,,BC002579,GCDH,19p13.2
+SMP0000037,Lysine Degradation,Metabolic,Q96HY7,"Probable 2-oxoglutarate dehydrogenase E1 component DHKTD1, mitochondrial",HMDBP09099,,AC073160,DHTKD1,10p14
+SMP0000037,Lysine Degradation,Metabolic,P36957,"Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex, mitochondrial",HMDBP00939,,AC006530,DLST,14q24.3
+SMP0000037,Lysine Degradation,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000039,Glycerolipid Metabolism,Metabolic,Q8IVS8,Glycerate kinase,HMDBP07384,,AY189286,GLYCTK,3p21.1
+SMP0000039,Glycerolipid Metabolism,Metabolic,P15121,Aldose reductase,HMDBP00088,,M34720,AKR1B1,7q35
+SMP0000039,Glycerolipid Metabolism,Metabolic,P32189,Glycerol kinase,HMDBP00836,,AC005913,GK,Xp21.3
+SMP0000039,Glycerolipid Metabolism,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0000039,Glycerolipid Metabolism,Metabolic,P23743,Diacylglycerol kinase alpha,HMDBP00233,,AF064771,DGKA,12q13.3
+SMP0000039,Glycerolipid Metabolism,Metabolic,P30838,"Aldehyde dehydrogenase, dimeric NADP-preferring",HMDBP00292,,M77477,ALDH3A1,17p11.2
+SMP0000039,Glycerolipid Metabolism,Metabolic,Q9HCL2,"Glycerol-3-phosphate acyltransferase 1, mitochondrial",HMDBP00838,,AL391986,GPAM,10q25.2
+SMP0000039,Glycerolipid Metabolism,Metabolic,Q99943,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,HMDBP01581,,CR812478,AGPAT1,6p21.3
+SMP0000039,Glycerolipid Metabolism,Metabolic,O14494,Lipid phosphate phosphohydrolase 1,HMDBP00237,,AF014402,PPAP2A,5q11
+SMP0000039,Glycerolipid Metabolism,Metabolic,P43304,"Glycerol-3-phosphate dehydrogenase, mitochondrial",HMDBP00197,,U40362,GPD2,2q24.1
+SMP0000039,Glycerolipid Metabolism,Metabolic,O43688,Lipid phosphate phosphohydrolase 2,HMDBP00231,,AF047760,PPAP2C,19p13
+SMP0000039,Glycerolipid Metabolism,Metabolic,P06858,Lipoprotein lipase,HMDBP00310,,CH471080,LPL,8p22
+SMP0000039,Glycerolipid Metabolism,Metabolic,P11150,Hepatic triacylglycerol lipase,HMDBP00226,,M29188,LIPC,15q21-q23
+SMP0000040,Glycolysis,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000040,Glycolysis,Metabolic,P52789,Hexokinase-2,HMDBP00213,,Z46358,HK2,2p13
+SMP0000040,Glycolysis,Metabolic,Q96C23,Aldose 1-epimerase,HMDBP07277,,AC074366,GALM,2p22.1
+SMP0000040,Glycolysis,Metabolic,P06744,Glucose-6-phosphate isomerase,HMDBP00806,,AH002710,GPI,19q13.1
+SMP0000040,Glycolysis,Metabolic,P08237,"6-phosphofructokinase, muscle type",HMDBP00762,,M59731,PFKM,12q13.3
+SMP0000040,Glycolysis,Metabolic,P04075,Fructose-bisphosphate aldolase A,HMDBP00978,,BC010660,ALDOA,16p11.2
+SMP0000040,Glycolysis,Metabolic,P60174,Triosephosphate isomerase,HMDBP01584,,BC007812,TPI1,12p13
+SMP0000040,Glycolysis,Metabolic,P35575,Glucose-6-phosphatase,HMDBP00376,,AK303771,G6PC,17q21
+SMP0000040,Glycolysis,Metabolic,P04406,Glyceraldehyde-3-phosphate dehydrogenase,HMDBP00695,,BC013310,GAPDH,12p13
+SMP0000040,Glycolysis,Metabolic,P07738,Bisphosphoglycerate mutase,HMDBP00266,,BC017050,BPGM,7q33
+SMP0000040,Glycolysis,Metabolic,Q8TE04,Pantothenate kinase 1,HMDBP01026,,BK000008,PANK1,10q23.31
+SMP0000040,Glycolysis,Metabolic,P18669,Phosphoglycerate mutase 1,HMDBP00269,,BC010038,PGAM1,10q25.3
+SMP0000040,Glycolysis,Metabolic,P15259,Phosphoglycerate mutase 2,HMDBP00267,,BC001904,PGAM2,7p13-p12
+SMP0000040,Glycolysis,Metabolic,P06733,Alpha-enolase,HMDBP01087,,AL833741,ENO1,1p36.2
+SMP0000040,Glycolysis,Metabolic,P30613,Pyruvate kinase isozymes R/L,HMDBP00765,,S60712,PKLR,1q21
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,P51687,"Sulfite oxidase, mitochondrial",HMDBP01057,,AY056018,SUOX,12q13.2
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,O95340,Bifunctional 3'-phosphoadenosine 5'-phosphosulfate synthase 2,HMDBP00353,,AF160503,PAPSS2,10q24
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,O95861,"3'(2'),5'-bisphosphate nucleotidase 1",HMDBP00342,,AK291943,BPNT1,1q41
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,P49888,Estrogen sulfotransferase,HMDBP00346,,U20515,SULT1E1,4q13.1
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,P50225,Sulfotransferase 1A1,HMDBP00341,,U54701,SULT1A1,16p12.1
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,O00204,Sulfotransferase family cytosolic 2B member 1,HMDBP00355,,AC008403,SULT2B1,19q13.3
+SMP0000041,Sulfate/Sulfite Metabolism,Metabolic,Q9NPF2,Carbohydrate sulfotransferase 11,HMDBP00286,,AJ269537,CHST11,12q
+SMP0000043,Galactose Metabolism,Metabolic,P06280,Alpha-galactosidase A,HMDBP00723,,M20317,GLA,""
+SMP0000043,Galactose Metabolism,Metabolic,P10253,Lysosomal alpha-glucosidase,HMDBP01817,,Y00839,GAA,""
+SMP0000043,Galactose Metabolism,Metabolic,P16278,Beta-galactosidase,HMDBP10706,,AK222763,GLB1,
+SMP0000043,Galactose Metabolism,Metabolic,P15121,Aldose reductase,HMDBP00088,,M34720,AKR1B1,7q35
+SMP0000043,Galactose Metabolism,Metabolic,P51570,Galactokinase,HMDBP01379,,BC001166,GALK1,17q24
+SMP0000043,Galactose Metabolism,Metabolic,P15291,"Beta-1,4-galactosyltransferase 1",HMDBP00377,,M13701,B4GALT1,9p13
+SMP0000043,Galactose Metabolism,Metabolic,P07902,Galactose-1-phosphate uridylyltransferase,HMDBP01092,,L46363,GALT,9p13
+SMP0000043,Galactose Metabolism,Metabolic,Q14376,UDP-glucose 4-epimerase,HMDBP00904,,BC050685,GALE,1p36-p35
+SMP0000043,Galactose Metabolism,Metabolic,Q16851,UTP--glucose-1-phosphate uridylyltransferase,HMDBP01074,,BC002954,UGP2,2p14-p13
+SMP0000043,Galactose Metabolism,Metabolic,P36871,Phosphoglucomutase-1,HMDBP01107,,BC090856,PGM1,1p31
+SMP0000043,Galactose Metabolism,Metabolic,P35575,Glucose-6-phosphatase,HMDBP00376,,AK303771,G6PC,17q21
+SMP0000043,Galactose Metabolism,Metabolic,P19367,Hexokinase-1,HMDBP00215,,AF016364,HK1,10q22
+SMP0000043,Galactose Metabolism,Metabolic,P35557,Glucokinase,HMDBP00210,,AF041020,GCK,7p15.3-p15.1
+SMP0000043,Galactose Metabolism,Metabolic,P09848,Lactase-phlorizin hydrolase,HMDBP00365,,M61838,LCT,2q21
+SMP0000044,Histidine Metabolism,Metabolic,Q96KN2,Beta-Ala-His dipeptidase,HMDBP00473,,BC110295,CNDP1,18q22.3
+SMP0000044,Histidine Metabolism,Metabolic,A5YM72,Carnosine synthase 1,HMDBP08844,,BC036557,CARNS1,11q13.2
+SMP0000044,Histidine Metabolism,Metabolic,O60678,Protein arginine N-methyltransferase 3,HMDBP00474,,AC108005,PRMT3,11p15.1
+SMP0000044,Histidine Metabolism,Metabolic,P19113,Histidine decarboxylase,HMDBP00885,,X54297,HDC,15q21-q22
+SMP0000044,Histidine Metabolism,Metabolic,P50135,Histamine N-methyltransferase,HMDBP00427,,AF523357,HNMT,2q22.1
+SMP0000044,Histidine Metabolism,Metabolic,P21397,Amine oxidase [flavin-containing] A,HMDBP00169,,X60809,MAOA,Xp11.3
+SMP0000044,Histidine Metabolism,Metabolic,P30838,"Aldehyde dehydrogenase, dimeric NADP-preferring",HMDBP00292,,M77477,ALDH3A1,17p11.2
+SMP0000044,Histidine Metabolism,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000044,Histidine Metabolism,Metabolic,P42357,Histidine ammonia-lyase,HMDBP00683,,AK303544,HAL,12q22-q24.1
+SMP0000044,Histidine Metabolism,Metabolic,Q96N76,Urocanate hydratase,HMDBP00914,,BC115406,UROC1,3q21.3
+SMP0000044,Histidine Metabolism,Metabolic,Q96NU7,Probable imidazolonepropionase,HMDBP08674,,CH471054,AMDHD1,12q23.1
+SMP0000044,Histidine Metabolism,Metabolic,O95954,Formimidoyltransferase-cyclodeaminase,HMDBP00686,,AF169017,FTCD,21q22.3
+SMP0000044,Histidine Metabolism,Metabolic,P19801,Amiloride-sensitive amine oxidase [copper-containing],HMDBP00390,,BC014093,ABP1,7q36.1
+SMP0000044,Histidine Metabolism,Metabolic,Q8N4J0,Carnosine N-methyltransferase,,,,CARNMT1,
+SMP0000044,Histidine Metabolism,Metabolic,Q96KP4,cytosolic non-specific dipeptidase,,,,CNDP2,
+SMP0000044,Histidine Metabolism,Metabolic,P49590,"Probable histidine--tRNA ligase, mitochondrial",HMDBP00642,,U18936,HARS2,5q31.3
+SMP0000044,Histidine Metabolism,Metabolic,P12081,"Histidine--tRNA ligase, cytoplasmic",HMDBP00645,,U18936,HARS,5q31.3
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q13231,Chitotriosidase-1,HMDBP01031,,BC105680,CHIT1,""
+SMP0000045,Amino Sugar Metabolism,Metabolic,P06865,Beta-hexosaminidase subunit alpha,HMDBP00872,,BC084537,HEXA,""
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9UJ70,N-acetyl-D-glucosamine kinase,HMDBP01028,,AJ242910,NAGK,2p13.3
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9Y303,Putative N-acetylglucosamine-6-phosphate deacetylase,HMDBP03692,,AF132948,AMDHD2,16p13.3
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q96EK6,Glucosamine 6-phosphate N-acetyltransferase,HMDBP00052,,BC012179,GNPNAT1,14q22.1
+SMP0000045,Amino Sugar Metabolism,Metabolic,P46926,Glucosamine-6-phosphate isomerase 1,HMDBP00211,,AF035805,GNPDA1,5q21
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q06210,Glutamine--fructose-6-phosphate aminotransferase [isomerizing] 1,HMDBP00216,,AC114772,GFPT1,2p13
+SMP0000045,Amino Sugar Metabolism,Metabolic,O95394,Phosphoacetylglucosamine mutase,HMDBP01588,,AL117443,PGM3,6q14.1-q15
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q16222,UDP-N-acetylhexosamine pyrophosphorylase,HMDBP01079,,AK312685,UAP1,1q23.3
+SMP0000045,Amino Sugar Metabolism,Metabolic,P51606,N-acylglucosamine 2-epimerase,HMDBP00334,,U52112,RENBP,Xq28
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9Y223,Bifunctional UDP-N-acetylglucosamine 2-epimerase/N-acetylmannosamine kinase,HMDBP00332,,BC121179,GNE,9p13.3
+SMP0000045,Amino Sugar Metabolism,Metabolic,P19367,Hexokinase-1,HMDBP00215,,AF016364,HK1,10q22
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9NR45,Sialic acid synthase,HMDBP00333,,AL137073,NANS,9p24.1-p23
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9BXD5,N-acetylneuraminate lyase,HMDBP07357,,BC125051,NPL,1q25
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q8TBE9,N-acylneuraminate-9-phosphatase,HMDBP07356,,AK055472,NANP,20p11.1
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q8NFW8,N-acylneuraminate cytidylyltransferase,HMDBP00399,,AL832975,CMAS,12p12.1
+SMP0000045,Amino Sugar Metabolism,Metabolic,Q9NRA2,Sialin,HMDBP02797,,AK075320,SLC17A5,6q14-q15
+SMP0000046,Pyrimidine Metabolism,Metabolic,P27708,CAD protein,HMDBP03298,,BC065510,CAD,2p22-p21
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q02127,"Dihydroorotate dehydrogenase (quinone), mitochondrial",HMDBP00184,,M94065,DHODH,16q22
+SMP0000046,Pyrimidine Metabolism,Metabolic,A8K5J1 ,Uridine monophosphate synthetase isoform A,,,,UMPS ,
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q8WVQ1,Soluble calcium-activated nucleotidase 1,HMDBP00085,,BC065038,CANT1,17q25.3
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q5EBM0,"UMP-CMP kinase 2, mitochondrial",HMDBP07409,,BC132821,CMPK2,2p25.2
+SMP0000046,Pyrimidine Metabolism,Metabolic,O75414,Nucleoside diphosphate kinase 6,HMDBP00114,,U90449,NME6,3p21
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q9UIJ7,"GTP:AMP phosphotransferase, mitochondrial",HMDBP00573,,AL353151,AK3,9p24.1
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q9BY32,Inosine triphosphate pyrophosphatase,HMDBP00431,,AL109976,ITPA,20p
+SMP0000046,Pyrimidine Metabolism,Metabolic,P17812,CTP synthase 1,HMDBP00676,,AL391730,CTPS1,1p34.1
+SMP0000046,Pyrimidine Metabolism,Metabolic,P49902,Cytosolic purine 5'-nucleotidase,HMDBP03750,,BC001595,NT5C2,10q24.32
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q9Y2T3,Guanine deaminase,HMDBP00690,,AF095286,GDA,9q21.13
+SMP0000046,Pyrimidine Metabolism,Metabolic,O95045,Uridine phosphorylase 2,HMDBP06424,,BC033529,UPP2,2q24.1
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q12882,Dihydropyrimidine dehydrogenase [NADP(+)],HMDBP00727,,BT006740,DPYD,1p22
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q14117,Dihydropyrimidinase,HMDBP00543,,D78011,DPYS,8q22
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q9UBR1,Beta-ureidopropionase,HMDBP00544,,AF169555,UPB1,22q11.2
+SMP0000046,Pyrimidine Metabolism,Metabolic,P31350,Ribonucleoside-diphosphate reductase subunit M2,HMDBP00111,,AY032750,RRM2,2p25-p24
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q7LG56,Ribonucleoside-diphosphate reductase subunit M2 B,HMDBP07407,,AP001328,RRM2B,8q23.1
+SMP0000046,Pyrimidine Metabolism,Metabolic,Q9NWZ5,Uridine-cytidine kinase-like 1,HMDBP07410,,AK000524,UCKL1,20q13.33
+SMP0000046,Pyrimidine Metabolism,Metabolic,P32320,Cytidine deaminase,HMDBP05584,,AL391357,CDA,1p36.2-p35
+SMP0000046,Pyrimidine Metabolism,Metabolic,P19971,Thymidine phosphorylase,HMDBP03818,,U62317,TYMP,22q13.33
+SMP0000046,Pyrimidine Metabolism,Metabolic,P32321,Deoxycytidylate deaminase,HMDBP00002,,CH471056,DCTD,4q35.1
+SMP0000046,Pyrimidine Metabolism,Metabolic,P04183,"Thymidine kinase, cytosolic",HMDBP03814,,K02581,TK1,17q23.2-q25.3
+SMP0000046,Pyrimidine Metabolism,Metabolic,P04818,Thymidylate synthase,HMDBP04363,,X02308,TYMS,18p11.32
+SMP0000046,Pyrimidine Metabolism,Metabolic,P33316,"Deoxyuridine 5'-triphosphate nucleotidohydrolase, mitochondrial",HMDBP00432,,BC033645,DUT,15q21.1
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,P40261,Nicotinamide N-methyltransferase,HMDBP00423,,U20971,NNMT,11q23.1
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q06278,Aldehyde oxidase,HMDBP00126,,CH471063,AOX1,2q33
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,P00491,Purine nucleoside phosphorylase,HMDBP03752,,AY817667,PNP,14q13.1
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,P49902,Cytosolic purine 5'-nucleotidase,HMDBP03750,,BC001595,NT5C2,10q24.32
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,P43490,Nicotinamide phosphoribosyltransferase,HMDBP08864,,CH471070,NAMPT,7q22.3
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q10588,ADP-ribosyl cyclase 2,HMDBP00915,,AC114744,BST1,4p15
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q9BQG2,Peroxisomal NADH pyrophosphatase NUDT12,HMDBP07403,,CH471086,NUDT12,5q21.2
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,P22413,Ectonucleotide pyrophosphatase/phosphodiesterase family member 1,HMDBP00119,,AF110288,ENPP1,6q22-q23
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q9BZQ4,Nicotinamide mononucleotide adenylyltransferase 2,HMDBP00338,,AL449223,NMNAT2,1q25
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q13423,"NAD(P) transhydrogenase, mitochondrial",HMDBP00911,,BC110543,NNT,5p12
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,O95544,NAD kinase,HMDBP00917,,AL031282,NADK,1p36.33
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q6IA69,Glutamine-dependent NAD(+) synthetase,HMDBP03241,,AP000867,NADSYN1,11q13.4
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q9NWW6,Nicotinamide riboside kinase 1,HMDBP04086,,BC001366,NMRK1,9q21.13
+SMP0000048,Nicotinate and Nicotinamide Metabolism,Metabolic,Q15274,Nicotinate-nucleotide pyrophosphorylase [carboxylating],HMDBP00337,,BC018910,QPRT,16p11.2
+SMP0000050,Purine Metabolism,Metabolic,P50583,Bis(5'-nucleosyl)-tetraphosphatase [asymmetrical],HMDBP00621,,AL356494,NUDT2,9p13
+SMP0000050,Purine Metabolism,Metabolic,O75414,Nucleoside diphosphate kinase 6,HMDBP00114,,U90449,NME6,3p21
+SMP0000050,Purine Metabolism,Metabolic,O75356,Ectonucleoside triphosphate diphosphohydrolase 5,HMDBP00879,,BC130487,ENTPD5,14q24
+SMP0000050,Purine Metabolism,Metabolic,Q5MY95,Ectonucleoside triphosphate diphosphohydrolase 8,HMDBP07670,,AY903953,ENTPD8,9q34.3
+SMP0000050,Purine Metabolism,Metabolic,Q16774,Guanylate kinase,HMDBP00930,,AK303845,GUK1,1q32-q41
+SMP0000050,Purine Metabolism,Metabolic,P49902,Cytosolic purine 5'-nucleotidase,HMDBP03750,,BC001595,NT5C2,10q24.32
+SMP0000050,Purine Metabolism,Metabolic,Q16854,"Deoxyguanosine kinase, mitochondrial",HMDBP00766,,AC073046,DGUOK,2p13
+SMP0000050,Purine Metabolism,Metabolic,P07741,Adenine phosphoribosyltransferase,HMDBP00438,,BC107151,APRT,16q24
+SMP0000050,Purine Metabolism,Metabolic,P00491,Purine nucleoside phosphorylase,HMDBP03752,,AY817667,PNP,14q13.1
+SMP0000050,Purine Metabolism,Metabolic,P00492,Hypoxanthine-guanine phosphoribosyltransferase,HMDBP00475,,M12452,HPRT1,Xq26.1
+SMP0000050,Purine Metabolism,Metabolic,Q9Y2T3,Guanine deaminase,HMDBP00690,,AF095286,GDA,9q21.13
+SMP0000050,Purine Metabolism,Metabolic,Q9UKK9,ADP-sugar pyrophosphatase,HMDBP00627,,CH471072,NUDT5,10p14
+SMP0000050,Purine Metabolism,Metabolic,P21108,Ribose-phosphate pyrophosphokinase 3,HMDBP00566,,M57423,PRPS1L1,7p21.1
+SMP0000050,Purine Metabolism,Metabolic,Q06203,Amidophosphoribosyltransferase,HMDBP00331,,U00238,PPAT,4q12
+SMP0000050,Purine Metabolism,Metabolic,P22102,Trifunctional purine biosynthetic protein adenosine-3,HMDBP00330,,CH471079,GART,21q22.11
+SMP0000050,Purine Metabolism,Metabolic,O15067,Phosphoribosylformylglycinamidine synthase,HMDBP00853,,BC167158,PFAS,17p13.1
+SMP0000050,Purine Metabolism,Metabolic,P22234,Multifunctional protein ADE2,HMDBP00894,,AC068620,PAICS,4q12
+SMP0000050,Purine Metabolism,Metabolic,P30566,Adenylosuccinate lyase,HMDBP00585,,S60710,ADSL,22q13.2
+SMP0000050,Purine Metabolism,Metabolic,P31939,Bifunctional purine biosynthesis protein PURH,HMDBP00882,,AB062403,ATIC,2q35
+SMP0000050,Purine Metabolism,Metabolic,Q9BY32,Inosine triphosphate pyrophosphatase,HMDBP00431,,AL109976,ITPA,20p
+SMP0000050,Purine Metabolism,Metabolic,P49915,GMP synthase [glutamine-hydrolyzing],HMDBP00592,,BC012178,GMPS,3q24
+SMP0000050,Purine Metabolism,Metabolic,P20839,Inosine-5'-monophosphate dehydrogenase 1,HMDBP00883,,AC010655,IMPDH1,7q31.3-q32
+SMP0000050,Purine Metabolism,Metabolic,P36959,GMP reductase 1,HMDBP00685,,AL009031,GMPR,6p23
+SMP0000050,Purine Metabolism,Metabolic,P47989,Xanthine dehydrogenase/oxidase,HMDBP00181,,U39487,XDH,2p23.1
+SMP0000050,Purine Metabolism,Metabolic,P30520,Adenylosuccinate synthetase isozyme 2,HMDBP00880,,X66503,ADSS,1q44
+SMP0000050,Purine Metabolism,Metabolic,P23109,AMP deaminase 1,HMDBP00657,,AL096773,AMPD1,1p13
+SMP0000050,Purine Metabolism,Metabolic,P00813,Adenosine deaminase,HMDBP00664,,X02190,ADA,20q13.12
+SMP0000050,Purine Metabolism,Metabolic,P00568,Adenylate kinase isoenzyme 1,HMDBP00562,,BC001116,AK1,9q34.1
+SMP0000050,Purine Metabolism,Metabolic,Q8NBU5,ATPase family AAA domain-containing protein 1,HMDBP11625,,AK027506,ATAD1,10q23.31
+SMP0000050,Purine Metabolism,Metabolic,Q08499,"cAMP-specific 3',5'-cyclic phosphodiesterase 4D",HMDBP00636,,BC008390,PDE4D,5q12
+SMP0000050,Purine Metabolism,Metabolic,Q96PN6,Adenylate cyclase type 10,HMDBP04127,,Z97876,ADCY10,1q24
+SMP0000050,Purine Metabolism,Metabolic,P33402,Guanylate cyclase soluble subunit alpha-2,HMDBP01072,,BC130488,GUCY1A2,11q21-q22
+SMP0000050,Purine Metabolism,Metabolic,Q02153,Guanylate cyclase soluble subunit beta-1,HMDBP01064,,BC047620,GUCY1B3,4q31.3-q33
+SMP0000050,Purine Metabolism,Metabolic,Q9Y233,"cAMP and cAMP-inhibited cGMP 3',5'-cyclic phosphodiesterase 10A",HMDBP00604,,AL160160,PDE10A,6q26
+SMP0000050,Purine Metabolism,Metabolic,P10599,Thioredoxin,,,,TXN,
+SMP0000050,Purine Metabolism,Metabolic,P23921,Ribonucleoside-diphosphate reductase large subunit,HMDBP00108,,X59543,RRM1,11p15.5
+SMP0000050,Purine Metabolism,Metabolic,P31350,Ribonucleoside-diphosphate reductase subunit M2,HMDBP00111,,AY032750,RRM2,2p25-p24
+SMP0000051,Fatty Acid Metabolism,Metabolic,P23786,"Carnitine O-palmitoyltransferase 2, mitochondrial",HMDBP00311,,U09643,CPT2,1p32
+SMP0000051,Fatty Acid Metabolism,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000051,Fatty Acid Metabolism,Metabolic,P40939,"Trifunctional enzyme subunit alpha, mitochondrial",HMDBP00389,,BC009235,HADHA,2p23
+SMP0000051,Fatty Acid Metabolism,Metabolic,P55084,"Trifunctional enzyme subunit beta, mitochondrial",HMDBP00048,,D16481,HADHB,2p23
+SMP0000051,Fatty Acid Metabolism,Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000051,Fatty Acid Metabolism,Metabolic,P50416,"Carnitine O-palmitoyltransferase 1, liver isoform",HMDBP00309,,L39211,CPT1A,11q13.2
+SMP0000051,Fatty Acid Metabolism,Metabolic,P33121,Long-chain-fatty-acid--CoA ligase 1,HMDBP00577,,CH471056,ACSL1,4q35
+SMP0000051,Fatty Acid Metabolism,Metabolic,P28330,"Long-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00102,,CH471063,ACADL,2q34
+SMP0000051,Fatty Acid Metabolism,Metabolic,P11310,"Medium-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00104,,M91432,ACADM,1p31
+SMP0000051,Fatty Acid Metabolism,Metabolic,P45954,"Short/branched chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP01613,,AF260678,ACADSB,10q26.13
+SMP0000051,Fatty Acid Metabolism,Metabolic,P16219,"Short-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00103,,U83992,ACADS,12q24.31
+SMP0000051,Fatty Acid Metabolism,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000051,Fatty Acid Metabolism,Metabolic,Q92947,"Glutaryl-CoA dehydrogenase, mitochondrial",HMDBP00202,,BC002579,GCDH,19p13.2
+SMP0000051,Fatty Acid Metabolism,Metabolic,P49748,"Very long-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP08259,,L46590,ACADVL,17p13.1
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,P33121,Long-chain-fatty-acid--CoA ligase 1,HMDBP00577,,CH471056,ACSL1,4q35
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,P33897,ATP-binding cassette sub-family D member 1,,,Z31006,,
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,Q9UBJ2,ATP-binding cassette sub-family D member 2,,,BC104901,,
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,Q9UKG9,Peroxisomal carnitine O-octanoyltransferase,HMDBP00307,,CH236949,CROT,7q21.1
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,Q96HA9,Peroxisomal membrane protein 11C,,,AL833945,,
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,P43155,Carnitine O-acetyltransferase,HMDBP00028,,X79827,CRAT,9q34.1
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,Q92968,Peroxisomal membrane protein PEX13,,,AF048755,,
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,O75381,Peroxisomal membrane protein PEX14,,,AF045186,,
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,O43772,Mitochondrial carnitine/acylcarnitine carrier protein,HMDBP02794,,Y10319,SLC25A20,3p21.31
+SMP0000052,Beta Oxidation of Very Long Chain Fatty Acids,Metabolic,P23786,"Carnitine O-palmitoyltransferase 2, mitochondrial",HMDBP00311,,U09643,CPT2,1p32
+SMP0000053,Folate Metabolism,Metabolic,P00374,Dihydrofolate reductase,HMDBP00790,,X00855,DHFR,5q11.2-q13.2
+SMP0000053,Folate Metabolism,Metabolic,P11586,"C-1-tetrahydrofolate synthase, cytoplasmic",HMDBP00923,,BC009806,MTHFD1,14q24
+SMP0000053,Folate Metabolism,Metabolic,O75891,Cytosolic 10-formyltetrahydrofolate dehydrogenase,HMDBP00937,,AC079848,ALDH1L1,3q21.3
+SMP0000053,Folate Metabolism,Metabolic,O95954,Formimidoyltransferase-cyclodeaminase,HMDBP00686,,AF169017,FTCD,21q22.3
+SMP0000053,Folate Metabolism,Metabolic,P49914,5-formyltetrahydrofolate cyclo-ligase,HMDBP01408,,L38928,MTHFS,15q25.1
+SMP0000053,Folate Metabolism,Metabolic,P42898,Methylenetetrahydrofolate reductase,HMDBP00188,,AF105977,MTHFR,1p36.3
+SMP0000053,Folate Metabolism,Metabolic,Q05932,"Folylpolyglutamate synthase, mitochondrial",HMDBP00849,,M98045,FPGS,9q34.1
+SMP0000053,Folate Metabolism,Metabolic,Q92820,Gamma-glutamyl hydrolase,HMDBP03236,,AF147082,GGH,8q12.3
+SMP0000053,Folate Metabolism,Metabolic,Q6UB35,"Monofunctional C1-tetrahydrofolate synthase, mitochondrial",HMDBP07378,,BC008629,MTHFD1L,6q25.1
+SMP0000053,Folate Metabolism,Metabolic,P13995,"Bifunctional methylenetetrahydrofolate dehydrogenase/cyclohydrolase, mitochondrial",HMDBP00920,,AK222826,MTHFD2,2p13.1
+SMP0000053,Folate Metabolism,Metabolic,Q96DP5,"Methionyl-tRNA formyltransferase, mitochondrial",HMDBP07377,,BC033687,MTFMT,15q22.31
+SMP0000053,Folate Metabolism,Metabolic,Q96NT5,Proton-coupled folate transporter,HMDBP03060,,AK074161,SLC46A1,17q11.2
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,Q99714,3-hydroxyacyl-CoA dehydrogenase type-2,HMDBP00379,,BC008708,HSD17B10,Xp11.2
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,P40939,"Trifunctional enzyme subunit alpha, mitochondrial",HMDBP00389,,BC009235,HADHA,2p23
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,P55084,"Trifunctional enzyme subunit beta, mitochondrial",HMDBP00048,,D16481,HADHB,2p23
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,Q9BV79,"Trans-2-enoyl-CoA reductase, mitochondrial",HMDBP01010,,CR456703,MECR,1p35.3
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000054,Fatty Acid Elongation in Mitochondria,Metabolic,P50897,Palmitoyl-protein thioesterase 1,HMDBP01050,,AF022203,PPT1,1p32
+SMP0000055,Alanine Metabolism,Metabolic,P49588,"Alanine--tRNA ligase, cytoplasmic",HMDBP00625,,AC012184,AARS,16q22
+SMP0000055,Alanine Metabolism,Metabolic,P24298,Alanine aminotransferase 1,HMDBP00850,,U70732,GPT,8q24.3
+SMP0000055,Alanine Metabolism,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000055,Alanine Metabolism,Metabolic,P21549,Serine--pyruvate aminotransferase,HMDBP00789,,CH471063,AGXT,2q37.3
+SMP0000055,Alanine Metabolism,Metabolic,Q5JTZ9,"Alanine--tRNA ligase, mitochondrial",HMDBP10671,,BC131728,AARS2,6p21.1
+SMP0000057,Citric Acid Cycle,Metabolic,P08559,"Pyruvate dehydrogenase E1 component subunit alpha, somatic form, mitochondrial",HMDBP00046,,M29155,PDHA1,Xp22.1
+SMP0000057,Citric Acid Cycle,Metabolic,P11177,"Pyruvate dehydrogenase E1 component subunit beta, mitochondrial",HMDBP00012,,M34479,PDHB,3p21.1-p14.2
+SMP0000057,Citric Acid Cycle,Metabolic,P10515,"Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex, mitochondrial",HMDBP00055,,AP000907,DLAT,11q23.1
+SMP0000057,Citric Acid Cycle,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000057,Citric Acid Cycle,Metabolic,O75390,"Citrate synthase, mitochondrial",HMDBP00043,,AF047042,CS,12q13.2
+SMP0000057,Citric Acid Cycle,Metabolic,P50213,"Isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial",HMDBP00899,,CH471136,IDH3A,15q25.1-q25.2
+SMP0000057,Citric Acid Cycle,Metabolic,O43837,"Isocitrate dehydrogenase [NAD] subunit beta, mitochondrial",HMDBP00897,,BC001960,IDH3B,20p13
+SMP0000057,Citric Acid Cycle,Metabolic,P51553,"Isocitrate dehydrogenase [NAD] subunit gamma, mitochondrial",HMDBP00900,,BC001902,IDH3G,Xq28
+SMP0000057,Citric Acid Cycle,Metabolic,Q02218,"2-oxoglutarate dehydrogenase, mitochondrial",HMDBP00439,,BC014617,OGDH,7p14-p13
+SMP0000057,Citric Acid Cycle,Metabolic,P36957,"Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex, mitochondrial",HMDBP00939,,AC006530,DLST,14q24.3
+SMP0000057,Citric Acid Cycle,Metabolic,P53597,"Succinyl-CoA ligase [ADP/GDP-forming] subunit alpha, mitochondrial",HMDBP00889,,Z68204,SUCLG1,2p11.2
+SMP0000057,Citric Acid Cycle,Metabolic,Q96I99,"Succinyl-CoA ligase [GDP-forming] subunit beta, mitochondrial",HMDBP00891,,AC114401,SUCLG2,3p14.1
+SMP0000057,Citric Acid Cycle,Metabolic,P07954,"Fumarate hydratase, mitochondrial",HMDBP00861,,U59309,FH,1q42.1
+SMP0000057,Citric Acid Cycle,Metabolic,P40926,"Malate dehydrogenase, mitochondrial",HMDBP00858,,AK290779,MDH2,7cen-q22
+SMP0000057,Citric Acid Cycle,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000057,Citric Acid Cycle,Metabolic,P31040,"Succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial",HMDBP00150,,AK291311,SDHA,5p15
+SMP0000057,Citric Acid Cycle,Metabolic,P21912,"Succinate dehydrogenase [ubiquinone] iron-sulfur subunit, mitochondrial",HMDBP00193,,U17248,SDHB,1p36.1-p35
+SMP0000057,Citric Acid Cycle,Metabolic,Q99643,"Succinate dehydrogenase cytochrome b560 subunit, mitochondrial",HMDBP00121,,AK294305,SDHC,1q23.3
+SMP0000057,Citric Acid Cycle,Metabolic,O14521,"Succinate dehydrogenase [ubiquinone] cytochrome b small subunit, mitochondrial",HMDBP00179,,BC022350,SDHD,11q23
+SMP0000057,Citric Acid Cycle,Metabolic,Q9Y5U8,Mitochondrial pyruvate carrier 1,HMDBP11834,,AF151887,MPC1,6q27
+SMP0000057,Citric Acid Cycle,Metabolic,Q99798,"Aconitate hydratase, mitochondrial",HMDBP00725,,U87932,ACO2,22q13.2
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P52789,Hexokinase-2,HMDBP00213,,Z46358,HK2,2p13
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P06744,Glucose-6-phosphate isomerase,HMDBP00806,,AH002710,GPI,19q13.1
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P35557,Glucokinase,HMDBP00210,,AF041020,GCK,7p15.3-p15.1
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P14410,"Sucrase-isomaltase, intestinal",HMDBP00290,,BC132860,SI,""
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P36871,Phosphoglucomutase-1,HMDBP01107,,BC090856,PGM1,1p31
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,Q6PCE3,"Glucose 1,6-bisphosphate synthase",HMDBP09189,,AB019210,PGM2L1,11q13.4
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,Q16851,UTP--glucose-1-phosphate uridylyltransferase,HMDBP01074,,BC002954,UGP2,2p14-p13
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P54840,"Glycogen [starch] synthase, liver",HMDBP01091,,S70004,GYS2,12p12.2
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,Q04446,"1,4-alpha-glucan-branching enzyme",,,BC012098,GBE1,
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,O43451,"Maltase-glucoamylase, intestinal",HMDBP03069,,AC091742,MGAM,""
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P04745,Alpha-amylase 1,HMDBP02083,,M18721,AMY1A,""
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P35573,Glycogen debranching enzyme,HMDBP00367,,BC078663,AGL,""
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,O60701,UDP-glucose 6-dehydrogenase,HMDBP00907,,AJ272278,UGDH,4p15.1
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P06737,"Glycogen phosphorylase, liver form",HMDBP00370,,AF046787,PYGL,14q21-q22
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,O75310,UDP-glucuronosyltransferase 2B11,HMDBP00491,,BC069441,UGT2B11,4q13.2
+SMP0000058,Starch and Sucrose Metabolism,Metabolic,P08236,Beta-glucuronidase,HMDBP00839,,S72462,GUSB,7q21.11
+SMP0000059,Urea Cycle,Metabolic,Q15758,Neutral amino acid transporter B(0),HMDBP01955,,GQ919058,SLC1A5,19q13.3
+SMP0000059,Urea Cycle,Metabolic,P43007,Neutral amino acid transporter A,HMDBP03110,,AK295687,SLC1A4,2p15-p13
+SMP0000059,Urea Cycle,Metabolic,P24298,Alanine aminotransferase 1,HMDBP00850,,U70732,GPT,8q24.3
+SMP0000059,Urea Cycle,Metabolic,Q9UI32,"Glutaminase liver isoform, mitochondrial",HMDBP00675,,CH471054,GLS2,12q13
+SMP0000059,Urea Cycle,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000059,Urea Cycle,Metabolic,P31327,"Carbamoyl-phosphate synthase [ammonia], mitochondrial",HMDBP00359,,CH471063,CPS1,2q35
+SMP0000059,Urea Cycle,Metabolic,P00505,"Aspartate aminotransferase, mitochondrial",HMDBP00284,,BC000525,GOT2,16q21
+SMP0000059,Urea Cycle,Metabolic,P00480,"Ornithine carbamoyltransferase, mitochondrial",HMDBP00927,,AK292757,OTC,Xp21.1
+SMP0000059,Urea Cycle,Metabolic,Q9Y619,Mitochondrial ornithine transporter 1,HMDBP02312,,AL161614,SLC25A15,13q14
+SMP0000059,Urea Cycle,Metabolic,P05089,Arginase-1,HMDBP00298,,AY074488,ARG1,6q23
+SMP0000059,Urea Cycle,Metabolic,P04424,Argininosuccinate lyase,HMDBP00697,,BC033146,ASL,7q11.21
+SMP0000059,Urea Cycle,Metabolic,P00966,Argininosuccinate synthase,HMDBP00656,,L00083,ASS1,9q34.1
+SMP0000059,Urea Cycle,Metabolic,O75746,Calcium-binding mitochondrial carrier protein Aralar1,HMDBP03143,,AC068039,SLC25A12,2q24
+SMP0000060,Pyruvate Metabolism,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000060,Pyruvate Metabolism,Metabolic,Q6ZMR3,L-lactate dehydrogenase A-like 6A,HMDBP00893,,AY581313,LDHAL6A,11p15.1
+SMP0000060,Pyruvate Metabolism,Metabolic,P30613,Pyruvate kinase isozymes R/L,HMDBP00765,,S60712,PKLR,1q21
+SMP0000060,Pyruvate Metabolism,Metabolic,P35558,"Phosphoenolpyruvate carboxykinase, cytosolic [GTP]",HMDBP00892,,BC023978,PCK1,20q13.31
+SMP0000060,Pyruvate Metabolism,Metabolic,P40925,"Malate dehydrogenase, cytoplasmic",HMDBP00860,,AK312331,MDH1,2p13.3
+SMP0000060,Pyruvate Metabolism,Metabolic,P23368,"NAD-dependent malic enzyme, mitochondrial",HMDBP00862,,AC015864,ME2,18q21
+SMP0000060,Pyruvate Metabolism,Metabolic,Q86WU2,"Probable D-lactate dehydrogenase, mitochondrial",HMDBP03582,,BC047902,LDHD,16q23.1
+SMP0000060,Pyruvate Metabolism,Metabolic,Q16775,"Hydroxyacylglutathione hydrolase, mitochondrial",HMDBP00812,,AK290155,HAGH,16p13.3
+SMP0000060,Pyruvate Metabolism,Metabolic,Q04760,Lactoylglutathione lyase,HMDBP00392,,AB209801,GLO1,6p21.3-p21.1
+SMP0000060,Pyruvate Metabolism,Metabolic,Q9UBQ7,Glyoxylate reductase/hydroxypyruvate reductase,HMDBP00391,,AF113215,GRHPR,9q12
+SMP0000060,Pyruvate Metabolism,Metabolic,P15121,Aldose reductase,HMDBP00088,,M34720,AKR1B1,7q35
+SMP0000060,Pyruvate Metabolism,Metabolic,P48163,NADP-dependent malic enzyme,HMDBP00857,,X77244,ME1,6q12
+SMP0000060,Pyruvate Metabolism,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000060,Pyruvate Metabolism,Metabolic,P10515,"Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex, mitochondrial",HMDBP00055,,AP000907,DLAT,11q23.1
+SMP0000060,Pyruvate Metabolism,Metabolic,Q13085,Acetyl-CoA carboxylase 1,HMDBP00047,,AY315620,ACACA,17q21
+SMP0000060,Pyruvate Metabolism,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000060,Pyruvate Metabolism,Metabolic,Q8WYK0,Acyl-coenzyme A thioesterase 12,HMDBP00024,,BC075010,ACOT12,5q14.1
+SMP0000060,Pyruvate Metabolism,Metabolic,P07311,Acylphosphatase-1,HMDBP00553,,BC035568,ACYP1,14q24.3
+SMP0000060,Pyruvate Metabolism,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000060,Pyruvate Metabolism,Metabolic,Q9NR19,"Acetyl-coenzyme A synthetase, cytoplasmic",HMDBP00037,,BC012172,ACSS2,20q11.22
+SMP0000060,Pyruvate Metabolism,Metabolic,P08559,"Pyruvate dehydrogenase E1 component subunit alpha, somatic form, mitochondrial",HMDBP00046,,M29155,PDHA1,Xp22.1
+SMP0000060,Pyruvate Metabolism,Metabolic,P11177,"Pyruvate dehydrogenase E1 component subunit beta, mitochondrial",HMDBP00012,,M34479,PDHB,3p21.1-p14.2
+SMP0000063,Tryptophan Metabolism,Metabolic,Q9UGM6,"Tryptophan--tRNA ligase, mitochondrial",HMDBP00626,,BC039889,WARS2,1p12
+SMP0000063,Tryptophan Metabolism,Metabolic,P48775,"Tryptophan 2,3-dioxygenase",HMDBP05537,,CH471056,TDO2,4q31-q32
+SMP0000063,Tryptophan Metabolism,Metabolic,Q16719,Kynureninase,HMDBP00325,,AC013437,KYNU,2q22.2
+SMP0000063,Tryptophan Metabolism,Metabolic,Q63HM1,Kynurenine formamidase,HMDBP07392,,BC132824,AFMID,17q25.3
+SMP0000063,Tryptophan Metabolism,Metabolic,Q8N5Z0,"Kynurenine/alpha-aminoadipate aminotransferase, mitochondrial",HMDBP00378,,AK055952,AADAT,4q33
+SMP0000063,Tryptophan Metabolism,Metabolic,O15229,Kynurenine 3-monooxygenase,HMDBP02606,,Y13153,KMO,1q42-q44
+SMP0000063,Tryptophan Metabolism,Metabolic,P04040,Catalase,HMDBP01582,,X04090,CAT,11p13
+SMP0000063,Tryptophan Metabolism,Metabolic,P46952,"3-hydroxyanthranilate 3,4-dioxygenase",HMDBP01128,,BC029510,HAAO,2p21
+SMP0000063,Tryptophan Metabolism,Metabolic,Q8TDX5,2-amino-3-carboxymuconate-6-semialdehyde decarboxylase,HMDBP00261,,BC016018,ACMSD,2q21.3
+SMP0000063,Tryptophan Metabolism,Metabolic,P17752,Tryptophan 5-hydroxylase 1,HMDBP00469,,CH471064,TPH1,11p15.3-p14
+SMP0000063,Tryptophan Metabolism,Metabolic,P20711,Aromatic-L-amino-acid decarboxylase,HMDBP00278,,M84588,DDC,7p12.2
+SMP0000063,Tryptophan Metabolism,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000063,Tryptophan Metabolism,Metabolic,P46597,Acetylserotonin O-methyltransferase,HMDBP00101,,U11094,ASMT,Xp22.3 or Yp11.3
+SMP0000063,Tryptophan Metabolism,Metabolic,P14902,"Indoleamine 2,3-dioxygenase 1",HMDBP00437,,M86474,IDO1,8p12-p11
+SMP0000063,Tryptophan Metabolism,Metabolic,Q16613,Serotonin N-acetyltransferase,HMDBP00030,,BC092430,AANAT,17q25
+SMP0000063,Tryptophan Metabolism,Metabolic,P04798,Cytochrome P450 1A1,HMDBP01555,,AK223113,CYP1A1,15q24.1
+SMP0000063,Tryptophan Metabolism,Metabolic,O95050,Indolethylamine N-methyltransferase,HMDBP00415,,AB041362,INMT,7p14.3
+SMP0000063,Tryptophan Metabolism,Metabolic,Q06278,Aldehyde oxidase,HMDBP00126,,CH471063,AOX1,2q33
+SMP0000063,Tryptophan Metabolism,Metabolic,P23381,"Tryptophan--tRNA ligase, cytoplasmic",HMDBP00574,,X67926,WARS,14q32.31
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P15121,Aldose reductase,HMDBP00088,,M34720,AKR1B1,7q35
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q00796,Sorbitol dehydrogenase,HMDBP00506,,L29249,SORD,15q15.3
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q9NRX4,14 kDa phosphohistidine phosphatase,HMDBP11578,,AF393504,PHPT1,""
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P19367,Hexokinase-1,HMDBP00215,,AF016364,HK1,10q22
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P34949,Mannose-6-phosphate isomerase,HMDBP00797,,BC017351,MPI,15q22-qter
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q92871,Phosphomannomutase 1,HMDBP01608,,AK289368,PMM1,22q13.2
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P17858,"6-phosphofructokinase, liver type",HMDBP00758,,BC006422,PFKL,21q22.3
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P09467,"Fructose-1,6-bisphosphatase 1",HMDBP00803,,M19922,FBP1,9q22.3
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q9Y5P6,Mannose-1-phosphate guanyltransferase beta,HMDBP03736,,BC008033,GMPPB,3p21.31
+SMP0000064,Fructose and Mannose Degradation,Metabolic,O60547,"GDP-mannose 4,6 dehydratase",HMDBP00385,,AF040260,GMDS,6p25
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q13630,GDP-L-fucose synthase,HMDBP00925,,CH471162,TSTA3,8q24.3
+SMP0000064,Fructose and Mannose Degradation,Metabolic,O14772,Fucose-1-phosphate guanylyltransferase,HMDBP00254,,AK299468,FPGT,1p31.1
+SMP0000064,Fructose and Mannose Degradation,Metabolic,Q8N0W3,L-fucose kinase,HMDBP00255,,BC032542,FUK,16q22.1
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P50053,Ketohexokinase,HMDBP01205,,Y09341,KHK,2p23.3
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P60174,Triosephosphate isomerase,HMDBP01584,,BC007812,TPI1,12p13
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P04075,Fructose-bisphosphate aldolase A,HMDBP00978,,BC010660,ALDOA,16p11.2
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P16118,"6-phosphofructo-2-kinase/fructose-2,6-bisphosphatase 1",HMDBP00799,,AK314089,PFKFB1,Xp11.21
+SMP0000064,Fructose and Mannose Degradation,Metabolic,P05062,Fructose-bisphosphate aldolase B,HMDBP00980,,M15657,ALDOB,9q21.3-q22.2
+SMP0000065,Ubiquinone Biosynthesis,Metabolic,Q96H96,"4-hydroxybenzoate polyprenyltransferase, mitochondrial",HMDBP03700,,BC020728,COQ2,4q21.23
+SMP0000065,Ubiquinone Biosynthesis,Metabolic,Q9NZJ6,"Hexaprenyldihydroxybenzoate methyltransferase, mitochondrial",HMDBP00417,,AF193016,COQ3,6q16.2
+SMP0000065,Ubiquinone Biosynthesis,Metabolic,Q9Y2Z9,Ubiquinone biosynthesis monooxygenase COQ6,HMDBP07420,,AK222965,COQ6,""
+SMP0000065,Ubiquinone Biosynthesis,Metabolic,Q5HYK3,"2-methoxy-6-polyprenyl-1,4-benzoquinol methylase, mitochondrial",HMDBP07419,,CH471054,COQ5,12q24.31
+SMP0000065,Ubiquinone Biosynthesis,Metabolic,Q99807,Ubiquinone biosynthesis protein COQ7 homolog,HMDBP01736,,U81276,COQ7,""
+SMP0000066,Biotin Metabolism,Metabolic,P50747,Biotin--protein ligase,HMDBP00509,,D23672,HLCS,21q22.13
+SMP0000066,Biotin Metabolism,Metabolic,P43251,Biotinidase,HMDBP00546,,U03274,BTD,3p25
+SMP0000066,Biotin Metabolism,Metabolic,Q9Y6A9,Signal peptidase complex subunit 1,HMDBP02974,,BC000884,SPCS1,3p21.1
+SMP0000067,Aspartate Metabolism,Metabolic,P80404,"4-aminobutyrate aminotransferase, mitochondrial",HMDBP00248,,U80226,ABAT,16p13.2
+SMP0000067,Aspartate Metabolism,Metabolic,Q99259,Glutamate decarboxylase 1,HMDBP00703,,M70434,GAD1,2q31
+SMP0000067,Aspartate Metabolism,Metabolic,P08243,Asparagine synthetase [glutamine-hydrolyzing],HMDBP00583,,L35940,ASNS,7q21.3
+SMP0000067,Aspartate Metabolism,Metabolic,O43776,"Asparagine--tRNA ligase, cytoplasmic",HMDBP00611,,D84273,NARS,18q21.31
+SMP0000067,Aspartate Metabolism,Metabolic,P00966,Argininosuccinate synthase,HMDBP00656,,L00083,ASS1,9q34.1
+SMP0000067,Aspartate Metabolism,Metabolic,P14868,"Aspartate--tRNA ligase, cytoplasmic",HMDBP00608,,BC107749,DARS,2q21.3
+SMP0000067,Aspartate Metabolism,Metabolic,P30566,Adenylosuccinate lyase,HMDBP00585,,S60710,ADSL,22q13.2
+SMP0000067,Aspartate Metabolism,Metabolic,Q99489,D-aspartate oxidase,HMDBP00147,,DN990727,DDO,6q21
+SMP0000067,Aspartate Metabolism,Metabolic,P45381,Aspartoacylase,HMDBP00555,,S67156,ASPA,17p13.3
+SMP0000067,Aspartate Metabolism,Metabolic,Q8N142,Adenylosuccinate synthetase isozyme 1,HMDBP00884,,BX248286,ADSSL1,14q32.33
+SMP0000067,Aspartate Metabolism,Metabolic,P27708,CAD protein,HMDBP03298,,BC065510,CAD,2p22-p21
+SMP0000067,Aspartate Metabolism,Metabolic,Q7L266,Isoaspartyl peptidase/L-asparaginase,HMDBP03342,,AF411076,ASRGL1,11q12.3
+SMP0000067,Aspartate Metabolism,Metabolic,P04424,Argininosuccinate lyase,HMDBP00697,,BC033146,ASL,7q11.21
+SMP0000067,Aspartate Metabolism,Metabolic,Q96RQ9,L-amino-acid oxidase,HMDBP08281,,AF293463,IL4I1,19q13.3-q13.4
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P49888,Estrogen sulfotransferase,HMDBP00346,,U20515,SULT1E1,4q13.1
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P11511,Cytochrome P450 19A1,HMDBP01561,,J04127,CYP19A1,15q21.1
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P14061,Estradiol 17-beta-dehydrogenase 1,HMDBP00847,,CH471152,HSD17B1,17q11-q21
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,O75310,UDP-glucuronosyltransferase 2B11,HMDBP00491,,BC069441,UGT2B11,4q13.2
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P05093,"Steroid 17-alpha-hydroxylase/17,20 lyase",HMDBP01043,,BC063388,CYP17A1,10q24.3
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P14060,3 beta-hydroxysteroid dehydrogenase/Delta 5-->4-isomerase type 1,HMDBP04403,,M28391,HSD3B1,1p13.1
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,O00204,Sulfotransferase family cytosolic 2B member 1,HMDBP00355,,AC008403,SULT2B1,19q13.3
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P37058,Testosterone 17-beta-dehydrogenase 3,HMDBP00846,,U05659,HSD17B3,9q22
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P51857,3-oxo-5-beta-steroid 4-dehydrogenase,HMDBP00550,,AF283658,AKR1D1,7q32-q33
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P18405,3-oxo-5-alpha-steroid 4-dehydrogenase 1,HMDBP00699,,M68884,SRD5A1,5p15
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,O75795,UDP-glucuronosyltransferase 2B17,HMDBP00488,,U59209,UGT2B17,4q13
+SMP0000068,Androgen and Estrogen Metabolism,Metabolic,P08842,Steryl-sulfatase,HMDBP00493,,M23556,STS,Xp22.32
+SMP0000070,Riboflavin Metabolism,Metabolic,P14679,Tyrosinase,HMDBP00087,,AF237809,TYR,11q14-q21
+SMP0000070,Riboflavin Metabolism,Metabolic,P22413,Ectonucleotide pyrophosphatase/phosphodiesterase family member 1,HMDBP00119,,AF110288,ENPP1,6q22-q23
+SMP0000070,Riboflavin Metabolism,Metabolic,Q8NFF5,FAD synthase,HMDBP07412,,AF520568,FLAD1,1q21.3
+SMP0000070,Riboflavin Metabolism,Metabolic,P24666,Low molecular weight phosphotyrosine protein phosphatase,HMDBP00095,,U25849,ACP1,2p25
+SMP0000070,Riboflavin Metabolism,Metabolic,Q969G6,Riboflavin kinase,HMDBP01059,,BC007069,RFK,9q21.13
+SMP0000071,Ketone Body Metabolism,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000071,Ketone Body Metabolism,Metabolic,P54868,"Hydroxymethylglutaryl-CoA synthase, mitochondrial",HMDBP00040,,U81856,HMGCS2,1p13-p12
+SMP0000071,Ketone Body Metabolism,Metabolic,P35914,"Hydroxymethylglutaryl-CoA lyase, mitochondrial",HMDBP00009,,AK313869,HMGCL,1p36.1-p35
+SMP0000071,Ketone Body Metabolism,Metabolic,P55809,"Succinyl-CoA:3-ketoacid coenzyme A transferase 1, mitochondrial",HMDBP00712,,AB029576,OXCT1,5p13.1
+SMP0000071,Ketone Body Metabolism,Metabolic,Q02338,"D-beta-hydroxybutyrate dehydrogenase, mitochondrial",HMDBP00540,,CH471191,BDH1,3q29
+SMP0000072,Glutamate Metabolism,Metabolic,A8YXX4,Glutamine synthetase,HMDBP07381,,AY947343,PIG59,
+SMP0000072,Glutamate Metabolism,Metabolic,Q9UI32,"Glutaminase liver isoform, mitochondrial",HMDBP00675,,CH471054,GLS2,12q13
+SMP0000072,Glutamate Metabolism,Metabolic,Q06210,Glutamine--fructose-6-phosphate aminotransferase [isomerizing] 1,HMDBP00216,,AC114772,GFPT1,2p13
+SMP0000072,Glutamate Metabolism,Metabolic,Q96EK6,Glucosamine 6-phosphate N-acetyltransferase,HMDBP00052,,BC012179,GNPNAT1,14q22.1
+SMP0000072,Glutamate Metabolism,Metabolic,Q9UJ70,N-acetyl-D-glucosamine kinase,HMDBP01028,,AJ242910,NAGK,2p13.3
+SMP0000072,Glutamate Metabolism,Metabolic,P27708,CAD protein,HMDBP03298,,BC065510,CAD,2p22-p21
+SMP0000072,Glutamate Metabolism,Metabolic,P31327,"Carbamoyl-phosphate synthase [ammonia], mitochondrial",HMDBP00359,,CH471063,CPS1,2q35
+SMP0000072,Glutamate Metabolism,Metabolic,Q06203,Amidophosphoribosyltransferase,HMDBP00331,,U00238,PPAT,4q12
+SMP0000072,Glutamate Metabolism,Metabolic,P49915,GMP synthase [glutamine-hydrolyzing],HMDBP00592,,BC012178,GMPS,3q24
+SMP0000072,Glutamate Metabolism,Metabolic,Q6IA69,Glutamine-dependent NAD(+) synthetase,HMDBP03241,,AP000867,NADSYN1,11q13.4
+SMP0000072,Glutamate Metabolism,Metabolic,P30038,"Delta-1-pyrroline-5-carboxylate dehydrogenase, mitochondrial",HMDBP00156,,U24266,ALDH4A1,1p36
+SMP0000072,Glutamate Metabolism,Metabolic,P24298,Alanine aminotransferase 1,HMDBP00850,,U70732,GPT,8q24.3
+SMP0000072,Glutamate Metabolism,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000072,Glutamate Metabolism,Metabolic,P00505,"Aspartate aminotransferase, mitochondrial",HMDBP00284,,BC000525,GOT2,16q21
+SMP0000072,Glutamate Metabolism,Metabolic,Q5JPH6,"Probable glutamate--tRNA ligase, mitochondrial",HMDBP07382,,AK095998,EARS2,16p12.2
+SMP0000072,Glutamate Metabolism,Metabolic,P48506,Glutamate--cysteine ligase catalytic subunit,HMDBP00512,,L39773,GCLC,6p12
+SMP0000072,Glutamate Metabolism,Metabolic,P48507,Glutamate--cysteine ligase regulatory subunit,HMDBP00513,,CR541833,GCLM,1p22.1
+SMP0000072,Glutamate Metabolism,Metabolic,P48637,Glutathione synthetase,HMDBP00791,,L42531,GSS,20q11.2
+SMP0000072,Glutamate Metabolism,Metabolic,P00390,"Glutathione reductase, mitochondrial",HMDBP00196,,CH471080,GSR,8p21.1
+SMP0000072,Glutamate Metabolism,Metabolic,Q99259,Glutamate decarboxylase 1,HMDBP00703,,M70434,GAD1,2q31
+SMP0000072,Glutamate Metabolism,Metabolic,P80404,"4-aminobutyrate aminotransferase, mitochondrial",HMDBP00248,,U80226,ABAT,16p13.2
+SMP0000072,Glutamate Metabolism,Metabolic,P51649,"Succinate-semialdehyde dehydrogenase, mitochondrial",HMDBP00249,,BC034321,ALDH5A1,6p22
+SMP0000072,Glutamate Metabolism,Metabolic,P47897,Glutamine--tRNA ligase,HMDBP00580,,BC001567,QARS,3p21.31
+SMP0000073,Butyrate Metabolism,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000073,Butyrate Metabolism,Metabolic,Q16836,"Hydroxyacyl-coenzyme A dehydrogenase, mitochondrial",HMDBP00381,,AF001903,HADH,4q22-q26
+SMP0000073,Butyrate Metabolism,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000073,Butyrate Metabolism,Metabolic,P54868,"Hydroxymethylglutaryl-CoA synthase, mitochondrial",HMDBP00040,,U81856,HMGCS2,1p13-p12
+SMP0000073,Butyrate Metabolism,Metabolic,P55809,"Succinyl-CoA:3-ketoacid coenzyme A transferase 1, mitochondrial",HMDBP00712,,AB029576,OXCT1,5p13.1
+SMP0000073,Butyrate Metabolism,Metabolic,P35914,"Hydroxymethylglutaryl-CoA lyase, mitochondrial",HMDBP00009,,AK313869,HMGCL,1p36.1-p35
+SMP0000073,Butyrate Metabolism,Metabolic,Q08AH1,"Acyl-coenzyme A synthetase ACSM1, mitochondrial",HMDBP04188,,AB062503,ACSM1,16p12.3
+SMP0000073,Butyrate Metabolism,Metabolic,P16219,"Short-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00103,,U83992,ACADS,12q24.31
+SMP0000074,Retinol Metabolism,Metabolic,P07327,Alcohol dehydrogenase 1A,HMDBP00784,,BT019812,ADH1A,4q23
+SMP0000074,Retinol Metabolism,Metabolic,Q96NR8,Retinol dehydrogenase 12,HMDBP03034,,CH471061,RDH12,14q24.1
+SMP0000074,Retinol Metabolism,Metabolic,Q9BTZ2,Dehydrogenase/reductase SDR family member 4,HMDBP00076,,AY358638,DHRS4,14q11.2
+SMP0000074,Retinol Metabolism,Metabolic,O75452,Retinol dehydrogenase 16,HMDBP03004,,AF086735,RDH16,12q13.3
+SMP0000074,Retinol Metabolism,Metabolic,Q9NYR8,Retinol dehydrogenase 8,HMDBP05439,,AF229845,RDH8,19p13.2
+SMP0000074,Retinol Metabolism,Metabolic,O75911,Short-chain dehydrogenase/reductase 3,HMDBP08892,,AF179237,DHRS3,1p36.1
+SMP0000074,Retinol Metabolism,Metabolic,Q9BPW9,Dehydrogenase/reductase SDR family member 9,HMDBP02607,,AF343729,DHRS9,2q31.1
+SMP0000074,Retinol Metabolism,Metabolic,Q8TC12,Retinol dehydrogenase 11,HMDBP05442,,AK289427,RDH11,14q24.1
+SMP0000074,Retinol Metabolism,Metabolic,O95237,Lecithin retinol acyltransferase,HMDBP01912,,AF071510,LRAT,4q32.1
+SMP0000074,Retinol Metabolism,Metabolic,Q58HT5,Acyl-CoA wax alcohol acyltransferase 1,HMDBP07278,,BN000155,AWAT1,Xq13.1
+SMP0000074,Retinol Metabolism,Metabolic,O75907,Diacylglycerol O-acyltransferase 1,HMDBP00243,,CH471162,DGAT1,8q24.3
+SMP0000074,Retinol Metabolism,Metabolic,Q16518,Retinoid isomerohydrolase,HMDBP01797,,AF039862,RPE65,1p31
+SMP0000074,Retinol Metabolism,Metabolic,P41247,Patatin-like phospholipase domain-containing protein 4,HMDBP03160,,AK304586,PNPLA4,Xp22.3
+SMP0000074,Retinol Metabolism,Metabolic,Q9HAY6,"Beta,beta-carotene 15,15'-monooxygenase",HMDBP01568,,AF294900,BCMO1,16q23.2
+SMP0000074,Retinol Metabolism,Metabolic,P00352,Retinal dehydrogenase 1,HMDBP00199,,M31982,ALDH1A1,9q21.13
+SMP0000074,Retinol Metabolism,Metabolic,O94788,Retinal dehydrogenase 2,HMDBP00205,,AC018904,ALDH1A2,15q21.3
+SMP0000074,Retinol Metabolism,Metabolic,O43174,Cytochrome P450 26A1,HMDBP01911,,AK027560,CYP26A1,10q23-q24
+SMP0000074,Retinol Metabolism,Metabolic,Q6NUM9,"All-trans-retinol 13,14-reductase",HMDBP08290,,AY358568,RETSAT,2p11.2
+SMP0000074,Retinol Metabolism,Metabolic,Q9UBS4,DnaJ homolog subfamily B member 11,,,AK075430,DNAJB11,
+SMP0000074,Retinol Metabolism,Metabolic,Q96GW1,HSP90B1 protein,,,BC009195,HSP90B1 ,
+SMP0000074,Retinol Metabolism,Metabolic,P11021,78 kDa glucose-regulated protein,,,AJ271729,HSPA5,
+SMP0000074,Retinol Metabolism,Metabolic,Q6IN67,HYOU1 protein,,,BC072436,HYOU1 ,
+SMP0000074,Retinol Metabolism,Metabolic,Q13087,Protein disulfide-isomerase A2,,,U19948,PDIA2,
+SMP0000074,Retinol Metabolism,Metabolic,P13667,Protein disulfide-isomerase A4,,,BC006344,PDIA4,
+SMP0000074,Retinol Metabolism,Metabolic,Q15084,Protein disulfide-isomerase A6,,,AK289428,PDIA6,
+SMP0000074,Retinol Metabolism,Metabolic,P23284,Peptidyl-prolyl cis-trans isomerase B,HMDBP10692,,AY962310,PPIB,15q21-q22
+SMP0000074,Retinol Metabolism,Metabolic,Q9HCN8,Stromal cell-derived factor 2-like protein 1,,,CR456570,SDF2L1,
+SMP0000074,Retinol Metabolism,Metabolic,P22309,UDP-glucuronosyltransferase 1-1,HMDBP00483,,M84124,UGT1A1,2q37
+SMP0000074,Retinol Metabolism,Metabolic,P30040,Endoplasmic reticulum resident protein 29,,,BC101493,ERP29,
+SMP0000074,Retinol Metabolism,Metabolic,P11509,Cytochrome P450 2A6,HMDBP01567,,AF326721,CYP2A6,19q13.2
+SMP0000074,Retinol Metabolism,Metabolic,P20853,Cytochrome P450 2A7,HMDBP01566,,AC008537,CYP2A7,19q13.2
+SMP0000074,Retinol Metabolism,Metabolic,Q16696,Cytochrome P450 2A13,HMDBP01556,,AY513606,CYP2A13,19q13.2
+SMP0000074,Retinol Metabolism,Metabolic,P20813,Cytochrome P450 2B6,HMDBP01553,,M29874,CYP2B6,19q13.2
+SMP0000074,Retinol Metabolism,Metabolic,P24462,Cytochrome P450 3A7,HMDBP01557,,CH236956,CYP3A7,7q21-q22.1
+SMP0000074,Retinol Metabolism,Metabolic,P08684,Cytochrome P450 3A4,HMDBP01018,,M18907,CYP3A4,7q21.1
+SMP0000074,Retinol Metabolism,Metabolic,P20815,Cytochrome P450 3A5,HMDBP01554,,CH236956,CYP3A5,7q21.1
+SMP0000074,Retinol Metabolism,Metabolic,Q9HB55,Cytochrome P450 3A43,HMDBP01546,,AY390426,CYP3A43,7q21.1
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P78329,Leukotriene-B(4) omega-hydroxylase 1,HMDBP01013,,BC067439,CYP4F2,19p13.12
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P09960,Leukotriene A-4 hydrolase,HMDBP01015,,CH471054,LTA4H,12q22
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q16873,Leukotriene C4 synthase,HMDBP00807,,U62025,LTC4S,5q35
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P19440,Gamma-glutamyltranspeptidase 1,HMDBP00730,,BC069504,GGT1,22q11.23
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P07203,Glutathione peroxidase 1,HMDBP00828,,Y00483,GPX1,3p21.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q16647,Prostacyclin synthase,HMDBP01129,,BC101809,PTGIS,20q13.13
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P41222,Prostaglandin-H2 D-isomerase,HMDBP01576,,BT019922,PTGDS,9q34.2-q34.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P42330,Aldo-keto reductase family 1 member C3,HMDBP00360,,L43836,AKR1C3,10p15-p14
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P24557,Thromboxane-A synthase,HMDBP01583,,L36078,TBXAS1,7q34-q35
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,O14684,Prostaglandin E synthase,HMDBP00079,,AJ271803,PTGES,9q34.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q8TBF2,Prostamide/prostaglandin F synthase,,,AF425266,,
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P16152,Carbonyl reductase [NADPH] 1,HMDBP00075,,BC015640,CBR1,21q22.13
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P16050,Arachidonate 15-lipoxygenase,HMDBP00977,,AK290309,ALOX15,17p13.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P10632,Cytochrome P450 2C8,HMDBP01562,,AK293328,CYP2C8,10q23.33
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P20813,Cytochrome P450 2B6,HMDBP01553,,M29874,CYP2B6,19q13.2
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P34913,Bifunctional epoxide hydrolase 2,HMDBP01790,,CH471080,EPHX2,8p21
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P09917,Arachidonate 5-lipoxygenase,HMDBP00972,,M38191,ALOX5,10q11.2
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P23219,Prostaglandin G/H synthase 1,HMDBP00976,,M31813,PTGS1,9q32-q33.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,O15296,Arachidonate 15-lipoxygenase B,HMDBP00973,,CH471108,ALOX15B,17p13.1
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P05181,Cytochrome P450 2E1,HMDBP01544,,J02625,CYP2E1,10q24.3-qter
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,O75342,"Arachidonate 12-lipoxygenase, 12R-type",HMDBP03129,,AF038461,ALOX12B,17p13.1
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P51589,Cytochrome P450 2J2,HMDBP01565,,AY426985,CYP2J2,1p31.3-p31.2
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q7Z449,Cytochrome P450 2U1,HMDBP08638,,BC132767,CYP2U1,4q25
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q02928,Cytochrome P450 4A11,HMDBP00401,,L04751,CYP4A11,1p33
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P18054,"Arachidonate 12-lipoxygenase, 12S-type",HMDBP00974,,AY527817,ALOX12,17p13.1
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P0C869,Cytosolic phospholipase A2 beta,HMDBP09120,,AC020659,PLA2G4B,15q11.2-q21.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P35354,Prostaglandin G/H synthase 2,HMDBP00975,,M90100,PTGS2,1q25.2-q25.3
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,P98187,Cytochrome P450 4F8,HMDBP01564,,AF133298,CYP4F8,19p13.1
+SMP0000075,Arachidonic Acid Metabolism,Metabolic,Q08477,Leukotriene-B(4) omega-hydroxylase 2,HMDBP01014,,AB002461,CYP4F3,19p13.2
+SMP0000076,Thiamine Metabolism,Metabolic,Q9H3S4,Thiamin pyrophosphokinase 1,HMDBP00633,,AK289652,TPK1,7q34-q35
+SMP0000076,Thiamine Metabolism,Metabolic,O60779,Thiamine transporter 1,HMDBP02627,,AK304021,SLC19A2,1q23.3
+SMP0000076,Thiamine Metabolism,Metabolic,Q9BSD7,Cancer-related nucleoside-triphosphatase,HMDBP10641,,AF416713,NTPCR,1q42.2
+SMP0000076,Thiamine Metabolism,Metabolic,Q9BU02,Thiamine-triphosphatase,HMDBP01574,,AK057691,THTPA,14q11.2
+SMP0000123,Betaine Metabolism,Metabolic,P49419,Alpha-aminoadipic semialdehyde dehydrogenase,HMDBP00293,,AC099513,ALDH7A1,5q31
+SMP0000123,Betaine Metabolism,Metabolic,Q93088,Betaine--homocysteine S-methyltransferase 1,HMDBP00559,,AF118373,BHMT,5q14.1
+SMP0000123,Betaine Metabolism,Metabolic,Q99707,Methionine synthase,HMDBP00160,,AL359185,MTR,1q43
+SMP0000123,Betaine Metabolism,Metabolic,P23526,Adenosylhomocysteinase,HMDBP00662,,AK290422,AHCY,20q11.22
+SMP0000123,Betaine Metabolism,Metabolic,Q8NE62,"Choline dehydrogenase, mitochondrial",HMDBP00201,,AC012467,CHDH,3p21.1
+SMP0000123,Betaine Metabolism,Metabolic,Q9UBM1,Phosphatidylethanolamine N-methyltransferase,HMDBP00081,,AF294466,PEMT,17p11.2
+SMP0000123,Betaine Metabolism,Metabolic,P31153,S-adenosylmethionine synthase isoform type-2,HMDBP00405,,BC001686,MAT2A,2p11.2
+SMP0000123,Betaine Metabolism,Metabolic,Q9NZL9,Methionine adenosyltransferase 2 subunit beta,HMDBP03965,,AK312365,MAT2B,""
+SMP0000124,Glycerol Phosphate Shuttle,Metabolic,P04406,Glyceraldehyde-3-phosphate dehydrogenase,HMDBP00695,,BC013310,GAPDH,12p13
+SMP0000124,Glycerol Phosphate Shuttle,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0000124,Glycerol Phosphate Shuttle,Metabolic,P43304,"Glycerol-3-phosphate dehydrogenase, mitochondrial",HMDBP00197,,U40362,GPD2,2q24.1
+SMP0000126,Phenylacetate Metabolism,Metabolic,Q08AH1,"Acyl-coenzyme A synthetase ACSM1, mitochondrial",HMDBP04188,,AB062503,ACSM1,16p12.3
+SMP0000126,Phenylacetate Metabolism,Metabolic,Q6IB77,Glycine N-acyltransferase,HMDBP07349,,AF023466,GLYAT,11q12.1
+SMP0000126,Phenylacetate Metabolism,Metabolic,Q68CK6,"Acyl-coenzyme A synthetase ACSM2B, mitochondrial",HMDBP08700,,AC141053,ACSM2B,16p12.3
+SMP0000127,Glucose-Alanine Cycle,Metabolic,Q8TD30,Alanine aminotransferase 2,HMDBP03670,,AC018845,GPT2,16q12.1
+SMP0000127,Glucose-Alanine Cycle,Metabolic,Q969I6,Sodium-coupled neutral amino acid transporter 4,HMDBP03128,,AF193836,SLC38A4,12q13
+SMP0000127,Glucose-Alanine Cycle,Metabolic,P24298,Alanine aminotransferase 1,HMDBP00850,,U70732,GPT,8q24.3
+SMP0000127,Glucose-Alanine Cycle,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000127,Glucose-Alanine Cycle,Metabolic,P14672,"Solute carrier family 2, facilitated glucose transporter member 4",HMDBP11765,,BC113592,SLC2A4,17p13
+SMP0000127,Glucose-Alanine Cycle,Metabolic,Q9H936,Mitochondrial glutamate carrier 1,HMDBP07235,,AJ428202,SLC25A22,11p15.5
+SMP0000127,Glucose-Alanine Cycle,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000127,Glucose-Alanine Cycle,Metabolic,P43007,Neutral amino acid transporter A,HMDBP03110,,AK295687,SLC1A4,2p15-p13
+SMP0000128,Gluconeogenesis,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000128,Gluconeogenesis,Metabolic,P35575,Glucose-6-phosphatase,HMDBP00376,,AK303771,G6PC,17q21
+SMP0000128,Gluconeogenesis,Metabolic,O43826,Glucose-6-phosphate translocase,HMDBP01890,,AF097831,SLC37A4,11q23.3
+SMP0000128,Gluconeogenesis,Metabolic,P36871,Phosphoglucomutase-1,HMDBP01107,,BC090856,PGM1,1p31
+SMP0000128,Gluconeogenesis,Metabolic,P06744,Glucose-6-phosphate isomerase,HMDBP00806,,AH002710,GPI,19q13.1
+SMP0000128,Gluconeogenesis,Metabolic,P52789,Hexokinase-2,HMDBP00213,,Z46358,HK2,2p13
+SMP0000128,Gluconeogenesis,Metabolic,Q96C23,Aldose 1-epimerase,HMDBP07277,,AC074366,GALM,2p22.1
+SMP0000128,Gluconeogenesis,Metabolic,P09467,"Fructose-1,6-bisphosphatase 1",HMDBP00803,,M19922,FBP1,9q22.3
+SMP0000128,Gluconeogenesis,Metabolic,P04075,Fructose-bisphosphate aldolase A,HMDBP00978,,BC010660,ALDOA,16p11.2
+SMP0000128,Gluconeogenesis,Metabolic,P60174,Triosephosphate isomerase,HMDBP01584,,BC007812,TPI1,12p13
+SMP0000128,Gluconeogenesis,Metabolic,P04406,Glyceraldehyde-3-phosphate dehydrogenase,HMDBP00695,,BC013310,GAPDH,12p13
+SMP0000128,Gluconeogenesis,Metabolic,Q8TE04,Pantothenate kinase 1,HMDBP01026,,BK000008,PANK1,10q23.31
+SMP0000128,Gluconeogenesis,Metabolic,P15259,Phosphoglycerate mutase 2,HMDBP00267,,BC001904,PGAM2,7p13-p12
+SMP0000128,Gluconeogenesis,Metabolic,P06733,Alpha-enolase,HMDBP01087,,AL833741,ENO1,1p36.2
+SMP0000128,Gluconeogenesis,Metabolic,P07738,Bisphosphoglycerate mutase,HMDBP00266,,BC017050,BPGM,7q33
+SMP0000128,Gluconeogenesis,Metabolic,P18669,Phosphoglycerate mutase 1,HMDBP00269,,BC010038,PGAM1,10q25.3
+SMP0000128,Gluconeogenesis,Metabolic,P35558,"Phosphoenolpyruvate carboxykinase, cytosolic [GTP]",HMDBP00892,,BC023978,PCK1,20q13.31
+SMP0000128,Gluconeogenesis,Metabolic,P40926,"Malate dehydrogenase, mitochondrial",HMDBP00858,,AK290779,MDH2,7cen-q22
+SMP0000128,Gluconeogenesis,Metabolic,Q02978,Mitochondrial 2-oxoglutarate/malate carrier protein,HMDBP01116,,AF070548,SLC25A11,17p13.3
+SMP0000128,Gluconeogenesis,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000128,Gluconeogenesis,Metabolic,Q9Y5U8,Mitochondrial pyruvate carrier 1,HMDBP11834,,AF151887,MPC1,6q27
+SMP0000128,Gluconeogenesis,Metabolic,Q6ZMR3,L-lactate dehydrogenase A-like 6A,HMDBP00893,,AY581313,LDHAL6A,11p15.1
+SMP0000129,Malate-Aspartate Shuttle,Metabolic,P00505,"Aspartate aminotransferase, mitochondrial",HMDBP00284,,BC000525,GOT2,16q21
+SMP0000129,Malate-Aspartate Shuttle,Metabolic,O75746,Calcium-binding mitochondrial carrier protein Aralar1,HMDBP03143,,AC068039,SLC25A12,2q24
+SMP0000129,Malate-Aspartate Shuttle,Metabolic,P40926,"Malate dehydrogenase, mitochondrial",HMDBP00858,,AK290779,MDH2,7cen-q22
+SMP0000129,Malate-Aspartate Shuttle,Metabolic,Q02978,Mitochondrial 2-oxoglutarate/malate carrier protein,HMDBP01116,,AF070548,SLC25A11,17p13.3
+SMP0000130,Steroidogenesis,Metabolic,P17516,Aldo-keto reductase family 1 member C4,HMDBP00074,,AL355303,AKR1C4,10p15.1
+SMP0000130,Steroidogenesis,Metabolic,P51857,3-oxo-5-beta-steroid 4-dehydrogenase,HMDBP00550,,AF283658,AKR1D1,7q32-q33
+SMP0000130,Steroidogenesis,Metabolic,P19099,"Cytochrome P450 11B2, mitochondrial",HMDBP05268,,M32881,CYP11B2,8q21-q22
+SMP0000130,Steroidogenesis,Metabolic,P15538,"Cytochrome P450 11B1, mitochondrial",HMDBP00445,,M32878,CYP11B1,8q21
+SMP0000130,Steroidogenesis,Metabolic,P28845,Corticosteroid 11-beta-dehydrogenase isozyme 1,HMDBP00718,,M76664,HSD11B1,1q32-q41
+SMP0000130,Steroidogenesis,Metabolic,P08686,Steroid 21-hydroxylase,HMDBP11648,,X58906,CYP21A2,6p21.3
+SMP0000130,Steroidogenesis,Metabolic,P05093,"Steroid 17-alpha-hydroxylase/17,20 lyase",HMDBP01043,,BC063388,CYP17A1,10q24.3
+SMP0000130,Steroidogenesis,Metabolic,P14060,3 beta-hydroxysteroid dehydrogenase/Delta 5-->4-isomerase type 1,HMDBP04403,,M28391,HSD3B1,1p13.1
+SMP0000130,Steroidogenesis,Metabolic,P05108,"Cholesterol side-chain cleavage enzyme, mitochondrial",HMDBP00724,,M14565,CYP11A1,15q23-q24
+SMP0000130,Steroidogenesis,Metabolic,P80365,Corticosteroid 11-beta-dehydrogenase isozyme 2,HMDBP00717,,CH471092,HSD11B2,16q22
+SMP0000130,Steroidogenesis,Metabolic,P26439,3 beta-hydroxysteroid dehydrogenase/Delta 5-->4-isomerase type 2,HMDBP04404,,BC131488,HSD3B2,1p13.1
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,O43826,Glucose-6-phosphate translocase,HMDBP01890,,AF097831,SLC37A4,11q23.3
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P12235,ADP/ATP translocase 1,HMDBP03916,,HQ206346,SLC25A4,4q35
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,Q06055,"ATP synthase lipid-binding protein, mitochondrial",,,,ATP5G2,
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P25705,"ATP synthase subunit alpha, mitochondrial",HMDBP01448,,BC039135,ATP5A1,18q21
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P56381,"ATP synthase subunit epsilon, mitochondrial",HMDBP01206,,CH471077,ATP5E,20q13.32
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P06576,"ATP synthase subunit beta, mitochondrial",HMDBP01465,,X03559,ATP5B,12q13.13
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P24539,"ATP synthase subunit b, mitochondrial",HMDBP01419,,AL390195,ATP5F1,1p13.2
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P30049,"ATP synthase subunit delta, mitochondrial",,,,ATP5D,
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P36542,"ATP synthase subunit gamma, mitochondrial",HMDBP01343,,AK292896,ATP5C1,10p15.1
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P00846,ATP synthase subunit a,,,,MT-ATP6,
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P43304,"Glycerol-3-phosphate dehydrogenase, mitochondrial",HMDBP00197,,U40362,GPD2,2q24.1
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,O15239,NADH dehydrogenase [ubiquinone] 1 alpha subcomplex subunit 1,HMDBP00127,,U54993,NDUFA1,
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P31040,"Succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial",HMDBP00150,,AK291311,SDHA,5p15
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P21912,"Succinate dehydrogenase [ubiquinone] iron-sulfur subunit, mitochondrial",HMDBP00193,,U17248,SDHB,1p36.1-p35
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,Q99643,"Succinate dehydrogenase cytochrome b560 subunit, mitochondrial",HMDBP00121,,AK294305,SDHC,1q23.3
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,O14521,"Succinate dehydrogenase [ubiquinone] cytochrome b small subunit, mitochondrial",HMDBP00179,,BC022350,SDHD,11q23
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P99999,Cytochrome c,HMDBP01762,,BC068464,CYCS,7p15.3
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P31930,"Cytochrome b-c1 complex subunit 1, mitochondrial",HMDBP00987,,AK313090,UQCRC1,3p21.3
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P00395,Cytochrome c oxidase subunit 1,,,,MT-CO1,
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0000355,Mitochondrial Electron Transport Chain,Metabolic,P04406,Glyceraldehyde-3-phosphate dehydrogenase,HMDBP00695,,BC013310,GAPDH,12p13
+SMP0000444,Lactose Synthesis,Metabolic,P35575,Glucose-6-phosphatase,HMDBP00376,,AK303771,G6PC,17q21
+SMP0000444,Lactose Synthesis,Metabolic,Q16851,UTP--glucose-1-phosphate uridylyltransferase,HMDBP01074,,BC002954,UGP2,2p14-p13
+SMP0000444,Lactose Synthesis,Metabolic,P22392,Nucleoside diphosphate kinase B,HMDBP00112,,M36981,NME2,17q21.3
+SMP0000444,Lactose Synthesis,Metabolic,P30085,UMP-CMP kinase,HMDBP00003,,AL513322,CMPK1,1p32
+SMP0000444,Lactose Synthesis,Metabolic,P07902,Galactose-1-phosphate uridylyltransferase,HMDBP01092,,L46363,GALT,9p13
+SMP0000444,Lactose Synthesis,Metabolic,P11166,"Solute carrier family 2, facilitated glucose transporter member 1",HMDBP02114,,BC118590,SLC2A1,1p34.2
+SMP0000444,Lactose Synthesis,Metabolic,P00709,Alpha-lactalbumin,HMDBP00372,,CR541987,LALBA,""
+SMP0000444,Lactose Synthesis,Metabolic,P15291,"Beta-1,4-galactosyltransferase 1",HMDBP00377,,M13701,B4GALT1,9p13
+SMP0000444,Lactose Synthesis,Metabolic,Q8WVQ1,Soluble calcium-activated nucleotidase 1,HMDBP00085,,BC065038,CANT1,17q25.3
+SMP0000444,Lactose Synthesis,Metabolic,P78381,UDP-galactose translocator,,,AK292816,B4GALT1,
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,P31153,S-adenosylmethionine synthase isoform type-2,HMDBP00405,,BC001686,MAT2A,2p11.2
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,Q9NZL9,Methionine adenosyltransferase 2 subunit beta,HMDBP03965,,AK312365,MAT2B,""
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,P19623,Spermidine synthase,HMDBP00218,,M64231,SRM,1p36-p22
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,P52788,Spermine synthase,HMDBP00217,,CH471074,SMS,Xp22.1
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,P11926,Ornithine decarboxylase,HMDBP01034,,M20372,ODC1,2p25
+SMP0000445,Spermidine and Spermine Biosynthesis,Metabolic,P17707,S-adenosylmethionine decarboxylase proenzyme,HMDBP00420,,CH471051,AMD1,6q21
+SMP0000449,Ethanol Degradation,Metabolic,P00325,Alcohol dehydrogenase 1B,HMDBP00782,,L38285,ADH1B,4q23
+SMP0000449,Ethanol Degradation,Metabolic,P05091,"Aldehyde dehydrogenase, mitochondrial",HMDBP00295,,K03001,ALDH2,12q24.2
+SMP0000449,Ethanol Degradation,Metabolic,P05181,Cytochrome P450 2E1,HMDBP01544,,J02625,CYP2E1,10q24.3-qter
+SMP0000449,Ethanol Degradation,Metabolic,P04040,Catalase,HMDBP01582,,X04090,CAT,11p13
+SMP0000449,Ethanol Degradation,Metabolic,Q9NR19,"Acetyl-coenzyme A synthetase, cytoplasmic",HMDBP00037,,BC012172,ACSS2,20q11.22
+SMP0000449,Ethanol Degradation,Metabolic,Q9NUB1,"Acetyl-coenzyme A synthetase 2-like, mitochondrial",HMDBP00042,,BC044588,ACSS1,20p11.23-p11.21
+SMP0000449,Ethanol Degradation,Metabolic,P30837,"Aldehyde dehydrogenase X, mitochondrial",HMDBP00297,,AL135785,ALDH1B1,9p11.1
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,O14975,Very long-chain acyl-CoA synthetase,HMDBP01946,,AF096290,SLC27A2,15q21.2
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,O14832,"Phytanoyl-CoA dioxygenase, peroxisomal",HMDBP00270,,AF242384,PHYH,10p13
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,Q9UJ83,2-hydroxyacyl-CoA lyase 1,HMDBP08729,,AJ131753,HACL1,3p25.1
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,P51648,Fatty aldehyde dehydrogenase,HMDBP00296,,U75286,ALDH3A2,17p11.2
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,P33897,ATP-binding cassette sub-family D member 1,,,Z31006,,
+SMP0000450,Phytanic Acid Peroxisomal Oxidation,Metabolic,Q9UBJ2,ATP-binding cassette sub-family D member 2,,,BC104901,,
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P20132,L-serine dehydratase/L-threonine deaminase,HMDBP00671,,CH471054,SDS,12q24.13
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P11182,"Lipoamide acyltransferase component of branched-chain alpha-keto acid dehydrogenase complex, mitochondrial",HMDBP03078,,J03208,DBT,1p31
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P21953,"2-oxoisovalerate dehydrogenase subunit beta, mitochondrial",HMDBP00299,,X52446,BCKDHB,6q14.1
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P12694,"2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial",HMDBP00300,,Z14093,BCKDHA,19q13.1-q13.2
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P05165,"Propionyl-CoA carboxylase alpha chain, mitochondrial",HMDBP00259,,AY035795,PCCA,13q32
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P05166,"Propionyl-CoA carboxylase beta chain, mitochondrial",HMDBP00258,,M31167,PCCB,3q21-q22
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,Q96PE7,"Methylmalonyl-CoA epimerase, mitochondrial",HMDBP00256,,AF364547,MCEE,2p13.3
+SMP0000452,Threonine and 2-Oxobutanoate Degradation,Metabolic,P22033,"Methylmalonyl-CoA mutase, mitochondrial",HMDBP00257,,M37500,MUT,6p12.3
+SMP0000455,Homocysteine Degradation,Metabolic,P35520,Cystathionine beta-synthase,HMDBP00779,,BC011381,CBS,21q22.3
+SMP0000455,Homocysteine Degradation,Metabolic,P32929,Cystathionine gamma-lyase,HMDBP00538,,BC015807,CTH,1p31.1
+SMP0000456,Fatty Acid Biosynthesis,Metabolic,Q13085,Acetyl-CoA carboxylase 1,HMDBP00047,,AY315620,ACACA,17q21
+SMP0000456,Fatty Acid Biosynthesis,Metabolic,P49327,Fatty acid synthase,HMDBP00035,,S80437,FASN,17q25
+SMP0000457,Lactose Degradation,Metabolic,P09848,Lactase-phlorizin hydrolase,HMDBP00365,,M61838,LCT,2q21
+SMP0000457,Lactose Degradation,Metabolic,P13866,Sodium/glucose cotransporter 1,HMDBP02902,,M24847,SLC5A1,22q12.3
+SMP0000457,Lactose Degradation,Metabolic,P05023,Sodium/potassium-transporting ATPase subunit alpha-1,HMDBP01387,,AL136376,ATP1A1,1p21
+SMP0000457,Lactose Degradation,Metabolic,P50993,Sodium/potassium-transporting ATPase subunit alpha-2,HMDBP01534,,J05096,ATP1A2,1q23.2
+SMP0000457,Lactose Degradation,Metabolic,P13637,Sodium/potassium-transporting ATPase subunit alpha-3,HMDBP01416,,M37455,ATP1A3,19q13.31
+SMP0000457,Lactose Degradation,Metabolic,Q13733,Sodium/potassium-transporting ATPase subunit alpha-4,HMDBP03142,,AF310646,ATP1A4,1q23.2
+SMP0000457,Lactose Degradation,Metabolic,P05026,Sodium/potassium-transporting ATPase subunit beta-1,HMDBP01228,,X17161,ATP1B1,1q24
+SMP0000457,Lactose Degradation,Metabolic,P14415,Sodium/potassium-transporting ATPase subunit beta-2,HMDBP01224,,CH471108,ATP1B2,17p13.1
+SMP0000457,Lactose Degradation,Metabolic,P54709,Sodium/potassium-transporting ATPase subunit beta-3,HMDBP01199,,AF005894,ATP1B3,3q23
+SMP0000457,Lactose Degradation,Metabolic,B7ZKV8,"ATPase, (Na+)/K+ transporting, beta 4 polypeptide",,,BC143404,,
+SMP0000457,Lactose Degradation,Metabolic,P54710,Sodium/potassium-transporting ATPase subunit gamma,HMDBP07463,,U50743,FXYD2,11q23
+SMP0000457,Lactose Degradation,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000459,Pyruvaldehyde Degradation,Metabolic,Q04760,Lactoylglutathione lyase,HMDBP00392,,AB209801,GLO1,6p21.3-p21.1
+SMP0000459,Pyruvaldehyde Degradation,Metabolic,Q86WU2,"Probable D-lactate dehydrogenase, mitochondrial",HMDBP03582,,BC047902,LDHD,16q23.1
+SMP0000459,Pyruvaldehyde Degradation,Metabolic,Q16775,"Hydroxyacylglutathione hydrolase, mitochondrial",HMDBP00812,,AK290155,HAGH,16p13.3
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,O95989,Diphosphoinositol polyphosphate phosphohydrolase 1,HMDBP08781,,AF062529,NUDT3,6p21.2
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q6PFW1,Inositol hexakisphosphate and diphosphoinositol-pentakisphosphate kinase 1,HMDBP12000,,AF502588,PPIP5K1,15q15.3
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q92551,Inositol hexakisphosphate kinase 1,HMDBP09443,,AC139451,IP6K1,3p21.31
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q9H8X2,Inositol-pentakisphosphate 2-kinase,HMDBP09441,,AL137074,IPPK,9q22.31
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q9UNW1,Multiple inositol polyphosphate phosphatase 1,HMDBP07395,,AL138767,MINPP1,10q23
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q13572,Inositol-tetrakisphosphate 1-kinase,HMDBP07396,,BC007428,ITPK1,14q31
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q8NFU5,Inositol polyphosphate multikinase,HMDBP01286,,BC065709,IPMK,10q21.1
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q15735,"Phosphatidylinositol 4,5-bisphosphate 5-phosphatase A",HMDBP00363,,AK095944,INPP5J,22q12.2
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,P23677,Inositol-trisphosphate 3-kinase A,HMDBP00984,,BC026331,ITPKA,15q15.1
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,O15327,"Type II inositol 3,4-bisphosphate 4-phosphatase",HMDBP03276,,CH471056,INPP4B,4q31.21
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,P49441,Inositol polyphosphate 1-phosphatase,HMDBP00362,,L08488,INPP1,2q32
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,P29218,Inositol monophosphatase 1,HMDBP00863,,AC090255,IMPA1,8q21.13-q21.3
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q96PE3,"Type I inositol 3,4-bisphosphate 4-phosphatase",HMDBP06156,,AC010134,INPP4A,2q11.2
+SMP0000462,Inositol Phosphate Metabolism,Metabolic,Q9NPH2,Inositol-3-phosphate synthase 1,HMDBP05901,,AL137749,ISYNA1,19p13.11
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,O14735,CDP-diacylglycerol--inositol 3-phosphatidyltransferase,HMDBP00771,,BC001444,CDIPT,16p11.2
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,O43426,Synaptojanin-1,HMDBP01573,,AP000276,SYNJ1,21q22.2
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P42336,"Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha isoform",HMDBP01236,,BC113603,PIK3CA,3q26.3
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P27986,Phosphatidylinositol 3-kinase regulatory subunit alpha,HMDBP03978,,AF279367,PIK3R1,5q13.1
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q8NEB9,Phosphatidylinositol 3-kinase catalytic subunit type 3,HMDBP03992,,BC053651,PIK3C3,18q12.3
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q99570,Phosphoinositide 3-kinase regulatory subunit 4,HMDBP08851,,Y08991,PIK3R4,3q22.1
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q14457,Beclin-1,,,AF077301,,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q9C0C7,Activating molecule in BECN1-regulated autophagy protein 1,,,AC024293,AMBRA1,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q9Y2I7,1-phosphatidylinositol-3-phosphate 5-kinase,HMDBP01276,,CH471063,PIKFYVE,2q34
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q92562,Polyphosphoinositide phosphatase,,,AL133472,FIG4,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q08AM6,Protein VAC14 homolog,,,CR457343,VAC14,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q99755,Phosphatidylinositol 4-phosphate 5-kinase type-1 alpha,,,U78576,PIP5K1A,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,O15327,"Type II inositol 3,4-bisphosphate 4-phosphatase",HMDBP03276,,CH471056,INPP4B,4q31.21
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P48426,Phosphatidylinositol-5-phosphate 4-kinase type-2 alpha,HMDBP01202,,AL390318,PIP4K2A,10p12.2
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q92835,"Phosphatidylinositol 3,4,5-trisphosphate 5-phosphatase 1",HMDBP03787,,U53470,INPP5D,2q37.1
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q9NRR6,72 kDa inositol polyphosphate 5-phosphatase,HMDBP01572,,AF187891,INPP5E,9q34.3
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P42356,Phosphatidylinositol 4-kinase alpha,HMDBP01411,,AC007050,PI4KA,22q11.21
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,O00443,Phosphatidylinositol-4-phosphate 3-kinase C2 domain-containing subunit alpha,HMDBP03120,,Y13367,PIK3C2A,11p15.5-p14
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P04626,Receptor tyrosine-protein kinase erbB-2,HMDBP01473,,CH471152,ERBB2,17q11.2-q12|17q21.1
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q504U8,EGFR protein,,,AC006977,,
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,O00329,"Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit delta isoform",HMDBP01143,,Y10055,PIK3CD,1p36.2
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,P60484,"Phosphatidylinositol 3,4,5-trisphosphate 3-phosphatase and dual-specificity protein phosphatase PTEN",HMDBP01570,,AF000733,PTEN,10q23.3
+SMP0000463,Phosphatidylinositol Phosphate Metabolism,Metabolic,Q9NQ66,"1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase beta-1",HMDBP00222,,AL050315,PLCB1,20p12
+SMP0000464,Vitamin K Metabolism,Metabolic,P15559,NAD(P)H dehydrogenase [quinone] 1,HMDBP01689,,J03934,NQO1,16q22.1
+SMP0000464,Vitamin K Metabolism,Metabolic,Q9BQB6,Vitamin K epoxide reductase complex subunit 1,HMDBP02242,,AK289790,VKORC1,16p11.2
+SMP0000464,Vitamin K Metabolism,Metabolic,P00734,Prothrombin,,,BC051332,,
+SMP0000464,Vitamin K Metabolism,Metabolic,P38435,Vitamin K-dependent gamma-carboxylase,HMDBP01691,,AK297397,GGCX,2p12
+SMP0000465,Carnitine Synthesis,Metabolic,Q8WTS6,Histone-lysine N-methyltransferase SETD7,HMDBP00404,,AF448510,SETD7,4q28
+SMP0000465,Carnitine Synthesis,Metabolic,Q9NVH6,"Trimethyllysine dioxygenase, mitochondrial",HMDBP03654,,AM393196,TMLHE,Xq28
+SMP0000465,Carnitine Synthesis,Metabolic,P34896,"Serine hydroxymethyltransferase, cytosolic",HMDBP00794,,L23928,SHMT1,17p11.2
+SMP0000465,Carnitine Synthesis,Metabolic,P49189,4-trimethylaminobutyraldehyde dehydrogenase,HMDBP00291,,U50203,ALDH9A1,1q23.1
+SMP0000465,Carnitine Synthesis,Metabolic,O75936,Gamma-butyrobetaine dioxygenase,HMDBP00382,,AK313422,BBOX1,11p14.2
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P48163,NADP-dependent malic enzyme,HMDBP00857,,X77244,ME1,6q12
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P40925,"Malate dehydrogenase, cytoplasmic",HMDBP00860,,AK312331,MDH1,2p13.3
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P53396,ATP-citrate synthase,HMDBP00010,,U18197,ACLY,17q21.2
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,Q6LAP8,Mitochondrial citrate transport protein,,,X96924,,
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,O75390,"Citrate synthase, mitochondrial",HMDBP00043,,AF047042,CS,12q13.2
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P08559,"Pyruvate dehydrogenase E1 component subunit alpha, somatic form, mitochondrial",HMDBP00046,,M29155,PDHA1,Xp22.1
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P11177,"Pyruvate dehydrogenase E1 component subunit beta, mitochondrial",HMDBP00012,,M34479,PDHB,3p21.1-p14.2
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,Q02978,Mitochondrial 2-oxoglutarate/malate carrier protein,HMDBP01116,,AF070548,SLC25A11,17p13.3
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,Q9Y5U8,Mitochondrial pyruvate carrier 1,HMDBP11834,,AF151887,MPC1,6q27
+SMP0000466,Transfer of Acetyl Groups into Mitochondria,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000467,Trehalose Degradation,Metabolic,O43280,Trehalase,HMDBP00374,,BC109206,TREH,11q23.3
+SMP0000467,Trehalose Degradation,Metabolic,P13866,Sodium/glucose cotransporter 1,HMDBP02902,,M24847,SLC5A1,22q12.3
+SMP0000467,Trehalose Degradation,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000467,Trehalose Degradation,Metabolic,P35557,Glucokinase,HMDBP00210,,AF041020,GCK,7p15.3-p15.1
+SMP0000467,Trehalose Degradation,Metabolic,P05023,Sodium/potassium-transporting ATPase subunit alpha-1,HMDBP01387,,AL136376,ATP1A1,1p21
+SMP0000467,Trehalose Degradation,Metabolic,P50993,Sodium/potassium-transporting ATPase subunit alpha-2,HMDBP01534,,J05096,ATP1A2,1q23.2
+SMP0000467,Trehalose Degradation,Metabolic,P13637,Sodium/potassium-transporting ATPase subunit alpha-3,HMDBP01416,,M37455,ATP1A3,19q13.31
+SMP0000467,Trehalose Degradation,Metabolic,Q13733,Sodium/potassium-transporting ATPase subunit alpha-4,HMDBP03142,,AF310646,ATP1A4,1q23.2
+SMP0000467,Trehalose Degradation,Metabolic,P05026,Sodium/potassium-transporting ATPase subunit beta-1,HMDBP01228,,X17161,ATP1B1,1q24
+SMP0000467,Trehalose Degradation,Metabolic,P14415,Sodium/potassium-transporting ATPase subunit beta-2,HMDBP01224,,CH471108,ATP1B2,17p13.1
+SMP0000467,Trehalose Degradation,Metabolic,P54709,Sodium/potassium-transporting ATPase subunit beta-3,HMDBP01199,,AF005894,ATP1B3,3q23
+SMP0000467,Trehalose Degradation,Metabolic,B7ZKV8,"ATPase, (Na+)/K+ transporting, beta 4 polypeptide",,,BC143404,,
+SMP0000467,Trehalose Degradation,Metabolic,P54710,Sodium/potassium-transporting ATPase subunit gamma,HMDBP07463,,U50743,FXYD2,11q23
+SMP0000468,Degradation of Superoxides,Metabolic,P08294,Extracellular superoxide dismutase [Cu-Zn],HMDBP03151,,BC014418,SOD3,4p15.2
+SMP0000468,Degradation of Superoxides,Metabolic,P00441,Superoxide dismutase [Cu-Zn],HMDBP02053,,AK312116,SOD1,21q22.11
+SMP0000468,Degradation of Superoxides,Metabolic,P04179,"Superoxide dismutase [Mn], mitochondrial",HMDBP01956,,X07834,SOD2,6q25.3
+SMP0000468,Degradation of Superoxides,Metabolic,P04040,Catalase,HMDBP01582,,X04090,CAT,11p13
+SMP0000468,Degradation of Superoxides,Metabolic,P17643,"5,6-dihydroxyindole-2-carboxylic acid oxidase",HMDBP02139,,AF001295,TYRP1,9p23
+SMP0000477,DNA Replication Fork,Metabolic,P51530,DNA replication ATP-dependent helicase/nuclease DNA2,HMDBP11710,,BC063664,DNA2,10q21.3-q22.1
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P54725,UV excision repair protein RAD23 homolog A,,,,,
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P23025,DNA repair protein complementing XP-A cells,,,,,
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P18074,TFIIH basal transcription factor complex helicase XPD subunit,HMDBP08717,,BC108255,ERCC2,19q13.3
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P35251,Replication factor C subunit 1,,,,,
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P12004,Proliferating cell nuclear antigen,,,,,
+SMP0000478,Nucleotide Excision Repair ,Metabolic,O95602,DNA-directed RNA polymerase I subunit RPA1,HMDBP09345,,AH007280,POLR1A,2p11.2
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P28715,DNA repair protein complementing XP-G cells,,,,,
+SMP0000478,Nucleotide Excision Repair ,Metabolic,Q92889,DNA repair endonuclease XPF,HMDBP08835,,U64315,ERCC4,16p13.12
+SMP0000478,Nucleotide Excision Repair ,Metabolic,Q5XG87,DNA polymerase sigma,HMDBP11873,,BC084567,PAPD7,5p15
+SMP0000478,Nucleotide Excision Repair ,Metabolic,Q07864,DNA polymerase epsilon catalytic subunit A,HMDBP00961,,AY273166,POLE,12q24.3
+SMP0000478,Nucleotide Excision Repair ,Metabolic,P18858,DNA ligase 1,HMDBP00660,,AK314210,LIG1,19q13.2-q13.3
+SMP0000479,Plasmalogen Synthesis,Metabolic,O15228,Dihydroxyacetone phosphate acyltransferase,HMDBP01543,,AF218233,GNPAT,1q42
+SMP0000479,Plasmalogen Synthesis,Metabolic,O00116,"Alkyldihydroxyacetonephosphate synthase, peroxisomal",HMDBP01542,,BC141820,AGPS,2q31.2
+SMP0000479,Plasmalogen Synthesis,Metabolic,Q99943,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,HMDBP01581,,CR812478,AGPAT1,6p21.3
+SMP0000479,Plasmalogen Synthesis,Metabolic,O14494,Lipid phosphate phosphohydrolase 1,HMDBP00237,,AF014402,PPAP2A,5q11
+SMP0000479,Plasmalogen Synthesis,Metabolic,Q9Y6K0,Choline/ethanolaminephosphotransferase 1,HMDBP03349,,AF138862,CEPT1,1p13.3
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,Q9H6R3,"Acyl-CoA synthetase short-chain family member 3, mitochondrial",HMDBP11602,,CH471054,ACSS3,12q21.31
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,Q99714,3-hydroxyacyl-CoA dehydrogenase type-2,HMDBP00379,,BC008708,HSD17B10,Xp11.2
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,Q16836,"Hydroxyacyl-coenzyme A dehydrogenase, mitochondrial",HMDBP00381,,AF001903,HADH,4q22-q26
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,P24752,"Acetyl-CoA acetyltransferase, mitochondrial",HMDBP00038,,CH471065,ACAT1,11q22.3
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,P16219,"Short-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00103,,U83992,ACADS,12q24.31
+SMP0000480,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,Metabolic,P28330,"Long-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00102,,CH471063,ACADL,2q34
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,O43772,Mitochondrial carnitine/acylcarnitine carrier protein,HMDBP02794,,Y10319,SLC25A20,3p21.31
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,Q08AH1,"Acyl-coenzyme A synthetase ACSM1, mitochondrial",HMDBP04188,,AB062503,ACSM1,16p12.3
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,P40939,"Trifunctional enzyme subunit alpha, mitochondrial",HMDBP00389,,BC009235,HADHA,2p23
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,P55084,"Trifunctional enzyme subunit beta, mitochondrial",HMDBP00048,,D16481,HADHB,2p23
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,Q16836,"Hydroxyacyl-coenzyme A dehydrogenase, mitochondrial",HMDBP00381,,AF001903,HADH,4q22-q26
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000481,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,Metabolic,P11310,"Medium-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00104,,M91432,ACADM,1p31
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P50416,"Carnitine O-palmitoyltransferase 1, liver isoform",HMDBP00309,,L39211,CPT1A,11q13.2
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P33121,Long-chain-fatty-acid--CoA ligase 1,HMDBP00577,,CH471056,ACSL1,4q35
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,O43772,Mitochondrial carnitine/acylcarnitine carrier protein,HMDBP02794,,Y10319,SLC25A20,3p21.31
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P23786,"Carnitine O-palmitoyltransferase 2, mitochondrial",HMDBP00311,,U09643,CPT2,1p32
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P30084,"Enoyl-CoA hydratase, mitochondrial",HMDBP00388,,BT007123,ECHS1,10q26.2-q26.3
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P40939,"Trifunctional enzyme subunit alpha, mitochondrial",HMDBP00389,,BC009235,HADHA,2p23
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P55084,"Trifunctional enzyme subunit beta, mitochondrial",HMDBP00048,,D16481,HADHB,2p23
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,Q16836,"Hydroxyacyl-coenzyme A dehydrogenase, mitochondrial",HMDBP00381,,AF001903,HADH,4q22-q26
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P42765,"3-ketoacyl-CoA thiolase, mitochondrial",HMDBP00031,,D16294,ACAA2,18q21.1
+SMP0000482,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,Metabolic,P28330,"Long-chain specific acyl-CoA dehydrogenase, mitochondrial",HMDBP00102,,CH471063,ACADL,2q34
+SMP0000654,Warburg Effect,Metabolic,P11168,"Solute carrier family 2, facilitated glucose transporter member 2",HMDBP05474,,CH471052,SLC2A2,3q26.1-q26.2
+SMP0000654,Warburg Effect,Metabolic,P52789,Hexokinase-2,HMDBP00213,,Z46358,HK2,2p13
+SMP0000654,Warburg Effect,Metabolic,P06744,Glucose-6-phosphate isomerase,HMDBP00806,,AH002710,GPI,19q13.1
+SMP0000654,Warburg Effect,Metabolic,P17858,"6-phosphofructokinase, liver type",HMDBP00758,,BC006422,PFKL,21q22.3
+SMP0000654,Warburg Effect,Metabolic,P05062,Fructose-bisphosphate aldolase B,HMDBP00980,,M15657,ALDOB,9q21.3-q22.2
+SMP0000654,Warburg Effect,Metabolic,P04406,Glyceraldehyde-3-phosphate dehydrogenase,HMDBP00695,,BC013310,GAPDH,12p13
+SMP0000654,Warburg Effect,Metabolic,P00558,Phosphoglycerate kinase 1,HMDBP01528,,AB062432,PGK1,Xq13.3
+SMP0000654,Warburg Effect,Metabolic,P15259,Phosphoglycerate mutase 2,HMDBP00267,,BC001904,PGAM2,7p13-p12
+SMP0000654,Warburg Effect,Metabolic,P06733,Alpha-enolase,HMDBP01087,,AL833741,ENO1,1p36.2
+SMP0000654,Warburg Effect,Metabolic,P30613,Pyruvate kinase isozymes R/L,HMDBP00765,,S60712,PKLR,1q21
+SMP0000654,Warburg Effect,Metabolic,Q9Y5U8,Mitochondrial pyruvate carrier 1,HMDBP11834,,AF151887,MPC1,6q27
+SMP0000654,Warburg Effect,Metabolic,P11498,"Pyruvate carboxylase, mitochondrial",HMDBP00019,,K02282,PC,11q13.4-q13.5
+SMP0000654,Warburg Effect,Metabolic,P08559,"Pyruvate dehydrogenase E1 component subunit alpha, somatic form, mitochondrial",HMDBP00046,,M29155,PDHA1,Xp22.1
+SMP0000654,Warburg Effect,Metabolic,P11177,"Pyruvate dehydrogenase E1 component subunit beta, mitochondrial",HMDBP00012,,M34479,PDHB,3p21.1-p14.2
+SMP0000654,Warburg Effect,Metabolic,P10515,"Dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex, mitochondrial",HMDBP00055,,AP000907,DLAT,11q23.1
+SMP0000654,Warburg Effect,Metabolic,P09622,"Dihydrolipoyl dehydrogenase, mitochondrial",HMDBP00054,,L13757,DLD,7q31-q32
+SMP0000654,Warburg Effect,Metabolic,O75390,"Citrate synthase, mitochondrial",HMDBP00043,,AF047042,CS,12q13.2
+SMP0000654,Warburg Effect,Metabolic,Q6ZMR3,L-lactate dehydrogenase A-like 6A,HMDBP00893,,AY581313,LDHAL6A,11p15.1
+SMP0000654,Warburg Effect,Metabolic,P53985,Monocarboxylate transporter 1,HMDBP01111,,L31801,SLC16A1,1p12
+SMP0000654,Warburg Effect,Metabolic,Q99798,"Aconitate hydratase, mitochondrial",HMDBP00725,,U87932,ACO2,22q13.2
+SMP0000654,Warburg Effect,Metabolic,P50213,"Isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial",HMDBP00899,,CH471136,IDH3A,15q25.1-q25.2
+SMP0000654,Warburg Effect,Metabolic,O43837,"Isocitrate dehydrogenase [NAD] subunit beta, mitochondrial",HMDBP00897,,BC001960,IDH3B,20p13
+SMP0000654,Warburg Effect,Metabolic,P51553,"Isocitrate dehydrogenase [NAD] subunit gamma, mitochondrial",HMDBP00900,,BC001902,IDH3G,Xq28
+SMP0000654,Warburg Effect,Metabolic,Q02218,"2-oxoglutarate dehydrogenase, mitochondrial",HMDBP00439,,BC014617,OGDH,7p14-p13
+SMP0000654,Warburg Effect,Metabolic,P36957,"Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex, mitochondrial",HMDBP00939,,AC006530,DLST,14q24.3
+SMP0000654,Warburg Effect,Metabolic,P53597,"Succinyl-CoA ligase [ADP/GDP-forming] subunit alpha, mitochondrial",HMDBP00889,,Z68204,SUCLG1,2p11.2
+SMP0000654,Warburg Effect,Metabolic,Q96I99,"Succinyl-CoA ligase [GDP-forming] subunit beta, mitochondrial",HMDBP00891,,AC114401,SUCLG2,3p14.1
+SMP0000654,Warburg Effect,Metabolic,P31040,"Succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial",HMDBP00150,,AK291311,SDHA,5p15
+SMP0000654,Warburg Effect,Metabolic,P21912,"Succinate dehydrogenase [ubiquinone] iron-sulfur subunit, mitochondrial",HMDBP00193,,U17248,SDHB,1p36.1-p35
+SMP0000654,Warburg Effect,Metabolic,Q99643,"Succinate dehydrogenase cytochrome b560 subunit, mitochondrial",HMDBP00121,,AK294305,SDHC,1q23.3
+SMP0000654,Warburg Effect,Metabolic,O14521,"Succinate dehydrogenase [ubiquinone] cytochrome b small subunit, mitochondrial",HMDBP00179,,BC022350,SDHD,11q23
+SMP0000654,Warburg Effect,Metabolic,P07954,"Fumarate hydratase, mitochondrial",HMDBP00861,,U59309,FH,1q42.1
+SMP0000654,Warburg Effect,Metabolic,P40925,"Malate dehydrogenase, cytoplasmic",HMDBP00860,,AK312331,MDH1,2p13.3
+SMP0000654,Warburg Effect,Metabolic,P00367,"Glutamate dehydrogenase 1, mitochondrial",HMDBP00694,,X66306,GLUD1,10q23.3
+SMP0000654,Warburg Effect,Metabolic,Q9UI32,"Glutaminase liver isoform, mitochondrial",HMDBP00675,,CH471054,GLS2,12q13
+SMP0000654,Warburg Effect,Metabolic,Q15758,Neutral amino acid transporter B(0),HMDBP01955,,GQ919058,SLC1A5,19q13.3
+SMP0000654,Warburg Effect,Metabolic,P37837,Transaldolase,HMDBP00802,,L19437,TALDO1,11p15.5-p15.4
+SMP0000654,Warburg Effect,Metabolic,P29401,Transketolase,HMDBP00805,,BC008615,TKT,3p14.3
+SMP0000654,Warburg Effect,Metabolic,P49247,Ribose-5-phosphate isomerase,HMDBP01611,,BC015529,RPIA,2p11.2
+SMP0000654,Warburg Effect,Metabolic,O95336,6-phosphogluconolactonase,HMDBP00327,,AJ243972,PGLS,19p13.2
+SMP0000654,Warburg Effect,Metabolic,P11413,Glucose-6-phosphate 1-dehydrogenase,HMDBP00328,,M65228,G6PD,Xq28
+SMP0000654,Warburg Effect,Metabolic,P52209,"6-phosphogluconate dehydrogenase, decarboxylating",HMDBP01039,,AL139424,PGD,1p36.22
+SMP0000654,Warburg Effect,Metabolic,Q6LAP8,Mitochondrial citrate transport protein,,,X96924,,
+SMP0000654,Warburg Effect,Metabolic,P21399,Cytoplasmic aconitate hydratase,HMDBP00726,,BC018103,ACO1,9p21.1
+SMP0000654,Warburg Effect,Metabolic,O75874,Isocitrate dehydrogenase [NADP] cytoplasmic,HMDBP00898,,BX537411,IDH1,2q33.3
+SMP0000654,Warburg Effect,Metabolic,P14618,Pyruvate kinase PKM,HMDBP00763,,AK300800,PKM,15q22
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,Q92911,Sodium/iodide cotransporter,HMDBP02860,,AF260700,SLC5A5,19p13.11
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,F5H104,Pendrin,,,,SLC26A4 ,
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,P01266,Thyroglobulin,,,,TG,
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,P07202,Thyroid peroxidase,HMDBP00276,,M25707,TPO,2p25
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,P04839,Cytochrome b-245 heavy chain,HMDBP01763,,AF469760,CYBB,
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,Q9HBY0,NADPH oxidase 3,HMDBP08222,,AF190122,NOX3,6q25.3
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,P13498,Cytochrome b-245 light chain,HMDBP02596,,BT006861,CYBA,16q24
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,Q9NRD9,Dual oxidase 1,HMDBP07070,,AK172859,DUOX1,15q15.3
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,Q9NRD8,Dual oxidase 2,HMDBP03091,,AF230496,DUOX2,15q15.3
+SMP0000716,Thyroid Hormone Synthesis,Metabolic,Q9NPH5,NADPH oxidase 4,HMDBP08280,,AJ704729,NOX4,11q14.2-q21
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,P49585,Choline-phosphate cytidylyltransferase A,HMDBP00755,,CH471191,PCYT1A,3q29
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,P35790,Choline kinase alpha,HMDBP00778,,BC036471,CHKA,11q13.2
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,Q99447,Ethanolamine-phosphate cytidylyltransferase,HMDBP00738,,CH471099,PCYT2,17q25.3
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,Q9Y6K0,Choline/ethanolaminephosphotransferase 1,HMDBP03349,,AF138862,CEPT1,1p13.3
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,Q9UBM1,Phosphatidylethanolamine N-methyltransferase,HMDBP00081,,AF294466,PEMT,17p11.2
+SMP0014212,Phosphatidylcholine Biosynthesis,Metabolic,Q9UG56,Phosphatidylserine decarboxylase proenzyme,HMDBP02255,,BC009315,PISD,22q12.2
+SMP0015896,De Novo Triacylglycerol Biosynthesis,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0015896,De Novo Triacylglycerol Biosynthesis,Metabolic,Q9HCL2,"Glycerol-3-phosphate acyltransferase 1, mitochondrial",HMDBP00838,,AL391986,GPAM,10q25.2
+SMP0015896,De Novo Triacylglycerol Biosynthesis,Metabolic,Q99943,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,HMDBP01581,,CR812478,AGPAT1,6p21.3
+SMP0015896,De Novo Triacylglycerol Biosynthesis,Metabolic,Q14693,Phosphatidate phosphatase LPIN1,HMDBP11805,,D80010,LPIN1,2p25.1
+SMP0015896,De Novo Triacylglycerol Biosynthesis,Metabolic,O75907,Diacylglycerol O-acyltransferase 1,HMDBP00243,,CH471162,DGAT1,8q24.3
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,P21695,"Glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",HMDBP00837,,AC025154,GPD1,12q12-q13
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,Q9HCL2,"Glycerol-3-phosphate acyltransferase 1, mitochondrial",HMDBP00838,,AL391986,GPAM,10q25.2
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,Q9NUQ2,1-acyl-sn-glycerol-3-phosphate acyltransferase epsilon,HMDBP03003,,BC023550,AGPAT5,8p23.1
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,O95674,Phosphatidate cytidylyltransferase 2,HMDBP00746,,Y16521,CDS2,20p13
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,Q32NB8,"CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase, mitochondrial",HMDBP03388,,CH471099,PGS1,17q25.3
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,Q8WUK0,Phosphatidylglycerophosphatase and protein-tyrosine phosphatase 1,HMDBP07398,,AC104942,PTPMT1,11p11.2
+SMP0020986,Cardiolipin Biosynthesis,Metabolic,Q9UJA2,Cardiolipin synthase,HMDBP03379,,AL035461,CRLS1,20p13-p12.3
+SMP0029731,Phosphatidylethanolamine Biosynthesis,Metabolic,Q9UG56,Phosphatidylserine decarboxylase proenzyme,HMDBP02255,,BC009315,PISD,22q12.2
+SMP0029731,Phosphatidylethanolamine Biosynthesis,Metabolic,Q9Y6K0,Choline/ethanolaminephosphotransferase 1,HMDBP03349,,AF138862,CEPT1,1p13.3
+SMP0029731,Phosphatidylethanolamine Biosynthesis,Metabolic,P35790,Choline kinase alpha,HMDBP00778,,BC036471,CHKA,11q13.2
+SMP0029731,Phosphatidylethanolamine Biosynthesis,Metabolic,Q99447,Ethanolamine-phosphate cytidylyltransferase,HMDBP00738,,CH471099,PCYT2,17q25.3
+SMP0029731,Phosphatidylethanolamine Biosynthesis,Metabolic,P48651,Phosphatidylserine synthase 1,HMDBP02190,,BC004390,PTDSS1,8q22
+SMP0030406,Androstenedione Metabolism,Metabolic,P18405,3-oxo-5-alpha-steroid 4-dehydrogenase 1,HMDBP00699,,M68884,SRD5A1,5p15
+SMP0030406,Androstenedione Metabolism,Metabolic,P17516,Aldo-keto reductase family 1 member C4,HMDBP00074,,AL355303,AKR1C4,10p15.1
+SMP0030406,Androstenedione Metabolism,Metabolic,Q9UBS4,DnaJ homolog subfamily B member 11,,,AK075430,DNAJB11,
+SMP0030406,Androstenedione Metabolism,Metabolic,Q96GW1,HSP90B1 protein,,,BC009195,HSP90B1 ,
+SMP0030406,Androstenedione Metabolism,Metabolic,P11021,78 kDa glucose-regulated protein,,,AJ271729,HSPA5,
+SMP0030406,Androstenedione Metabolism,Metabolic,Q6IN67,HYOU1 protein,,,BC072436,HYOU1 ,
+SMP0030406,Androstenedione Metabolism,Metabolic,Q13087,Protein disulfide-isomerase A2,,,U19948,PDIA2,
+SMP0030406,Androstenedione Metabolism,Metabolic,P13667,Protein disulfide-isomerase A4,,,BC006344,PDIA4,
+SMP0030406,Androstenedione Metabolism,Metabolic,Q15084,Protein disulfide-isomerase A6,,,AK289428,PDIA6,
+SMP0030406,Androstenedione Metabolism,Metabolic,P23284,Peptidyl-prolyl cis-trans isomerase B,HMDBP10692,,AY962310,PPIB,15q21-q22
+SMP0030406,Androstenedione Metabolism,Metabolic,Q9HCN8,Stromal cell-derived factor 2-like protein 1,,,CR456570,SDF2L1,
+SMP0030406,Androstenedione Metabolism,Metabolic,P22309,UDP-glucuronosyltransferase 1-1,HMDBP00483,,M84124,UGT1A1,2q37
+SMP0030406,Androstenedione Metabolism,Metabolic,P30040,Endoplasmic reticulum resident protein 29,,,BC101493,ERP29,
+SMP0030406,Androstenedione Metabolism,Metabolic,P11511,Cytochrome P450 19A1,HMDBP01561,,J04127,CYP19A1,15q21.1
+SMP0030406,Androstenedione Metabolism,Metabolic,P37058,Testosterone 17-beta-dehydrogenase 3,HMDBP00846,,U05659,HSD17B3,9q22
+SMP0030406,Androstenedione Metabolism,Metabolic,P15538,"Cytochrome P450 11B1, mitochondrial",HMDBP00445,,M32878,CYP11B1,8q21
+SMP0030406,Androstenedione Metabolism,Metabolic,P28845,Corticosteroid 11-beta-dehydrogenase isozyme 1,HMDBP00718,,M76664,HSD11B1,1q32-q41
+SMP0030406,Androstenedione Metabolism,Metabolic,P51857,3-oxo-5-beta-steroid 4-dehydrogenase,HMDBP00550,,AF283658,AKR1D1,7q32-q33
+SMP0030880,Estrone Metabolism,Metabolic,P49888,Estrogen sulfotransferase,HMDBP00346,,U20515,SULT1E1,4q13.1
+SMP0030880,Estrone Metabolism,Metabolic,P04798,Cytochrome P450 1A1,HMDBP01555,,AK223113,CYP1A1,15q24.1
+SMP0030880,Estrone Metabolism,Metabolic,P21964,Catechol O-methyltransferase,HMDBP00272,,BC011935,COMT,22q11.21
+SMP0030880,Estrone Metabolism,Metabolic,Q9UBS4,DnaJ homolog subfamily B member 11,,,AK075430,DNAJB11,
+SMP0030880,Estrone Metabolism,Metabolic,Q96GW1,HSP90B1 protein,,,BC009195,HSP90B1 ,
+SMP0030880,Estrone Metabolism,Metabolic,P11021,78 kDa glucose-regulated protein,,,AJ271729,HSPA5,
+SMP0030880,Estrone Metabolism,Metabolic,Q6IN67,HYOU1 protein,,,BC072436,HYOU1 ,
+SMP0030880,Estrone Metabolism,Metabolic,Q13087,Protein disulfide-isomerase A2,,,U19948,PDIA2,
+SMP0030880,Estrone Metabolism,Metabolic,P13667,Protein disulfide-isomerase A4,,,BC006344,PDIA4,
+SMP0030880,Estrone Metabolism,Metabolic,Q15084,Protein disulfide-isomerase A6,,,AK289428,PDIA6,
+SMP0030880,Estrone Metabolism,Metabolic,P23284,Peptidyl-prolyl cis-trans isomerase B,HMDBP10692,,AY962310,PPIB,15q21-q22
+SMP0030880,Estrone Metabolism,Metabolic,Q9HCN8,Stromal cell-derived factor 2-like protein 1,,,CR456570,SDF2L1,
+SMP0030880,Estrone Metabolism,Metabolic,P22309,UDP-glucuronosyltransferase 1-1,HMDBP00483,,M84124,UGT1A1,2q37
+SMP0030880,Estrone Metabolism,Metabolic,P30040,Endoplasmic reticulum resident protein 29,,,BC101493,ERP29,
+SMP0030880,Estrone Metabolism,Metabolic,P14061,Estradiol 17-beta-dehydrogenase 1,HMDBP00847,,CH471152,HSD17B1,17q11-q21
+SMP0030880,Estrone Metabolism,Metabolic,P20815,Cytochrome P450 3A5,HMDBP01554,,CH236956,CYP3A5,7q21.1
