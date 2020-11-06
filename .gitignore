@@ -6,10 +6,10 @@
 /Project_Datasets/*.xlsx
 /Project_Datasets/*.xls
 /Project_Datasets/*.rda
-
+/Project_Datasets/*.dat
 
 # Session Data files
-.RData
+#.RData
 
 # User-specific files
 .Ruserdata

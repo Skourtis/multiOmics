@@ -9,7 +9,7 @@ output:
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
-pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation, graphite)
+pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation, graphite, KEGG.db)
 
 ## Global options
 options(max.print="75")
@@ -24,7 +24,6 @@ opts_knit$set(width=75,
               root.dir = "./../")
 ```
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
-Log2 ->  Z transformation
 RPPA?
 Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
 
@@ -32,9 +31,7 @@ Plot in double matrix of transcripromis vs proteomics correlations ordered by pa
 ```{r Data_load_Subset}
 load(file = "./../Project_Datasets/CCLE_OMICS.rda")
 load(file = "./../Project_Datasets/NCI60_OMICS.rda")
-
-#Raw from http://tko.ccbr.utoronto.ca/ 4/11/2020
-Essential_genes <- read.xlsx("./../Project_Datasets/reference_essentials_and_nonessentials_sym_hgnc_entrez.xlsx")$Gene
+load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.rda")
 
 Correlation_pairwise <- function(x,y){
     cor(as.matrix,y,use = "pairwise", method = "pearson")
@@ -50,14 +47,15 @@ Correlation_pairwise <- function(x,y){
     cormat[upper.tri(cormat)] <- NA
     return(cormat)
   }
+  
 #compare 2 datasets with common Feature (rows) and Sample names (Columns)
 ### Change rerun value
-Dataset_correlation <- function(Dataset1,Dataset2){
-    Dataset1 = CCLE_proteins
-    Dataset2 = NCI_60_proteins
-    Comparison_type <- paste(deparse(substitute(Dataset1)),deparse(substitute(Dataset2)))
-    Dataset1 <- as.data.frame(Dataset1)
-    Dataset2 <- as.data.frame(Dataset2)
+Dataset_correlation <- function(Dataset_1,Dataset_2){
+    Dataset_1 = CCLE_proteins
+    Dataset_2 = NCI_60_proteins
+    Comparison_type <- paste(deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))
+    Dataset1 <- as.data.frame(Dataset_1)
+    Dataset2 <- as.data.frame(Dataset_2)
     Common_Cell_lines <- intersect(colnames(Dataset1),colnames(Dataset2)) #Common Samples
     Common_proteins <- intersect(rownames(Dataset1),rownames(Dataset2)) #Common Features
     
@@ -67,22 +65,31 @@ Dataset_correlation <- function(Dataset1,Dataset2){
     Dataset2_sub <- Dataset2 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
     
-    cormat1 <- round(cor(t(Dataset1_sub[1:100,])),2) %>% get_lower_tri() %>%
-        reshape2::melt(na.rm = T) 
-    cormat2 <- round(cor(t(Dataset2_sub[1:100,])),2) %>% get_upper_tri() %>%
-        reshape2::melt(na.rm = T)
-    Combined_df <- rbind(cormat1,cormat2)
-    Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
+    cormat1 <- round(cor(t(Dataset1_sub[1:2000,])),2) %>% get_lower_tri() %>% #
+        reshape2::melt(na.rm = T) %>% 
+        left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
+        #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
+    cormat2 <- round(cor(t(Dataset2_sub[1:2000,])),2) %>% get_upper_tri() %>%
+        reshape2::melt(na.rm = T)%>%
+        left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
+        #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
+    Combined_df <- rbind(cormat1,cormat2)  
+    #Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
     
-    ggplot(data = Combined_df, aes(Var2, Var1, fill = value))+
+    Feature_order <- Combined_df[!duplicated(Combined_df$Var1),] %>%
+        .[order(.$Pathway),"Var1"]
+    
+    Combined_df %>%
+        subset(Var1 %in% Master_pathways$Uniprot & Var2 %in% Master_pathways$Uniprot) %>% na.omit() %>%
+        ggplot(aes(factor(Var2, levels = Feature_order), factor(Var1,levels = Feature_order), fill = value))+
         geom_tile(color = "white")+
         scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
                              midpoint = 0, limit = c(-1,1), space = "Lab", 
                              name="Pearson\nCorrelation") +
         theme_minimal()+ 
-        theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                         size = 12, hjust = 1))+
-        coord_fixed()
+        theme(axis.text.x = element_blank(), axis.text.y = element_blank())+
+        coord_fixed() + labs(x = deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))
+    #facet_grid(.~Pathway, scales = "free_x")
     
     
     #Correlating corresponding Samples Correlation of only paired values which allows for NA values
