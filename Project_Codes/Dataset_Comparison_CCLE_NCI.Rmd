@@ -9,7 +9,9 @@ output:
 
 
 ```{r setup, echo=FALSE, cache=FALSE}
-pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation, graphite, KEGG.db)
+pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation)
+library(ComplexHeatmap)
+library(circlize)
 
 ## Global options
 options(max.print="75")
@@ -31,7 +33,15 @@ Plot in double matrix of transcripromis vs proteomics correlations ordered by pa
 ```{r Data_load_Subset}
 load(file = "./../Project_Datasets/CCLE_OMICS.rda")
 load(file = "./../Project_Datasets/NCI60_OMICS.rda")
-load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.rda")
+load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.RData")
+
+HUMAN_9606_idmapping <- read_tsv("./../Project_Datasets/HUMAN_9606_idmapping.dat",
+                                 col_names = FALSE) %>% 
+    setNames(c("Uniprot", "Type", "ID"))
+
+HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping$ID, "hsa:"),-2] %>% 
+    left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name", -2], by = "Uniprot") %>% 
+    na.omit() %>% .[,-1] %>% setNames(c("KEGG_ID", "Gene.names"))
 
 Correlation_pairwise <- function(x,y){
     cor(as.matrix,y,use = "pairwise", method = "pearson")
@@ -64,32 +74,52 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
     Dataset2_sub <- Dataset2 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
-    
-    cormat1 <- round(cor(t(Dataset1_sub[1:2000,])),2) %>% get_lower_tri() %>% #
+    Master_pathways <- Master_pathways[!duplicated(Master_pathways$Genes),]
+    cormat1 <- round(cor(t(Dataset1_sub[1:2000,])),2) %>% get_lower_tri()# %>% 
         reshape2::melt(na.rm = T) %>% 
         left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
         #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
-    cormat2 <- round(cor(t(Dataset2_sub[1:2000,])),2) %>% get_upper_tri() %>%
+    cormat1[is.na(cormat1)] <- 0
+    Master_pathways_ordered <- Master_pathways[Master_pathways$Uniprot %in% rownames(cormat1),] %>% .[order(.$Pathway),]
+    cormat2 <- round(cor(t(Dataset2_sub[1:2000,])),2) %>% get_upper_tri() #%>%
         reshape2::melt(na.rm = T)%>%
         left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
         #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
+    cormat2[is.na(cormat2)] <- 0
     Combined_df <- rbind(cormat1,cormat2)  
     #Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
     
-    Feature_order <- Combined_df[!duplicated(Combined_df$Var1),] %>%
-        .[order(.$Pathway),"Var1"]
+    Feature_order <- Combined_df[!duplicated(Combined_df$Var1),] %>% 
+      .[order(.$Pathway),"Var1"]
     
+    ### ComplexHeatMAP
+    test1 <- Master_pathways_ordered[order(Master_pathways_ordered$Uniprot),]
+    Metabolic_matrix <- as.data.frame(cormat1+cormat2) %>% .[rownames(.) %in% Master_pathways_ordered$Uniprot, 
+                                              colnames(.) %in% Master_pathways_ordered$Uniprot]
+    Metabolic_matrix[Metabolic_matrix ==2] <- 1
+    ha = HeatmapAnnotation(df = Master_pathways_ordered$Pathway)
+    Heatmap(as.matrix(Metabolic_matrix[match(Master_pathways_ordered$Uniprot, row.names(Metabolic_matrix)),
+                                             match(Master_pathways_ordered$Uniprot, colnames(Metabolic_matrix))]), name = "mat", top_annotation = ha , cluster_rows = F, cluster_columns = F,
+    column_title = "reorder matrix")
+    
+    df = data.frame(type = c(rep("a", 5), rep("b", 5)))
+    
+    ha
+    Master_pathways_order
+    
+
+    ### GGPLOT
     Combined_df %>%
         subset(Var1 %in% Master_pathways$Uniprot & Var2 %in% Master_pathways$Uniprot) %>% na.omit() %>%
         ggplot(aes(factor(Var2, levels = Feature_order), factor(Var1,levels = Feature_order), fill = value))+
         geom_tile(color = "white")+
-        scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+        scale_fill_gradient2(low = "blue", high = "red", mid = "white", na.value = "black",
                              midpoint = 0, limit = c(-1,1), space = "Lab", 
                              name="Pearson\nCorrelation") +
         theme_minimal()+ 
         theme(axis.text.x = element_blank(), axis.text.y = element_blank())+
-        coord_fixed() + labs(x = deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))
-    #facet_grid(.~Pathway, scales = "free_x")
+        coord_fixed() + labs(x = deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))#+
+    facet_grid(Pathway~., scales = "free_x")
     
     
     #Correlating corresponding Samples Correlation of only paired values which allows for NA values

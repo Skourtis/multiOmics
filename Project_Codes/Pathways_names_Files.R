@@ -84,4 +84,4 @@ save(Master_pathways,
      Essential_genes,
      SMPDB_pathways,
      Gene_pathways,
-     file = "./Project_Datasets/Metabolic_Pathway_annotations.rda")
+     file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
