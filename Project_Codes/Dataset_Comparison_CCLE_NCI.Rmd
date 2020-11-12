@@ -4,9 +4,11 @@ date: "`r Sys.Date()`"
 output:
   rmdformats::html_clean:
     highlight: kate
+    code_folding: hide
 
 ---
 
+# Setup
 
 ```{r setup, echo=FALSE, cache=FALSE}
 pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation)
@@ -15,8 +17,7 @@ library(circlize)
 
 ## Global options
 options(max.print="75")
-opts_chunk$set(echo=FALSE,
-	             cache=TRUE,
+opts_chunk$set(cache=TRUE,
                prompt=FALSE,
                tidy=TRUE,
                comment=NA,
@@ -25,18 +26,27 @@ opts_chunk$set(echo=FALSE,
 opts_knit$set(width=75,
               root.dir = "./../")
 ```
+
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
 RPPA?
 Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
 
 
 ```{r Data_load_Subset}
-load(file = "./../Project_Datasets/CCLE_OMICS.rda")
-load(file = "./../Project_Datasets/NCI60_OMICS.rda")
-load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.RData")
+# load(file = "./../Project_Datasets/CCLE_OMICS.rda")
+# load(file = "./../Project_Datasets/NCI60_OMICS.rda")
+# load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.RData")
+# 
+# HUMAN_9606_idmapping <- read_tsv("./../Project_Datasets/HUMAN_9606_idmapping.dat",
+#                                  col_names = FALSE) %>%
+#     setNames(c("Uniprot", "Type", "ID"))
 
-HUMAN_9606_idmapping <- read_tsv("./../Project_Datasets/HUMAN_9606_idmapping.dat",
-                                 col_names = FALSE) %>% 
+load(file = "./Project_Datasets/CCLE_OMICS.rda")
+load(file = "./Project_Datasets/NCI60_OMICS.rda")
+load(file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
+
+HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
+                                 col_names = FALSE) %>%
     setNames(c("Uniprot", "Type", "ID"))
 
 HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping$ID, "hsa:"),-2] %>% 
@@ -44,7 +54,7 @@ HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping
     na.omit() %>% .[,-1] %>% setNames(c("KEGG_ID", "Gene.names"))
 
 Correlation_pairwise <- function(x,y){
-    cor(as.matrix,y,use = "pairwise", method = "pearson")
+    cor(x,y,use = "pairwise", method = "pearson")
 }
 
 # Get lower triangle of the correlation matrix
@@ -61,8 +71,18 @@ Correlation_pairwise <- function(x,y){
 #compare 2 datasets with common Feature (rows) and Sample names (Columns)
 ### Change rerun value
 Dataset_correlation <- function(Dataset_1,Dataset_2){
-    Dataset_1 = CCLE_proteins
-    Dataset_2 = NCI_60_proteins
+  # type = c("Transcriptomics",
+  #                                                             "Proteomic",
+  #                                                             "Metabolomics")
+  #  type <- "Transcriptomics" 
+  # Type <- case_when(
+  #     type == "Transcriptomics" ~ "Gene_name",
+  #     type == "Proteomic" ~ "Uniprot",
+  #     type == "Metabolomics" ~ "Metabolites",
+  #     TRUE ~ as.character(type))
+
+    #Dataset_1 = CCLE_proteins
+    #Dataset_2 = NCI_60_proteins
     Comparison_type <- paste(deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))
     Dataset1 <- as.data.frame(Dataset_1)
     Dataset2 <- as.data.frame(Dataset_2)
@@ -71,55 +91,69 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     
         #subsetting and ordering the Datasets
     Dataset1_sub <- Dataset1 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
-    .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
+    .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))]
     Dataset2_sub <- Dataset2 %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
     .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))] 
-    Master_pathways <- Master_pathways[!duplicated(Master_pathways$Genes),]
-    cormat1 <- round(cor(t(Dataset1_sub[1:2000,])),2) %>% get_lower_tri()# %>% 
-        reshape2::melt(na.rm = T) %>% 
-        left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
+    Master_pathways <- Master_pathways[!duplicated(Master_pathways$ID),]
+    Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% Common_proteins,] %>% .[order(.$Pathway),]
+    cormat1 <- round(cor(t(Dataset1_sub[rownames(Dataset1_sub) %in% Master_pathways_ordered$ID,])),2) %>% 
+      .[match(Master_pathways_ordered$ID,row.names(.)),match(Master_pathways_ordered$ID,row.names(.))] %>%
+      get_lower_tri() 
+    
+    #%>% 
+        # reshape2::melt(na.rm = T) %>% 
+        # left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
         #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
     cormat1[is.na(cormat1)] <- 0
-    Master_pathways_ordered <- Master_pathways[Master_pathways$Uniprot %in% rownames(cormat1),] %>% .[order(.$Pathway),]
-    cormat2 <- round(cor(t(Dataset2_sub[1:2000,])),2) %>% get_upper_tri() #%>%
-        reshape2::melt(na.rm = T)%>%
-        left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
+    cormat2 <- round(cor(t(Dataset2_sub[rownames(Dataset2_sub) %in% Master_pathways_ordered$ID,])),2)%>% 
+      .[match(Master_pathways_ordered$ID,row.names(.)),match(Master_pathways_ordered$ID,row.names(.))] %>%
+      get_upper_tri() #%>%
+        # reshape2::melt(na.rm = T)%>%
+        # left_join(Master_pathways[!duplicated(Master_pathways$Uniprot),], by = c("Var1" = "Uniprot"))
         #left_join(SMPDB_pathways[!duplicated(SMPDB_pathways$Uniprot),c("Pathway","Uniprot")], by = c("Var1" = "Uniprot"))
     cormat2[is.na(cormat2)] <- 0
-    Combined_df <- rbind(cormat1,cormat2)  
-    #Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
+    #Combined_df <- rbind(cormat1,cormat2)  
+    # #Combined_df$value[Combined_df$Var1 == Combined_df$Var2] <- NA
+    # 
+    # Feature_order <- Combined_df[!duplicated(Combined_df$Var1),] %>% 
+    #   .[order(.$Pathway),"Var1"]
+    # 
+    # ### ComplexHeatMAP
+    # test1 <- Master_pathways_ordered[order(Master_pathways_orderezd$Uniprot),]
+    Metabolic_matrix <- as.data.frame(cormat1+cormat2) %>%       as.matrix()
+      
     
-    Feature_order <- Combined_df[!duplicated(Combined_df$Var1),] %>% 
-      .[order(.$Pathway),"Var1"]
+    set.seed(15887) # to set random generator seed
+    cl <- colors(distinct = TRUE)
+  
     
-    ### ComplexHeatMAP
-    test1 <- Master_pathways_ordered[order(Master_pathways_ordered$Uniprot),]
-    Metabolic_matrix <- as.data.frame(cormat1+cormat2) %>% .[rownames(.) %in% Master_pathways_ordered$Uniprot, 
-                                              colnames(.) %in% Master_pathways_ordered$Uniprot]
+    Pathway_colours <- sample(cl, length(unique(Master_pathways_ordered$Pathway))) %>% setNames(unique(Master_pathways_ordered$Pathway))
     Metabolic_matrix[Metabolic_matrix ==2] <- 1
-    ha = HeatmapAnnotation(df = Master_pathways_ordered$Pathway)
-    Heatmap(as.matrix(Metabolic_matrix[match(Master_pathways_ordered$Uniprot, row.names(Metabolic_matrix)),
-                                             match(Master_pathways_ordered$Uniprot, colnames(Metabolic_matrix))]), name = "mat", top_annotation = ha , cluster_rows = F, cluster_columns = F,
-    column_title = "reorder matrix")
-    
-    df = data.frame(type = c(rep("a", 5), rep("b", 5)))
-    
-    ha
-    Master_pathways_order
+    ha = HeatmapAnnotation(df = Master_pathways_ordered$Pathway,
+                           col = list(df = Pathway_colours))
+    hmap <- Heatmap(Metabolic_matrix, name = Comparison_type, 
+            top_annotation = ha ,
+            left_annotation = rowAnnotation(df = Master_pathways_ordered$Pathway,col = list(df = Pathway_colours)),
+            cluster_rows = F, cluster_columns = F, show_column_names  = F, show_row_names = F, 
+            row_title = paste0("top = ", deparse(substitute(Dataset_1))), 
+            column_title = paste0("bottom = ", deparse(substitute(Dataset_2))),
+            column_title_side = "bottom"
+            )
     
 
-    ### GGPLOT
-    Combined_df %>%
-        subset(Var1 %in% Master_pathways$Uniprot & Var2 %in% Master_pathways$Uniprot) %>% na.omit() %>%
-        ggplot(aes(factor(Var2, levels = Feature_order), factor(Var1,levels = Feature_order), fill = value))+
-        geom_tile(color = "white")+
-        scale_fill_gradient2(low = "blue", high = "red", mid = "white", na.value = "black",
-                             midpoint = 0, limit = c(-1,1), space = "Lab", 
-                             name="Pearson\nCorrelation") +
-        theme_minimal()+ 
-        theme(axis.text.x = element_blank(), axis.text.y = element_blank())+
-        coord_fixed() + labs(x = deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))#+
-    facet_grid(Pathway~., scales = "free_x")
+
+    # ### GGPLOT
+    # Combined_df %>%
+    #     subset(Var1 %in% Master_pathways$Uniprot & Var2 %in% Master_pathways$Uniprot) %>% na.omit() %>%
+    #     ggplot(aes(factor(Var2, levels = Feature_order), factor(Var1,levels = Feature_order), fill = value))+
+    #     geom_tile(color = "white")+
+    #     scale_fill_gradient2(low = "blue", high = "red", mid = "white", na.value = "black",
+    #                          midpoint = 0, limit = c(-1,1), space = "Lab", 
+    #                          name="Pearson\nCorrelation") +
+    #     theme_minimal()+ 
+    #     theme(axis.text.x = element_blank(), axis.text.y = element_blank())+
+    #     coord_fixed() + labs(x = deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))#+
+    # facet_grid(Pathway~., scales = "free_x")
     
     
     #Correlating corresponding Samples Correlation of only paired values which allows for NA values
@@ -128,7 +162,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
         Dataset2_sub, 
         Correlation_pairwise) 
     
-    Cell_line_perm <- purrr::rerun(2, 
+    Cell_line_perm <- purrr::rerun(10, 
                                    map2_dbl(
                                        Dataset1_sub[,sample(ncol(Dataset1_sub))],#Shuffle column-wise and performing sample correlation as above
                                        Dataset2_sub,
@@ -139,7 +173,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
              pmap(Dataset2_sub, c, use.names = T)),
         Correlation_pairwise) %>% unlist() %>% setNames(Common_proteins) 
     
-    gene_correlation_perm <- purrr::rerun(2, #permutation by row shuflfing and correlation
+    gene_correlation_perm <- purrr::rerun(10, #permutation by row shuflfing and correlation
                                           pmap(list(pmap(Dataset1_sub[sample(nrow(Dataset1_sub)),], 
                                                          c, use.names = T), #Shuffle row-wise
                                                     pmap(Dataset2_sub, c, use.names = T)),
@@ -159,7 +193,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     Hist_plot <- function(Data,Perm){
         Sample_Corr <- data.frame(Samples = c(Data,unlist(Perm)),
                               Type = rep(c("Data","Perm"), times = c(length(Data),length(unlist(Perm)))))
-        p <- ggplot2::ggplot(Sample_Corr,aes(Samples, fill = Type)) + geom_histogram(alpha = 0.5, position = 'identity') +
+        p <- ggplot2::ggplot(Sample_Corr,aes(Samples,after_stat(density), colour = Type)) + geom_freqpoly(binwidth = 0.01) +
             ggtitle(paste(Comparison_type,deparse(substitute(Data))))
     }
     
@@ -172,19 +206,26 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
         ggtitle(paste("Feature Expression",Comparison_type))
     
     Sample_lineage <-  Cell_line_correlation %>% data.frame(Sample = names(.), Correlation = .) %>%
-        left_join(sample_info[,c("stripped_cell_line_name", "lineage")], by = c("Sample" = "stripped_cell_line_name"))
+      left_join(sample_info[,c("stripped_cell_line_name", "lineage")], by = c("Sample" = "stripped_cell_line_name")) %>%
+      left_join(Derms, by = c("lineage" = "Cancer_Lineage" ))
     
-    Sample_lineage_cor_plot <- ggplot(Sample_lineage, aes(Correlation,after_stat(density), colour = lineage)) +
+    Sample_lineage_cor_plot <- ggplot(Sample_lineage, aes(Correlation,after_stat(density), colour = Derm)) +
         geom_freqpoly(binwidth = 0.01) +
         ggtitle(paste("Sample Lineage",Comparison_type))
     
     
-    list(Sample_Corr = list(Sample_lineage, Cell_line_perm, Hist_plot(Cell_line_correlation,Cell_line_perm),Sample_lineage_cor_plot),
-         Feature_Corr = list(Feature_quartiles, gene_correlation_perm, Hist_plot(gene_correlation, gene_correlation_perm),
-                             Feature_expression_cor_plot),
-         Matrix_Corr= list(Matri_Corr, Matrix_perm, Hist_plot(Matri_Corr,Matrix_perm)))
+    list(Sample_Corr = list(Sample_lineage, Cell_line_perm, 
+                            Hist_plot(Cell_line_correlation,Cell_line_perm),
+                            Sample_lineage_cor_plot),
+         Feature_Corr = list(Feature_quartiles, gene_correlation_perm, 
+                             Hist_plot(gene_correlation, gene_correlation_perm), Feature_expression_cor_plot),
+         Matrix_Corr= list(Matri_Corr, Matrix_perm, 
+                           Hist_plot(Matri_Corr,Matrix_perm)),
+         Heatmap= hmap)
     
 }
+# <- openxlsx::read.xlsx("./../Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
+Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
 #Plotting_Essentiality
 
 
@@ -202,14 +243,75 @@ CCLE_NCI_prot <- Dataset_correlation(CCLE_proteins,NCI_60_proteins)
 
 
 ### Metabolic Comparison ###
-Metabolite_mapping <- read.csv("./../Project_Datasets/CCLE_metabolites_mapped.csv")
-NCI_60_m <- rownames(NCI_60_metabolites) %>% .[!str_detect(.," ")]
-Common_Metabolites <- Metabolite_mapping[Metabolite_mapping$KEGG %in% NCI_60_m,]
-CCLE_Met_Common <- Metabolites[rownames(Metabolites) %in% Common_Metabolites$Query,]
+#Metabolite_mapping <- read.csv("./../Project_Datasets/CCLE_metabolites_mapped.csv")
+
+Metabolite_mapping <- read.csv("./Project_Datasets/CCLE_metabolites_mapped.csv")
+rownames(NCI_60_metabolites) <- rownames(NCI_60_metabolites) %>% str_replace_all("HMDB", "HMDB00")
+
+Common_Metabolites <- Metabolite_mapping[(Metabolite_mapping$KEGG %in% rownames(NCI_60_metabolites)) |
+                                          (Metabolite_mapping$HMDB %in% rownames(NCI_60_metabolites)) ,] %>%
+  .[!(.$Query %in% c("NAD","NADP")),]
+
+
 NCI_60_metabolites_common <- NCI_60_metabolites[rownames(NCI_60_metabolites) %in% c(Common_Metabolites$HMDB,Common_Metabolites$KEGG),]
-rownames(NCI_60_metabolites_common) <- Common_Metabolites[match(rownames(NCI_60_metabolites_common),Common_Metabolites$KEGG),] %>% .$Query
+tt1=rownames(NCI_60_metabolites_common)[str_detect(rownames(NCI_60_metabolites_common),"^H")]
+rownames(NCI_60_metabolites_common)[str_detect(rownames(NCI_60_metabolites_common),"^H")] <- Metabolite_mapping[Metabolite_mapping$HMDB %in% tt1,] %>%
+  .[match(tt1, .$HMDB),] %>% .$KEGG
+
+CCLE_Met_Common <- Metabolites[rownames(Metabolites) %in% Common_Metabolites$Query,]
+
+
+rownames(CCLE_Met_Common) <- Common_Metabolites$KEGG[match(rownames(CCLE_Met_Common),Common_Metabolites$Query)]
 
 CCLE_NCI_met <- Dataset_correlation(CCLE_Met_Common,NCI_60_metabolites_common)
 
+omics <- list(Transcriptome = CCLE_NCI_transcr,
+              Proteome = CCLE_NCI_prot,
+              Metabolome = CCLE_NCI_met)
+
 ```
-# Other Title
+
+# Sample correlation
+
+```{r Sample_cor}
+map(omics, ~.x$Sample_Corr[[3]])
+
+```
+
+# Feature correlation
+
+```{r Feature_Corr}
+map(omics, ~.x$Feature_Corr[[3]])
+
+```
+
+# Matrix correlation
+
+```{r Matrix_Corr}
+map(omics, ~.x$Matrix_Corr[[3]])
+```
+
+# Sample Lineage
+
+```{r Sample_lineage}
+map(omics, ~.x$Sample_Corr[[4]])
+
+```
+
+
+# Feature Gene expression Corr
+
+```{r Feature_expre}
+map(omics, ~.x$Feature_Corr[[4]])
+```
+
+1 is the bottom quartile and 4 the top quartile
+
+
+# Heatmaps
+
+```{r heatmaps}
+map(omics, ~.x$Heatmap)
+```
+Here we see that the proteins might actually be more biologically relevant than the mRNA and the 2 datasets are comparable. The CCLE proteome has more NAs but this is not shown here due to 'pairwise' correlation. But when the data is present, the comparison is good
+

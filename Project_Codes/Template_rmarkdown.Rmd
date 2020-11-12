@@ -4,6 +4,7 @@ date: "`r Sys.Date()`"
 output:
   rmdformats::html_clean:
     highlight: kate
+    code_folding: hide
 
 ---
 
@@ -14,18 +15,23 @@ library(rmdformats)
 
 ## Global options
 options(max.print="75")
-opts_chunk$set(echo=FALSE,
-	             cache=TRUE,
+opts_chunk$set(cache=TRUE,
                prompt=FALSE,
                tidy=TRUE,
                comment=NA,
                message=FALSE,
-               warning=FALSE)
+               warning=FALSE,
+               fig.width=12, fig.height=8)
 opts_knit$set(width=75,
               root.dir = "./../")
 ```
 # This title
 ```{r}
+print(25)
+```
+## Other Title
+```{r other, fig.height = 15, fig.width = 15, fig.align = "center"}
+plot(iris$Sepal.Length)
 
 ```
-# Other Title
+

@@ -6,11 +6,24 @@ HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping
     left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name", -2], by = "Uniprot") %>% 
     na.omit() %>% .[,-1] %>% setNames(c("KEGG_ID", "Gene.names"))
 
+
+#Raw from
+
+Master_pathways_metabolites <- openxlsx::read.xlsx("./Project_Datasets/JCI71180sd2.xlsx", 
+                                                   sheet = 2, startRow = 5, 
+                                                   cols = c(2,6,10)) %>%
+    pivot_longer(-SUPER_PATHWAY, names_to = "Type", values_to = "ID") %>%
+    setNames(c("Pathway","Type","ID")) %>%
+    mutate(Type = "Metabolite") %>%
+    subset(!is.na(ID)) %>% unique()
+
 #Raw from https://www.sciencedirect.com/science/article/pii/S2211124718304388?via%3Dihub#mmc2
-Master_pathways <- map_df(1:7, ~read.xlsx("./Project_Datasets/1-s2.0-S2211124718304388-mmc2.xlsx", 
+Master_pathways <- map_df(1:7, ~openxlsx::read.xlsx("./Project_Datasets/1-s2.0-S2211124718304388-mmc2.xlsx", 
                                           startRow = 2, 
                                           sheet = .x)) %>% 
-    left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name",-2], by = c("Genes" = "ID"))
+    left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name",-2], by = c("Genes" = "ID")) %>%
+    pivot_longer(!Pathway, names_to = "Type", values_to="ID") %>% na.omit() %>% unique() %>%
+    rbind(Master_pathways_metabolites)
 
 genes_reactions <- data.frame(Gene_id = NULL,
                               Reaction = NULL, 
