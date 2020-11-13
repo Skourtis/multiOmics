@@ -1,3 +1,34 @@
+pacman::p_load(org.Hs.eg.db)
+x <- org.Hs.egUNIPROT
+mapped_genes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_genes])
+Entrez = tibble(Entrez = names(xx),
+                    Uniprot = xx)
+Entrez <- unnest(Entrez, cols = c(Uniprot))
+
+pacman::p_load(graphite)
+humankegg <- pathways("hsapiens", "reactome")
+
+humankegg_df <- data.frame(SubPathway = NULL,
+                           ID = NULL)
+for(i in names(humankegg)){
+    print(i)
+    if(length(nodes(humankegg[[i]]))>0){
+        humankegg_df <- rbind(humankegg_df,data.frame(SubPathway = i,
+                                  ID = nodes(humankegg[[i]])))
+    }
+    
+}
+humankegg_df <- humankegg_df %>% subset(!duplicated(ID)) %>%
+    mutate(ID = str_remove_all(ID,"ENTREZID:")) %>% 
+    left_join(Entrez, by = c("ID" = "Entrez")) %>% na.omit() %>%
+    dplyr::select(-ID)
+
+
+
+
+
 HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
                                  col_names = FALSE) %>% 
     setNames(c("Uniprot", "Type", "ID"))
@@ -42,17 +73,17 @@ Retrieve_Genes_KEGG <- function(pathway, Gene_df =  genes_reactions){
     # Gene_df = genes_reactions
     # Compound_df = compound_reactions
     KEGGgraph::retrieveKGML(pathway, organism="hsa", destfile=tmp, method="auto", quiet=TRUE)
-    testing <- KEGGgraph::parseKGML2Graph(tmp)
-    test_folate <- KEGGgraph::parseKGML(tmp)
-    # mapkG2 <- KEGGpathway2Graph(test_folate, expandGenes=TRUE)
+    KGMLGraph <- KEGGgraph::parseKGML2Graph(tmp)
+    KGML_n <- KEGGgraph::parseKGML(tmp)
+    # mapkG2 <- KEGGpathway2Graph(KGML_n, expandGenes=TRUE)
     # set.seed(124)
     # randomNodes <- sample(nodes(mapkG2), 25)
     # mapkGsub <- subGraph(randomNodes, mapkG2)
     # plot(mapkGsub)
     
-    for (i in 1:length(testing@nodeData@defaults[["KEGGNode"]][["nodes"]])){
-        df <- data.frame(Gene_id = testing@nodeData@defaults[["KEGGNode"]][["nodes"]][[i]]@entryID,
-                         Reaction = testing@nodeData@defaults[["KEGGNode"]][["nodes"]][[i]]@reaction,
+    for (i in 1:length(KGMLGraph@nodeData@defaults[["KEGGNode"]][["nodes"]])){
+        df <- data.frame(Gene_id = KGMLGraph@nodeData@defaults[["KEGGNode"]][["nodes"]][[i]]@entryID,
+                         Reaction = KGMLGraph@nodeData@defaults[["KEGGNode"]][["nodes"]][[i]]@reaction,
                          pathway = pathway,
                          stringsAsFactors = FALSE)
         Gene_df <- rbind(Gene_df,df)
@@ -60,11 +91,11 @@ Retrieve_Genes_KEGG <- function(pathway, Gene_df =  genes_reactions){
     }
     
     
-    # for (i in 1:length(test_folate@reactions)){
-    #     df <- data.frame(Reaction = test_folate@reactions[[i]]@name,
-    #                      Substrate = test_folate@reactions[[i]]@substrateName,
-    #                      Product = test_folate@reactions[[i]]@productName,
-    #                      Direction = test_folate@reactions[[i]]@type,
+    # for (i in 1:length(KGML_n@reactions)){
+    #     df <- data.frame(Reaction = KGML_n@reactions[[i]]@name,
+    #                      Substrate = KGML_n@reactions[[i]]@substrateName,
+    #                      Product = KGML_n@reactions[[i]]@productName,
+    #                      Direction = KGML_n@reactions[[i]]@type,
     #                      pathway = pathway,
     #                      stringsAsFactors = FALSE)
     #     Compound_df <- rbind(Compound_df,df)
@@ -83,10 +114,33 @@ pathways <- c(#"01110", # Biosynthesis of secondary metabolites
     "01230") # Biosynthesis of amino acids
 #"01220") # Degradation of aromatic compounds
 #KEGGgraph::retrieveKGML(pathways, organism="hsa", destfile=tmp, method="auto", quiet=TRUE)
+pathways <- c("03010",# Ribosome [PATH:hsa03010]
+              "00970", #Aminoacyl-tRNA biosynthesis [PATH:hsa00970]
+              "03013", #RNA transport [PATH:hsa03013]
+              "03015", #mRNA surveillance pathway [PATH:hsa03015]
+              "03008",# Ribosome biogenesis in eukaryotes [PATH:hsa03008]"
+              "03060", # Protein export [PATH:hsa03060]
+              "04141", # Protein processing in endoplasmic reticulum [PATH:hsa04141]
+              "04130", # SNARE interactions in vesicular transport [PATH:hsa04130]
+              "04120", # Ubiquitin mediated proteolysis [PATH:hsa04120]
+              "04122", # Sulfur relay system [PATH:hsa04122]
+              "03050", # Proteasome [PATH:hsa03050]
+              "03018") # RNA degradation [PATH:hsa03018])
+
+
+
 
 Gene_pathways <- map_df(pathways,Retrieve_Genes_KEGG) %>% 
     left_join(HUMAN_9606_idmapping_hsa, by= c("Gene_id" = "KEGG_ID")) %>%
-    subset(!duplicated(Gene.names))
+    subset(!duplicated(Gene.names)) %>% 
+    left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name",-2], 
+              by = c("Gene.names" = "ID"))
+
+Gene_pathways <- Gene_pathways %>%
+    mutate(SubPathway = case_when(pathway %in% pathways[1:5] ~ "Ribosomal",
+                                  pathway %in% pathways[-c(1:5)] ~ "Proteosome"))
+
+humankegg_df <- rbind(humankegg_df, Gene_pathways[,c("SubPathway","Uniprot")])
 
 #Raw from http://tko.ccbr.utoronto.ca/ 4/11/2020
 Essential_genes <- openxlsx::read.xlsx("./Project_Datasets/reference_essentials_and_nonessentials_sym_hgnc_entrez.xlsx")$Gene
@@ -97,4 +151,5 @@ save(Master_pathways,
      Essential_genes,
      SMPDB_pathways,
      Gene_pathways,
+     humankegg_df,
      file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
