@@ -17,7 +17,7 @@ library(circlize)
 
 ## Global options
 options(max.print="75")
-opts_chunk$set(cache=TRUE,
+opts_chunk$set(cache=FALSE,
                prompt=FALSE,
                tidy=TRUE,
                comment=NA,
@@ -45,6 +45,10 @@ IDEAS
 #                                  col_names = FALSE) %>%
 #     setNames(c("Uniprot", "Type", "ID"))
 
+#Mapping of Uniprots to all others sort of identifiers
+HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
+                                 col_names = FALSE) %>%
+    setNames(c("Uniprot", "Type", "ID"))
 load(file = "./Project_Datasets/CCLE_OMICS.rda")
 load(file = "./Project_Datasets/NCI60_OMICS.rda")
 load(file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
@@ -63,10 +67,7 @@ Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", col
 #   setNames(c("Subpathway", "Type","ID"))
 
 
-#Mapping of Uniprots to all others sort of identifiers
-HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
-                                 col_names = FALSE) %>%
-    setNames(c("Uniprot", "Type", "ID"))
+
 
 #subset hsa KEGG to Gene name
 HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping$ID, "hsa:"),-2] %>% 
@@ -79,12 +80,12 @@ Correlation_pairwise <- function(x,y){
 }
 
 # Get lower triangle of the correlation matrix
-  get_lower_tri<-function(cormat){
+  get_upper_tri<-function(cormat){
     cormat[lower.tri(cormat)] <- NA
     return(cormat)
   }
 # Get upper triangle of the correlation matrix
-  get_upper_tri<-function(cormat){
+  get_lower_tri<-function(cormat){
     cormat[upper.tri(cormat)] <- NA
     return(cormat)
   }
@@ -120,7 +121,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     #   subset(Pathway %in% c("Amino acid","Nucleotide","TCA cycle"))
     
     Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% Common_proteins,]  %>%
-      left_join(humankegg_df, by = c("ID" = "Uniprot"))%>% .[order(.$Pathway, .$SubPathway),] %>%
+      left_join(humankegg_df, by = c("ID" = "Uniprot"))%>% arrange(Pathway,SubPathway) %>%
       subset(!duplicated(ID))
       #left_join(Gene_pathways[,c("Uniprot","SubPathway")], by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
     Master_pathways_ordered[is.na(Master_pathways_ordered)] <- "Not Known"
@@ -128,22 +129,24 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
       
     
    #test that Dataset1[1,1] =! Dataset2 [1,1]
-    Subset_and_matrix <- function(x){
+    Subset_and_matrix <- function(x, triange = c("top","bottom")){
       #x <- Dataset1
       #subsetting and ordering the Datasets
       x_sub <- x %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
         .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))]
       #print(deparse(substitute(x)))
-      cormat <- round(cor(t(x_sub[rownames(x_sub) %in% Master_pathways_ordered$ID,])),2) %>% 
-      .[match(Master_pathways_ordered$ID,row.names(.)),match(Master_pathways_ordered$ID,row.names(.))] %>%
-        {if(x[1,1] == Dataset_1[1,1]) get_lower_tri(.) else get_upper_tri(.)}
+      whole_matrix <- round(cor(t(x_sub[rownames(x_sub) %in% Master_pathways_ordered$ID,])),2) %>% 
+      .[match(Master_pathways_ordered$ID,row.names(.)),match(Master_pathways_ordered$ID,colnames(.))]
+      cormat <- whole_matrix  %>%
+        {if(triange == "top")  get_upper_tri(.)else get_lower_tri(.) }
       cormat[is.na(cormat)] <- 0  
-      list(matrix = cormat,
+      list(whole_matrix = whole_matrix,
+           matrix = cormat,
            df = x_sub)
       #cormat
     }
-    list1 <- Subset_and_matrix(Dataset_1)
-    list2 <- Subset_and_matrix(Dataset_2)
+    list1 <- Subset_and_matrix(Dataset_1,"top")
+    list2 <- Subset_and_matrix(Dataset_2, "bottom")
     Dataset1_sub <- list1$df %>% as.data.frame()
     Dataset2_sub <- list2$df %>% as.data.frame()
         #Combined_df <- rbind(cormat1,cormat2)  
@@ -271,8 +274,8 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
          Matrix_Corr= list(Matri_Corr = Matri_Corr, 
                            Matrix_perm = Matrix_perm,
                            Histogram =   Hist_plot(Matri_Corr,Matrix_perm)),
-         Heatmap= list(Dataset1_matri = list1$matrix,
-                       Dataset2_matri = list2$matrix,
+         Heatmap= list(Dataset1_matri = list1$whole_matrix,
+                       Dataset2_matri = list2$whole_matrix,
                        Plot_Heatmap = hmap))
     
 }
@@ -317,14 +320,14 @@ TCA: Not Known pathway genes
 # Sample correlation
 
 ```{r Sample_cor}
-map(omics, ~.x$Sample_Corr[[3]])
+map(omics, ~.x$Sample_Corr$Histogram)
 
 ```
 
 # Feature correlation
 
 ```{r Feature_Corr}
-map(omics, ~.x$Feature_Corr[[3]])
+map(omics, ~.x$Feature_Corr$Histogram)
 
 ```
 # Essentiality correlation
@@ -344,13 +347,13 @@ ggplot(Essential_vs_Not_Genes, aes(values,after_stat(density), colour = Essentia
 # Matrix correlation
 
 ```{r Matrix_Corr}
-map(omics, ~.x$Matrix_Corr[[3]])
+map(omics, ~.x$Matrix_Corr$Histogram)
 ```
 
 # Sample Lineage
 
 ```{r Sample_lineage}
-map(omics, ~.x$Sample_Corr[[4]])
+map(omics, ~.x$Sample_Corr$Sample_lin_cor_plot)
 
 ```
 
@@ -358,7 +361,7 @@ map(omics, ~.x$Sample_Corr[[4]])
 # Feature Gene expression Corr
 
 ```{r Feature_expre}
-map(omics, ~.x$Feature_Corr[[4]])
+map(omics, ~.x$Feature_Corr$Feature_cor_plot)
 ```
 
 1 is the bottom quartile and 4 the top quartile
@@ -367,13 +370,13 @@ map(omics, ~.x$Feature_Corr[[4]])
 # Heatmaps
 
 ```{r heatmaps}
-map(omics, ~.x$Heatmap)
+map(omics, ~.x$Heatmap$Plot_Heatmap)
 ```
 Here we see that the proteins might actually be more biologically relevant than the mRNA and the 2 datasets are comparable. The CCLE proteome has more NAs but this is not shown here due to 'pairwise' correlation. But when the data is present, the comparison is good
 
 # Transcript-Proteom Heatmap
 ```{r mix_heatmap}
-Genes_Matrix <- omics$Transcriptome$Heatmap$Dataset1_matri 
+Genes_matrix <- omics$Transcriptome$Heatmap$Dataset1_matri 
 Proteins_Matrix <- omics$Proteome$Heatmap$Dataset1_matri 
 
 Gene_mapping <- HUMAN_9606_idmapping %>%
@@ -385,25 +388,29 @@ Proteins_Matrix <- Proteins_Matrix %>%
   magrittr::set_rownames(Gene_mapping) %>% 
   magrittr::set_colnames(Gene_mapping)
 
-common_genes <- intersect(rownames(Genes_Matrix), rownames(Proteins_Matrix))
+common_genes <- intersect(rownames(Genes_matrix), rownames(Proteins_Matrix))
 Master_pathways <- Master_pathways[!duplicated(Master_pathways$ID),]
-Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% common_genes,] %>% .[order(.$Pathway),]# %>%
+Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% common_genes,] %>% arrange(Pathway)# %>%
       #left_join(humankegg_df, by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
       #left_join(Gene_pathways[,c("Uniprot","SubPathway")], by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
 Master_pathways_ordered[is.na(Master_pathways_ordered)] <- "Not Known"
 common_genes <- common_genes[match(Master_pathways_ordered$ID, common_genes)]
 
-Genes_matrix <- Genes_Matrix %>% 
+Genes_matrix <- Genes_matrix %>% 
   .[rownames(.) %in% common_genes,colnames(.) %in% common_genes] %>%
-  .[match(common_genes,rownames(.)),match(common_genes,colnames(.))]
+  .[match(common_genes,rownames(.)),match(common_genes,colnames(.))] %>% 
+  get_upper_tri()
+Genes_matrix[is.na(Genes_matrix)] <- 0
 
 Proteins_Matrix <- Proteins_Matrix %>% 
   .[rownames(.) %in% common_genes,colnames(.) %in% common_genes] %>%
-  .[match(common_genes,rownames(.)),match(common_genes,colnames(.))]
+  .[match(common_genes,rownames(.)),match(common_genes,colnames(.))] %>%
+  get_lower_tri()
+Proteins_Matrix[is.na(Proteins_Matrix)] <- 0
 
 
 
-Combined_matrix <- as.data.frame(Genes_matrix+t(Proteins_Matrix)) %>% as.matrix()
+Combined_matrix <- as.data.frame(Genes_matrix+Proteins_Matrix) %>% as.matrix()
       
     
 set.seed(1587) # to set random generator seed
@@ -431,3 +438,8 @@ hmap <- Heatmap(Combined_matrix, #name = Comparison_type,
 hmap
 
 ```
+
+```{r Something_new}
+print(5)
+```
+
