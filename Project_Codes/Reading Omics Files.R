@@ -48,7 +48,7 @@ RNAi <- RNAi %>% mutate(Gene_name = str_match(Gene_name,"^([:graph:]*?) ")[,2]) 
 #Raw from  https://www.nature.com/articles/s41467-019-09695-9#Sec28 2/11/2020
 NCI_60_metabolites <- read.xlsx("./Project_Datasets/41467_2019_9695_MOESM2_ESM.xlsx", sheet = 3, startRow = 4, na.strings = "NaN") %>%
     .[str_detect(.$`Annotation.ID`,"H|C"),-c(1:3,5)] %>% setNames(str_remove_all(colnames(.), "^[:graph:]*?_"))  %>%
-    na.omit() %>% remove_rownames() %>% column_to_rownames("Annotation.ID")
+    na.omit() 
 
 Z_transf <- function(x){
     x <- as.matrix(x)

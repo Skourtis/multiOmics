@@ -45,7 +45,8 @@ Master_pathways_metabolites <- openxlsx::read.xlsx("./Project_Datasets/JCI71180s
                                                    cols = c(2,6,10)) %>%
     pivot_longer(-SUPER_PATHWAY, names_to = "Type", values_to = "ID") %>%
     setNames(c("Pathway","Type","ID")) %>%
-    mutate(Type = "Metabolite") %>%
+    mutate(Type = "Metabolite",
+           ID = str_replace_all(ID,"HMDB","HMDB00")) %>%
     subset(!is.na(ID)) %>% unique()
 
 #Raw from https://www.sciencedirect.com/science/article/pii/S2211124718304388?via%3Dihub#mmc2
@@ -54,7 +55,7 @@ Master_pathways <- map_df(1:7, ~openxlsx::read.xlsx("./Project_Datasets/1-s2.0-S
                                           sheet = .x)) %>% 
     left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name",-2], by = c("Genes" = "ID")) %>%
     pivot_longer(!Pathway, names_to = "Type", values_to="ID") %>% na.omit() %>% unique() %>%
-    rbind(Master_pathways_metabolites)
+    rbind(.,Master_pathways_metabolites)
 
 genes_reactions <- data.frame(Gene_id = NULL,
                               Reaction = NULL, 

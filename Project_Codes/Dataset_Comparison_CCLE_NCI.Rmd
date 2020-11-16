@@ -23,8 +23,7 @@ opts_chunk$set(cache=TRUE,
                comment=NA,
                message=FALSE,
                warning=FALSE)
-opts_knit$set(width=75,
-              root.dir = "./../")
+opts_knit$set(root.dir = "./../")
 ```
 
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
@@ -49,7 +48,8 @@ IDEAS
 load(file = "./Project_Datasets/CCLE_OMICS.rda")
 load(file = "./Project_Datasets/NCI60_OMICS.rda")
 load(file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
-
+#Derms <- openxlsx::read.xlsx("./../Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
+Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
 
 ## the file humankegg_df if currently used for subpathways instead of this
 #Ordering SMPDB by pathway count and removing duplicates. 
@@ -102,8 +102,12 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
   #     type == "Metabolomics" ~ "Metabolites",
   #     TRUE ~ as.character(type))
 
-    # Dataset_1 = RNA_seq
-    # Dataset_2 = NCI_60_RNA
+    #Dataset_1 = RNA_seq
+    #Dataset_2 = NCI_60_RNA
+    #Dataset_1 = CCLE_proteins
+    #Dataset_2 = NCI_60_proteins
+    #Dataset_1 = CCLE_Met_Common 
+    #Dataset_2 = NCI_60_metabolites_common
     Comparison_type <- paste(deparse(substitute(Dataset_1)),deparse(substitute(Dataset_2)))
     Dataset1 <- as.data.frame(Dataset_1)
     Dataset2 <- as.data.frame(Dataset_2)
@@ -115,8 +119,9 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     # Master_pathways <- Master_pathways %>% 
     #   subset(Pathway %in% c("Amino acid","Nucleotide","TCA cycle"))
     
-    Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% Common_proteins,] %>% .[order(.$Pathway),] %>%
-      left_join(humankegg_df, by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
+    Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% Common_proteins,]  %>%
+      left_join(humankegg_df, by = c("ID" = "Uniprot"))%>% .[order(.$Pathway, .$SubPathway),] %>%
+      subset(!duplicated(ID))
       #left_join(Gene_pathways[,c("Uniprot","SubPathway")], by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
     Master_pathways_ordered[is.na(Master_pathways_ordered)] <- "Not Known"
     
@@ -128,7 +133,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
       #subsetting and ordering the Datasets
       x_sub <- x %>% .[rownames(.) %in% Common_proteins, colnames(.) %in% Common_Cell_lines]%>% 
         .[match(Common_proteins,rownames(.)),match(Common_Cell_lines,colnames(.))]
-      print(deparse(substitute(x)))
+      #print(deparse(substitute(x)))
       cormat <- round(cor(t(x_sub[rownames(x_sub) %in% Master_pathways_ordered$ID,])),2) %>% 
       .[match(Master_pathways_ordered$ID,row.names(.)),match(Master_pathways_ordered$ID,row.names(.))] %>%
         {if(x[1,1] == Dataset_1[1,1]) get_lower_tri(.) else get_upper_tri(.)}
@@ -149,7 +154,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     # 
     # ### ComplexHeatMAP
     # test1 <- Master_pathways_ordered[order(Master_pathways_orderezd$Uniprot),]
-    Metabolic_matrix <- as.data.frame(list1$matrix+list2$matrix) %>%       as.matrix()
+    Metabolic_matrix <- as.data.frame(list1$matrix+list2$matrix) %>% as.matrix()
       
     
     set.seed(1587) # to set random generator seed
@@ -161,11 +166,11 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     Metabolic_matrix[Metabolic_matrix ==2] <- 1
     ha = HeatmapAnnotation(Master_path = Master_pathways_ordered$Pathway,
                            Sub_path = Master_pathways_ordered$SubPathway,
-                           col = list(Master_path = Pathway_colours,
+                           col = list(Master_path = Master_Pathway_colours,
                                       Sub_path = Sub_Pathway_colours))
     side = rowAnnotation(Master_path = Master_pathways_ordered$Pathway,
                            Sub_path = Master_pathways_ordered$SubPathway,
-                           col = list(Master_path = Pathway_colours,
+                           col = list(Master_path = Master_Pathway_colours,
                                       Sub_path = Sub_Pathway_colours))
     
     hmap <- Heatmap(Metabolic_matrix, name = Comparison_type, 
@@ -255,7 +260,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
         ggtitle(paste("Sample Lineage",Comparison_type))
     
     
-    list_1 <-  list(Sample_Corr = list(Sample_lineage = Sample_lineage, 
+    list(Sample_Corr = list(Sample_lineage = Sample_lineage, 
                             Cell_line_perm = Cell_line_perm, 
                             Histogram = Hist_plot(Cell_line_correlation,Cell_line_perm),
                             Sample_lin_cor_plot = Sample_lineage_cor_plot),
@@ -271,33 +276,32 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
                        Plot_Heatmap = hmap))
     
 }
-#Derms <- openxlsx::read.xlsx("./../Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
-Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
-#Plotting_Essentiality
-
-
-### Proteomic Comparison ###
 
 ### Metabolic Comparison ###
 #Metabolite_mapping <- read.csv("./../Project_Datasets/CCLE_metabolites_mapped.csv")
 
 Metabolite_mapping <- read.csv("./Project_Datasets/CCLE_metabolites_mapped.csv")
-rownames(NCI_60_metabolites) <- rownames(NCI_60_metabolites) %>% str_replace_all("HMDB", "HMDB00")
+NCI_60_metabolites <-  NCI_60_metabolites %>% separate_rows(Annotation.ID, sep = " ; ") %>%
+  subset(str_detect(Annotation.ID, "^H|C") & !duplicated(Annotation.ID)) %>%
+  mutate(Annotation.ID =  str_replace_all(Annotation.ID,"HMDB", "HMDB00")) 
 
-Common_Metabolites <- Metabolite_mapping[(Metabolite_mapping$KEGG %in% rownames(NCI_60_metabolites)) |
-                                          (Metabolite_mapping$HMDB %in% rownames(NCI_60_metabolites)) ,] %>%
-  .[!(.$Query %in% c("NAD","NADP")),]
+Common_Metabolites <- Metabolite_mapping[(Metabolite_mapping$KEGG %in% (NCI_60_metabolites$Annotation.ID)) |
+                                          (Metabolite_mapping$HMDB %in% (NCI_60_metabolites$Annotation.ID)) ,]
 
+NCI_60_metabolites_common <- NCI_60_metabolites[str_detect(NCI_60_metabolites$Annotation.ID, 
+                                                           paste(c(Common_Metabolites$HMDB,Common_Metabolites$KEGG), collapse = "|")),]
 
-NCI_60_metabolites_common <- NCI_60_metabolites[rownames(NCI_60_metabolites) %in% c(Common_Metabolites$HMDB,Common_Metabolites$KEGG),]
-tt1=rownames(NCI_60_metabolites_common)[str_detect(rownames(NCI_60_metabolites_common),"^H")]
-rownames(NCI_60_metabolites_common)[str_detect(rownames(NCI_60_metabolites_common),"^H")] <- Metabolite_mapping[Metabolite_mapping$HMDB %in% tt1,] %>%
-  .[match(tt1, .$HMDB),] %>% .$KEGG
+tt1=NCI_60_metabolites_common$Annotation.ID[str_detect(NCI_60_metabolites_common$Annotation.ID,"^C")]
+NCI_60_metabolites_common$Annotation.ID[str_detect(NCI_60_metabolites_common$Annotation.ID,"^C")] <- Metabolite_mapping[Metabolite_mapping$KEGG %in% tt1,] %>%  .[match(tt1, .$KEGG),] %>% pull(HMDB)
+
+NCI_60_metabolites_common <- NCI_60_metabolites_common%>% 
+  subset(!duplicated(Annotation.ID)) %>%
+  column_to_rownames("Annotation.ID")
 
 CCLE_Met_Common <- Metabolites[rownames(Metabolites) %in% Common_Metabolites$Query,]
 
 
-rownames(CCLE_Met_Common) <- Common_Metabolites$KEGG[match(rownames(CCLE_Met_Common),Common_Metabolites$Query)]
+rownames(CCLE_Met_Common) <- Common_Metabolites$HMDB[match(rownames(CCLE_Met_Common),Common_Metabolites$Query)]
 
 omics <- list(Transcriptome = Dataset_correlation(RNA_seq,NCI_60_RNA),
               Proteome = Dataset_correlation(CCLE_proteins,NCI_60_proteins),
@@ -384,7 +388,7 @@ Proteins_Matrix <- Proteins_Matrix %>%
 common_genes <- intersect(rownames(Genes_Matrix), rownames(Proteins_Matrix))
 Master_pathways <- Master_pathways[!duplicated(Master_pathways$ID),]
 Master_pathways_ordered <- Master_pathways[Master_pathways$ID %in% common_genes,] %>% .[order(.$Pathway),]# %>%
-      left_join(humankegg_df, by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
+      #left_join(humankegg_df, by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
       #left_join(Gene_pathways[,c("Uniprot","SubPathway")], by = c("ID" = "Uniprot")) %>% subset(!duplicated(ID))
 Master_pathways_ordered[is.na(Master_pathways_ordered)] <- "Not Known"
 common_genes <- common_genes[match(Master_pathways_ordered$ID, common_genes)]
@@ -407,14 +411,14 @@ cl <- colors(distinct = TRUE)
   
 Master_Pathway_colours <- sample(cl, length(unique(Master_pathways_ordered$Pathway))) %>% setNames(unique(Master_pathways_ordered$Pathway))
 #Sub_Pathway_colours <- sample(cl, length(unique(Master_pathways_ordered$SubPathway))) %>% setNames(unique(Master_pathways_ordered$SubPathway))
-Metabolic_matrix[Metabolic_matrix ==2] <- 1
+Combined_matrix[Combined_matrix ==2] <- 1
 ha = HeatmapAnnotation(Master_path = Master_pathways_ordered$Pathway,
                            #Sub_path = Master_pathways_ordered$SubPathway,
-                           col = list(Master_path = Pathway_colours))#,
+                           col = list(Master_path = Master_Pathway_colours))#,
                                       #Sub_path = Sub_Pathway_colours))
 side = rowAnnotation(Master_path = Master_pathways_ordered$Pathway,
                            #Sub_path = Master_pathways_ordered$SubPathway,
-                           col = list(Master_path = Pathway_colours))#,
+                           col = list(Master_path = Master_Pathway_colours))#,
                                       #Sub_path = Sub_Pathway_colours))
     
 hmap <- Heatmap(Combined_matrix, #name = Comparison_type, 
@@ -424,5 +428,6 @@ hmap <- Heatmap(Combined_matrix, #name = Comparison_type,
             row_title = paste0("top = ", "Transcriptome"), 
             column_title = paste0("bottom = ", "Proteome"),
             column_title_side = "bottom")
+hmap
 
 ```
