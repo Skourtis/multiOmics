@@ -2,8 +2,10 @@
 title: "Dataset_Comparison_CCLE_NCI"
 date: "`r Sys.Date()`"
 output:
-  rmdformats::html_clean:
-    highlight: kate
+    html_document:
+    toc: true
+    toc_depth: 2
+    highlight: tango
     code_folding: hide
 
 ---
@@ -11,7 +13,7 @@ output:
 # Setup
 
 ```{r setup, echo=FALSE, cache=FALSE}
-pacman::p_load(knitr,rmdformats,tidyverse, MatrixCorrelation)
+pacman::p_load(knitr,cgwtools,tidyverse, MatrixCorrelation)
 library(ComplexHeatmap)
 library(circlize)
 
@@ -37,10 +39,24 @@ IDEAS
  - 
 
 ```{r Data_load_Subset}
-# load(file = "./../Project_Datasets/CCLE_OMICS.rda")
-# load(file = "./../Project_Datasets/NCI60_OMICS.rda")
-# load(file = "./../Project_Datasets/Metabolic_Pathway_annotations.RData")
-# 
+
+#for intereactive running
+Files_to_load <- (c("./../Project_Datasets/CCLE_OMICS.rda",
+                "./../Project_Datasets/NCI60_OMICS.rda",
+                "./../Project_Datasets/Metabolic_Pathway_annotations.RData"))
+
+#for knitting
+Files_to_load <- (c("./Project_Datasets/CCLE_OMICS.rda",
+                "./Project_Datasets/NCI60_OMICS.rda",
+                "./Project_Datasets/Metabolic_Pathway_annotations.RData"))
+
+if(intersect(map(Files_to_load, cgwtools::lsdata) %>% unlist(),
+             ls()) %>% length() == 0){
+  purrr::walk(Files_to_load, load,envir = .GlobalEnv)
+} else {
+  stop("Variable names in environment which clash with RData loading Names")
+             }
+
 # HUMAN_9606_idmapping <- read_tsv("./../Project_Datasets/HUMAN_9606_idmapping.dat",
 #                                  col_names = FALSE) %>%
 #     setNames(c("Uniprot", "Type", "ID"))
@@ -49,9 +65,7 @@ IDEAS
 HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
                                  col_names = FALSE) %>%
     setNames(c("Uniprot", "Type", "ID"))
-load(file = "./Project_Datasets/CCLE_OMICS.rda")
-load(file = "./Project_Datasets/NCI60_OMICS.rda")
-load(file = "./Project_Datasets/Metabolic_Pathway_annotations.RData")
+
 #Derms <- openxlsx::read.xlsx("./../Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
 Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
 
@@ -182,10 +196,10 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
             cluster_rows = F, cluster_columns = F, show_column_names  = F, show_row_names = F, 
             row_title = paste0("top = ", deparse(substitute(Dataset_1))), 
             column_title = paste0("bottom = ", deparse(substitute(Dataset_2))),
-            column_title_side = "bottom")
+            column_title_side = "bottom",
+            heatmap_width  = unit(20,"cm"),
+            heatmap_height = unit(20,"cm"))
     
-
-
     # ### GGPLOT
     # Combined_df %>%
     #     subset(Var1 %in% Master_pathways$Uniprot & Var2 %in% Master_pathways$Uniprot) %>% na.omit() %>%
@@ -369,13 +383,13 @@ map(omics, ~.x$Feature_Corr$Feature_cor_plot)
 
 # Heatmaps
 
-```{r heatmaps}
+```{r heatmaps, fig.width = 18, fig.height=18}
 map(omics, ~.x$Heatmap$Plot_Heatmap)
 ```
 Here we see that the proteins might actually be more biologically relevant than the mRNA and the 2 datasets are comparable. The CCLE proteome has more NAs but this is not shown here due to 'pairwise' correlation. But when the data is present, the comparison is good
 
 # Transcript-Proteom Heatmap
-```{r mix_heatmap}
+```{r mix_heatmap, fig.width = 18, fig.height=18}
 Genes_matrix <- omics$Transcriptome$Heatmap$Dataset1_matri 
 Proteins_Matrix <- omics$Proteome$Heatmap$Dataset1_matri 
 
@@ -438,8 +452,3 @@ hmap <- Heatmap(Combined_matrix, #name = Comparison_type,
 hmap
 
 ```
-
-```{r Something_new}
-print(5)
-```
-
