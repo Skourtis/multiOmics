@@ -3,16 +3,17 @@ title: "Dataset_Comparison_CCLE_NCI"
 date: "`r Sys.Date()`"
 output:
     html_document:
-    toc: true
-    toc_depth: 2
-    highlight: tango
-    code_folding: hide
+      code_folding: hide
+      toc: true
+      toc_depth: 2
+      highlight: tango
+
 
 ---
 
 # Setup
 
-```{r setup, echo=FALSE, cache=FALSE}
+```{r setup,  echo=FALSE, cache=FALSE, warning= FALSE, message=FALSE}
 pacman::p_load(knitr,cgwtools,tidyverse, MatrixCorrelation)
 library(ComplexHeatmap)
 library(circlize)
@@ -30,25 +31,29 @@ opts_knit$set(root.dir = "./../")
 
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
 RPPA?
-Plot in double matrix of transcripromis vs proteomics correlations ordered by pathway?
 
 Part of of AA - > superimpose subpathways
 IDEAS
  - lineage per heatmap
- - RNAseq quartile vs protein levels mapping
- - 
 
 ```{r Data_load_Subset}
 
-#for intereactive running
-Files_to_load <- (c("./../Project_Datasets/CCLE_OMICS.rda",
+if( #for intereactive running or for knitting
+  getwd() == "C:/Users/skourtis/OneDrive - CRG - Centre de Regulacio Genomica/Bioinformatics Projects/multiOmics/Project_Codes"){
+    Files_to_load <- (c("./../Project_Datasets/CCLE_OMICS.rda",
                 "./../Project_Datasets/NCI60_OMICS.rda",
                 "./../Project_Datasets/Metabolic_Pathway_annotations.RData"))
-
-#for knitting
-Files_to_load <- (c("./Project_Datasets/CCLE_OMICS.rda",
-                "./Project_Datasets/NCI60_OMICS.rda",
-                "./Project_Datasets/Metabolic_Pathway_annotations.RData"))
+    HUMAN_9606_idmapping_file <- "./../Project_Datasets/HUMAN_9606_idmapping.dat"
+    Derms_file = "./../Project_Datasets/Lineage_tissue_types.xlsx"
+    Metabolite_mapping_file  = "./../Project_Datasets/CCLE_metabolites_mapped.csv"
+} else {
+  Files_to_load <- (c("./Project_Datasets/CCLE_OMICS.rda",
+                      "./Project_Datasets/NCI60_OMICS.rda",
+                      "./Project_Datasets/Metabolic_Pathway_annotations.RData"))
+  HUMAN_9606_idmapping_file <- "./Project_Datasets/HUMAN_9606_idmapping.dat"
+  Derms_file = "./Project_Datasets/Lineage_tissue_types.xlsx"
+  Metabolite_mapping_file  = "./Project_Datasets/CCLE_metabolites_mapped.csv"
+  }
 
 if(intersect(map(Files_to_load, cgwtools::lsdata) %>% unlist(),
              ls()) %>% length() == 0){
@@ -57,17 +62,13 @@ if(intersect(map(Files_to_load, cgwtools::lsdata) %>% unlist(),
   stop("Variable names in environment which clash with RData loading Names")
              }
 
-# HUMAN_9606_idmapping <- read_tsv("./../Project_Datasets/HUMAN_9606_idmapping.dat",
-#                                  col_names = FALSE) %>%
-#     setNames(c("Uniprot", "Type", "ID"))
-
 #Mapping of Uniprots to all others sort of identifiers
-HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
+HUMAN_9606_idmapping <- read_tsv(HUMAN_9606_idmapping_file,
                                  col_names = FALSE) %>%
     setNames(c("Uniprot", "Type", "ID"))
 
-#Derms <- openxlsx::read.xlsx("./../Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
-Derms <- openxlsx::read.xlsx("./Project_Datasets/Lineage_tissue_types.xlsx", cols = c(1,6)) %>% na.omit()
+
+Derms <- openxlsx::read.xlsx(Derms_file, cols = c(1,6)) %>% na.omit()
 
 ## the file humankegg_df if currently used for subpathways instead of this
 #Ordering SMPDB by pathway count and removing duplicates. 
@@ -262,7 +263,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
     
     Feature_quartiles <- rowMeans(Dataset2_sub, na.rm = T) %>% data.frame(Feature = names(.),
                                                            Mean_Abundance = .) %>%
-        mutate(quartile = as.factor(ntile(Mean_Abundance, 4))) %>% left_join(stack(gene_correlation), by = c("Feature" = "ind"))
+        mutate(quartile = as.factor(ntile(Mean_Abundance, 10))) %>% left_join(stack(gene_correlation), by = c("Feature" = "ind"))
     
     Feature_expression_cor_plot <- ggplot(Feature_quartiles, aes(values,after_stat(density), colour =quartile)) +
         geom_freqpoly(binwidth = 0.1) +
@@ -295,9 +296,7 @@ Dataset_correlation <- function(Dataset_1,Dataset_2){
 }
 
 ### Metabolic Comparison ###
-#Metabolite_mapping <- read.csv("./../Project_Datasets/CCLE_metabolites_mapped.csv")
-
-Metabolite_mapping <- read.csv("./Project_Datasets/CCLE_metabolites_mapped.csv")
+Metabolite_mapping <- read.csv(Metabolite_mapping_file)
 NCI_60_metabolites <-  NCI_60_metabolites %>% separate_rows(Annotation.ID, sep = " ; ") %>%
   subset(str_detect(Annotation.ID, "^H|C") & !duplicated(Annotation.ID)) %>%
   mutate(Annotation.ID =  str_replace_all(Annotation.ID,"HMDB", "HMDB00")) 
@@ -452,3 +451,88 @@ hmap <- Heatmap(Combined_matrix, #name = Comparison_type,
 hmap
 
 ```
+
+```{r Gene_protein_rank}
+#this is done with the overlapping terms, should be done with the individual terms
+RNA_feature_ranking <- omics$Transcriptome$Feature_Corr$Features_quart %>% 
+  select(-values) %>% setNames(c("Gene_name","Mean_RNA_Abundance","Gene_Rank"))
+Protein_feature_ranking <- omics$Proteome$Feature_Corr$Features_quart %>% 
+  select(-values) %>% setNames(c("Uniprot","Mean_Prot_Abundance","Protein_Rank"))
+
+
+ensembl <- biomaRt::useMart('ensembl', dataset="hsapiens_gene_ensembl")
+annotation <- biomaRt::getBM(attributes=c("uniprotswissprot", "uniprot_gn_symbol"), 
+                             filters="uniprotswissprot", 
+                             values=Protein_feature_ranking$Uniprot, mart=ensembl)
+
+annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") & 
+                       (Uniprot %in% Protein_feature_ranking$Uniprot)) 
+
+Rankings <- RNA_feature_ranking %>%
+  full_join(annotation, by = c("Gene_name" = "ID")) %>%
+  full_join(Protein_feature_ranking, by = "Uniprot")
+
+hist(as.numeric(Rankings$Mean_RNA_Abundance[!is.na(Rankings$Protein_Rank)]))
+
+breaks <- seq(min(Rankings$Mean_RNA_Abundance, na.rm = T)-0.1,
+              max(Rankings$Mean_RNA_Abundance, na.rm = T)+0.1,
+                  by = 0.2)
+with(Rankings, hist(Rankings$Mean_RNA_Abundance, col = rgb(1,0,0,0.5), breaks= breaks))
+with(Rankings, hist(Rankings$Mean_RNA_Abundance[!is.na(Rankings$Protein_Rank)], col = rgb(0,0,1,0.5), add = T, breaks= breaks))
+
+```
+
+```{r Information_flow}
+devtools::install_github("stenhaug/purrrplus")
+library(purrrplus)
+
+IntraFeatureCorrelation <- function(dataset1,dataset2){
+  
+  # dataset1 <- NCI_60_proteins
+  # dataset2 <- NCI_60_RNA
+  # dataset1 <- CCLE_proteins
+  # dataset2 <- RNA_seq
+  Comparison_type <- paste(deparse(substitute(dataset1)),deparse(substitute(dataset2)))
+  Common_Cell_lines <- intersect(colnames(dataset1),
+                                 colnames(dataset2))
+    
+  dataset1 <- as.data.frame(dataset1) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
+        .[,match(Common_Cell_lines,colnames(.))]
+  dataset2 <- as.data.frame(dataset2) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
+        .[,match(Common_Cell_lines,colnames(.))]
+  
+  dataset1[is.na(dataset1)] <- 0
+  dataset2[is.na(dataset2)] <- 0
+  annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") & 
+                       (Uniprot %in% rownames(dataset1) & 
+                          (ID %in% rownames(dataset2))))
+  Matching <- rownames(dataset1)[rownames(dataset1) %in% annotation$Uniprot]
+  
+  Correlation_intrafeature <- function(x){
+    Correlation_pairwise(dataset1[rownames(dataset1) == x,] %>% unlist(),
+                         dataset2[rownames(dataset2) == annotation$ID[annotation$Uniprot == x],] %>% unlist())
+  }
+  
+  listing <- map(Matching, safely(Correlation_intrafeature)) %>% 
+    set_names(Matching) %>% map("result") %>%
+    compact() %>% unlist() %>% stack() %>% 
+    setNames(c("Corr","Uniprot")) %>% 
+    left_join(Master_pathways, by = c("Uniprot" = "ID"))
+  
+  p <- ggplot(listing,aes(Corr,fill = Pathway, colour = Pathway)) +
+         geom_density(alpha = 0.05) +
+        ggtitle(paste("IntraFeature Corr by Pathway",Comparison_type))
+  
+  list(IntraFeature_data = listing, IntraFeature_plot = p)
+  }
+
+IntraFeature_CCLE <- IntraFeatureCorrelation(CCLE_proteins,
+                                             RNA_seq)  
+
+IntraFeature_NCI <- IntraFeatureCorrelation(NCI_60_proteins,
+                                             NCI_60_RNA)  
+
+
+
+```
+
