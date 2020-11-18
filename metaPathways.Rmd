@@ -1,0 +1,623 @@
+---
+title: "metaPathways"
+author: "dd"
+date: "11/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r Load Packages}
+library(readxl)
+library(pheatmap)
+library(RColorBrewer)
+library(tibble)
+library(ggfortify)
+library(dplyr)
+library(stringr)
+library(data.table)
+library(tidyverse)
+library(EnsDb.Hsapiens.v79)
+library(impute)
+library(Hmisc)
+```
+
+```{r Input Omics Data CCLE}
+####CCLE Data####
+sample_info_DepMap=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/sample_info_DepMap.csv",header=T,sep=",")
+
+meta_names_mapped=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/CCLE_metabolites_mapped.csv",header=T,sep=",")
+dim(meta_names_mapped)
+head(meta_names_mapped)
+
+######################################################
+####Metabolite Data (CCLE)####
+
+metabolite_data=read_excel("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/41591_2019_404_MOESM2_ESM.xlsx",sheet=3)
+mod_metabolite_data=data.frame(column_to_rownames(metabolite_data, var = "...1"),check.names=F)  #Cell lines in rows, Metabolites in columns#
+selected_metabolite_data=t(mod_metabolite_data)  #Cell lines in columns#
+
+######################################################
+
+######################################################
+####RNA-seq Data (CCLE)####
+
+rnaseq_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/CCLE_RNAseq_rsem_genes_tpm_20180929.txt.gz",header=T)
+
+cell_line_annotation=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/Cell_lines_annotations_20181226.txt",header=T)
+mod_rnaseq_data=log2(rnaseq_data[,-c(1,2)]+0.01)
+row.names(mod_rnaseq_data)=rnaseq_data$gene_id
+
+######################################################
+
+######################################################
+####Proteomics Data (CCLE)####
+
+proteomics_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/protein_quant_current_normalized.csv.gz",header=T,sep=",")
+
+mod_proteomics_data=data.frame(column_to_rownames(proteomics_data, var = "Protein_Id"),check.names=F)  #Genes in rows, Cell lines in columns#
+tt2=str_replace(colnames(mod_proteomics_data),"_TenPx[0-9]+$","")
+colnames(mod_proteomics_data)=tt2
+
+selected_proteomics_data = mod_proteomics_data[,-c(1:47)]
+
+#Remove features with large number of NAs#
+kk3=apply(selected_proteomics_data, 1, function(x) sum(is.na(x)))
+ind_remove=which(kk3 >= (0.75*ncol(selected_proteomics_data)))
+if(length(ind_remove) > 0)
+{
+filt_selected_proteomics_data=selected_proteomics_data[-ind_remove,]
+}
+
+#Impute missing values#
+imputed_proteomics_data=impute.knn(as.matrix(filt_selected_proteomics_data),colmax=0.9)
+uniprotsymbols=mod_proteomics_data$Uniprot_Acc[-ind_remove]
+
+######################################################
+
+
+#Common Cell Lines#
+filt_common_CellLines=intersect(colnames(imputed_proteomics_data$data),intersect(colnames(selected_metabolite_data),colnames(mod_rnaseq_data)))
+
+
+final_metabolite_data=as.data.frame(subset(selected_metabolite_data, select=filt_common_CellLines))
+final_rnaseq_data=subset(mod_rnaseq_data, select=filt_common_CellLines)
+final_proteomics_data=as.data.frame(subset(imputed_proteomics_data$data, select=filt_common_CellLines))
+
+dim(final_metabolite_data)
+dim(final_rnaseq_data)
+dim(final_proteomics_data)
+```
+
+```{r Input Omics Data NCI60}
+####NCI60 Data####
+load("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/NCI60_OMICS.rda")
+
+######################################################
+####Metabolite Data (NCI60)####
+
+######################################################
+
+######################################################
+####RNA-seq Data (NCI60)####
+
+######################################################
+
+######################################################
+####Proteomics Data (NCI60)####
+
+#Impute missing values#
+imputed_proteomics_data=impute.knn(as.matrix(NCI_60_proteins),colmax=0.9)
+
+
+######################################################
+
+#Common Cell Lines#
+filt_common_CellLines=intersect(colnames(imputed_proteomics_data$data),intersect(colnames(NCI_60_metabolites),colnames(NCI_60_RNA)))
+
+
+final_metabolite_data=subset(NCI_60_metabolites, select=c("Annotation.ID",filt_common_CellLines))
+final_rnaseq_data=subset(NCI_60_RNA, select=filt_common_CellLines)
+final_proteomics_data=as.data.frame(subset(imputed_proteomics_data$data, select=filt_common_CellLines))
+
+dim(final_metabolite_data)
+dim(final_rnaseq_data)
+dim(final_proteomics_data)
+
+
+
+
+```
+
+
+
+
+```{r Pathway Data CCLE}
+##SMPDB Pathways##
+
+# pp_meta_metabolites=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/smpdb_pp_metabolism.metabolites.csv",header=F,sep=",")
+# pp_meta_proteins=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/smpdb_pp_metabolism.proteins.csv",header=F,sep=",")
+# 
+# proteins_pathways=unique(pp_meta_proteins[,1])
+# metabolites_pathways=unique(pp_meta_metabolites[,1])
+# 
+# length(proteins_pathways)
+# length(metabolites_pathways)
+# metabolites_pathways
+# head(pp_meta_metabolites)
+# 
+# #Pathways for which we have Metabolite data#
+#   subset_metabolites_pathways=unique(pp_meta_metabolites[which(pp_meta_metabolites[,6] %in% meta_names_mapped$HMDB),1])
+# #Subset the rnaseq data for only genes in these Pathways# 
+#   metabolic_genes=unique(subset(pp_meta_proteins,pp_meta_metabolites[,1] %in% subset_metabolites_pathways)[,9])
+#   metabolic_genes=na.omit(metabolic_genes)
+#   genes_conv <- ensembldb::select(EnsDb.Hsapiens.v79, keys= metabolic_genes, keytype = "SYMBOL", 
+#                 columns = c("SYMBOL","GENEID"))
+#   ensembl_genes=genes_conv[!duplicated(genes_conv[,c('SYMBOL')]),]$GENEID 
+#   ind_metabolic_genes=which(str_replace(rownames(final_rnaseq_data),pattern=".[0-9]+$",replacement="") %in%  
+#             ensembl_genes) 
+#   subset_final_rnaseq_data=final_rnaseq_data[ind_metabolic_genes,]
+
+
+#MASTER PATHWAYS##  
+##Pathway data used in : https://www.sciencedirect.com/science/article/pii/S2211124718304388?via%3Dihub#bib32 ##
+ 
+######################################################
+ #Metabolite Data CCLE#  
+ MP_meta_data=read_excel("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/mod_JCI71180sd2.xlsx",sheet=1)
+ MP_meta_data=data.frame(MP_meta_data)  
+
+ MP_meta_data_HMDB=str_replace(MP_meta_data[,10],pattern="HMDB",replacement="HMDB00")
+ MP_meta_data_SUPER_PATHWAY=str_replace(MP_meta_data$SUPER_PATHWAY,pattern="Cofactors and vitamins",replacement = "Vitamin cofactor")
+ mod_MP_meta_data= as.data.frame(cbind(MP_meta_data_SUPER_PATHWAY,MP_meta_data_HMDB))   
+ mod_meta_names_mapped=left_join(meta_names_mapped,mod_MP_meta_data %>% na.omit(),  
+                                 by=c("HMDB"="MP_meta_data_HMDB"))
+ 
+ ######################################################
+
+
+ ######################################################
+ #RNAseq Data CCLE#
+ MP_rnaseq_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/SuperPathways_genes.txt",header=F)
+ #Subset the rnaseq data for only genes in these Pathways# 
+  metabolic_genes=MP_rnaseq_data[,1]
+  genes_conv <- ensembldb::select(EnsDb.Hsapiens.v79, keys= metabolic_genes, keytype = "SYMBOL", 
+                columns = c("SYMBOL","GENEID"))
+  ensembl_genes=genes_conv[!duplicated(genes_conv[,c('SYMBOL')]),]$GENEID 
+  ind_metabolic_genes=which(str_replace(rownames(final_rnaseq_data),pattern=".[0-9]+$",replacement="") %in%  
+            ensembl_genes) 
+  subset_final_rnaseq_data=final_rnaseq_data[ind_metabolic_genes,]
+
+ ######################################################
+ 
+ 
+ ######################################################
+ #Proteomics Data CCLE#
+ MP_prot_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/Master_pathways.txt",header=T)
+ #Subset the proteomics data for only genes in these Pathways# 
+  metabolic_proteins=MP_prot_data[,3]
+  ind_metabolic_proteins=which(str_extract_all(rownames(final_proteomics_data),"(?<=\\|).+?(?=\\|)") %in%  
+            metabolic_proteins) 
+  
+  subset_final_proteomics_data=final_proteomics_data[ind_metabolic_proteins,]
+
+ ######################################################  
+  
+```
+```{r Pathway Data NCI60}
+#MASTER PATHWAYS##  
+##Pathway data used in : https://www.sciencedirect.com/science/article/pii/S2211124718304388?via%3Dihub#bib32 ##
+ 
+######################################################
+ #Metabolite Data NCI60#  
+ MP_meta_data=read_excel("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/mod_JCI71180sd2.xlsx",sheet=1)
+ MP_meta_data=data.frame(MP_meta_data)  
+ MP_meta_data_KEGG=MP_meta_data[,6]
+ MP_meta_data_HMDB=MP_meta_data[,10]
+ 
+ MP_meta_data_SUPER_PATHWAY=str_replace(MP_meta_data$SUPER_PATHWAY,pattern="Cofactors and vitamins",replacement = "Vitamin cofactor")
+ mod_MP_meta_data= as.data.frame(cbind(MP_meta_data_SUPER_PATHWAY,MP_meta_data_KEGG,MP_meta_data_HMDB)) 
+ #Assign the NCI60 Metabolites to SUPER PATHWAYS#
+ count_meta=0
+ MP_meta_data_SUPER_PATHWAY=rep("NA",nrow(final_metabolite_data))
+ for( ii in 1:nrow(final_metabolite_data))
+ #for( ii in 1:25)   
+ {
+    tt1=as.vector(unlist(strsplit(final_metabolite_data[ii,1]," ; ")))
+
+    tt2=mod_MP_meta_data[ which( mod_MP_meta_data$MP_meta_data_HMDB %in% tt1 | 
+                                 mod_MP_meta_data$MP_meta_data_KEGG %in% tt1) , ]
+    if(nrow(tt2))
+    { print(tt1); print(tt2); count_meta = count_meta+1;
+      MP_meta_data_SUPER_PATHWAY[ii]=tail(names(sort(table(tt2[,1]))), 1)
+    }
+    
+ }
+
+ ######################################################
+
+
+ ######################################################
+ #RNAseq Data NCI60#
+ MP_rnaseq_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/SuperPathways_genes.txt",header=F)
+ #Subset the rnaseq data for only genes in these Pathways# 
+  metabolic_genes=MP_rnaseq_data[,1]
+  ind_metabolic_genes=which(rownames(final_rnaseq_data) %in% metabolic_genes) 
+  subset_final_rnaseq_data=final_rnaseq_data[ind_metabolic_genes,]
+
+ ######################################################
+ 
+ 
+ ######################################################
+ #Proteomics Data NCI60#
+ MP_prot_data=read.delim("/users/ssdelci/ddatta/Projects/Sara_Sdelci/CCLE/Datasets/Master_pathways.txt",header=T)
+ #Subset the proteomics data for only genes in these Pathways# 
+  metabolic_proteins=MP_prot_data[,3]
+  ind_metabolic_proteins=which(rownames(final_proteomics_data) %in%  metabolic_proteins) 
+  
+  subset_final_proteomics_data=final_proteomics_data[ind_metabolic_proteins,]
+
+ ######################################################  
+  
+
+```
+
+```{r Pathway Analysis SMPDB Primary Metabolic Pathways}
+# sigpval=rep(10,nrow(meta_names_mapped))
+# #sigpval=rep(10,20)
+# #For each metabolite,checking which pathways they belong to#
+# for ( ii in 1:nrow(meta_names_mapped) )
+# #for ( ii in 1:20 )
+# {
+# meta_name=meta_names_mapped$HMDB[ii] 
+# if (!is.na(meta_name))
+#   { print(meta_name)
+#   meta_name_pathway=unique(pp_meta_metabolites[which(pp_meta_metabolites[,6] %in% meta_name),1])
+#   print(meta_name_pathway)
+#   
+# #Find the genes within these pathways
+# if(length(meta_name_pathway)>0)
+#   {
+#   subset_data_proteins=subset(pp_meta_proteins,pp_meta_proteins[,1] %in% meta_name_pathway)
+#   genes_conv <- ensembldb::select(EnsDb.Hsapiens.v79, keys= subset_data_proteins[,9], keytype = "SYMBOL", 
+#                 columns = c("SYMBOL","GENEID"))
+#   ensembl_genes=genes_conv[!duplicated(genes_conv[,c('SYMBOL')]),]$GENEID 
+#   ind_IN_genes=which(str_replace(rownames(subset_final_rnaseq_data),pattern=".[0-9]+$",replacement="") %in%  
+#             ensembl_genes) #Index of genes in the rnaseq dataset within the Pathway
+#   corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_IN_genes,])),type="spearman") 
+#   corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+#   
+#   ind_OUT_genes=setdiff(c(1:nrow(subset_final_rnaseq_data)),ind_IN_genes)
+#     corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_OUT_genes,])),type="spearman") 
+#   corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values 
+#   
+#   sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+#   sigpval[ii]=sigtestval$p.value
+#   
+#   probsqq=seq(0, 1, 0.02)
+#   ggplot() + geom_point(aes(x = quantile(-log10(corr_OUT_val), probsqq), y = quantile(-log10(corr_IN_val), probsqq) ), colour = "red") + geom_abline(intercept = 0, slope = 1, size = 0.5, alpha = 0.8) + xlim(0,12) + ylim(0,12) + xlab("Other genes [-log10(pvalue)]") + ylab("Pathway genes [-log10(pvalue)]") + theme_bw()
+#   }
+#  }
+# }
+# 
+# sigpvaladj=sort(p.adjust(sigpval[which(sigpval<10)],"fdr"))
+
+
+```
+
+```{r Pathway Analysis MASTER PATHWAYS RNAseq-Metabolites CCLE}
+
+sigpval=rep(10,nrow(mod_meta_names_mapped))
+#sigpval=rep(10,20)
+
+corr_IN_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+corr_OUT_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+
+#For each metabolite,checking which pathways they belong to#
+for ( ii in 1:nrow(mod_meta_names_mapped) )
+#for ( ii in 1:20 )
+{
+meta_name=mod_meta_names_mapped$HMDB[ii] 
+if (!is.na(meta_name))
+  { print(meta_name)
+  meta_name_pathway=mod_meta_names_mapped$MP_meta_data_SUPER_PATHWAY[ii]
+  print(meta_name_pathway)
+  
+#Find the genes within these pathways
+if(!is.na(meta_name_pathway) & meta_name_pathway !="Xenobiotics")
+  {
+  subset_data_rnaseq=subset(MP_rnaseq_data,V2 %in% meta_name_pathway)
+  genes_conv <- ensembldb::select(EnsDb.Hsapiens.v79, keys= subset_data_rnaseq[,1], keytype = "SYMBOL", 
+                columns = c("SYMBOL","GENEID"))
+  ensembl_genes=genes_conv[!duplicated(genes_conv[,c('SYMBOL')]),]$GENEID 
+  ind_IN_genes=which(str_replace(rownames(subset_final_rnaseq_data),pattern=".[0-9]+$",replacement="") %in%  
+            ensembl_genes) #Index of genes in the rnaseq dataset within the Pathway
+  
+  corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_IN_genes,])),type="spearman") 
+  corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+  corr_IN_val_list[[ii]]=corr_IN_val
+  
+  ind_OUT_genes=setdiff(c(1:nrow(subset_final_rnaseq_data)),ind_IN_genes)
+    
+  corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_OUT_genes,])),type="spearman") 
+  corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values
+  corr_OUT_val_list[[ii]]=corr_OUT_val
+  
+  sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+  sigpval[ii]=sigtestval$p.value
+  }
+ }
+}
+
+
+relevant_sigpval_ind=which(sigpval<10)
+relevant_sigpval=sigpval[relevant_sigpval_ind]
+sigpvaladj=p.adjust(relevant_sigpval,"fdr")
+sigpvaladj_ind=which(sigpvaladj<0.15)
+
+sorted_sigpvaladj=sort(sigpvaladj,index.return=T)
+mod_meta_names_mapped[relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]],c(1,8)]
+
+```
+
+
+```{r Pathway Analysis MASTER PATHWAYS Proteomics-Metabolites CCLE}
+sigpval=rep(10,nrow(mod_meta_names_mapped))
+#sigpval=rep(10,20)
+
+corr_IN_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+corr_OUT_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+
+#For each metabolite,checking which pathways they belong to#
+for ( ii in 1:nrow(mod_meta_names_mapped) )
+#for ( ii in 1:20 )
+{
+meta_name=mod_meta_names_mapped$HMDB[ii] 
+if (!is.na(meta_name))
+  { print(meta_name)
+  meta_name_pathway=mod_meta_names_mapped$MP_meta_data_SUPER_PATHWAY[ii]
+  print(meta_name_pathway)
+  
+#Find the proteins within these pathways
+if(!is.na(meta_name_pathway) & meta_name_pathway !="Xenobiotics")
+  {
+  subset_data_prot=subset(MP_prot_data,Pathway %in% meta_name_pathway)
+  ind_IN_proteins=which(str_extract_all(rownames(subset_final_proteomics_data),"(?<=\\|).+?(?=\\|)") %in%  
+            subset_data_prot$Uniprot) #Index of proteins in the Proteomics dataset within the Pathway
+  
+  corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_proteomics_data[ind_IN_proteins,])),type="spearman") 
+  corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+  corr_IN_val_list[[ii]]=corr_IN_val
+  
+  ind_OUT_proteins=setdiff(c(1:nrow(subset_final_proteomics_data)),ind_IN_proteins)
+    
+  corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_proteomics_data[ind_OUT_proteins,])),type="spearman") 
+  corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values
+  corr_OUT_val_list[[ii]]=corr_OUT_val
+  
+  sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+  sigpval[ii]=sigtestval$p.value
+  }
+ }
+}
+
+
+relevant_sigpval_ind=which(sigpval<10)
+relevant_sigpval=sigpval[relevant_sigpval_ind]
+sigpvaladj=p.adjust(relevant_sigpval,"fdr")
+sigpvaladj_ind=which(sigpvaladj<0.15)
+
+sorted_sigpvaladj=sort(sigpvaladj,index.return=T)
+mod_meta_names_mapped[relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]],c(1,8)]
+
+
+```
+
+```{r Pathway Analysis MASTER PATHWAYS RNAseq-Proteomics-Metabolites CCLE}
+sigpval=rep(10,nrow(mod_meta_names_mapped))
+#sigpval=rep(10,20)
+
+corr_IN_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+corr_OUT_val_list=vector("list", length = nrow(mod_meta_names_mapped))
+
+#For each metabolite,checking which pathways they belong to#
+for ( ii in 1:nrow(mod_meta_names_mapped) )
+#for ( ii in 1:20 )
+{
+meta_name=mod_meta_names_mapped$HMDB[ii] 
+if (!is.na(meta_name))
+  { print(meta_name)
+  meta_name_pathway=mod_meta_names_mapped$MP_meta_data_SUPER_PATHWAY[ii]
+  print(meta_name_pathway)
+  
+#Find the genes and proteins within these pathways
+if(!is.na(meta_name_pathway) & meta_name_pathway !="Xenobiotics")
+  {
+    subset_data_rnaseq=subset(MP_rnaseq_data,V2 %in% meta_name_pathway)
+  genes_conv <- ensembldb::select(EnsDb.Hsapiens.v79, keys= subset_data_rnaseq[,1], keytype = "SYMBOL", 
+                columns = c("SYMBOL","GENEID"))
+  ensembl_genes=genes_conv[!duplicated(genes_conv[,c('SYMBOL')]),]$GENEID 
+  ind_IN_genes=which(str_replace(rownames(subset_final_rnaseq_data),pattern=".[0-9]+$",replacement="") %in%  
+            ensembl_genes) #Index of genes in the rnaseq dataset within the Pathway
+  
+  subset_data_prot=subset(MP_prot_data,Pathway %in% meta_name_pathway)
+  ind_IN_proteins=which(str_extract_all(rownames(subset_final_proteomics_data),"(?<=\\|).+?(?=\\|)") %in%  
+            subset_data_prot$Uniprot) #Index of proteins in the Proteomics dataset within the Pathway
+  
+  corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_IN_genes,],subset_final_proteomics_data[ind_IN_proteins,])),type="spearman") 
+  corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+  corr_IN_val_list[[ii]]=corr_IN_val
+  
+  ind_OUT_genes=setdiff(c(1:nrow(subset_final_rnaseq_data)),ind_IN_genes)
+  ind_OUT_proteins=setdiff(c(1:nrow(subset_final_proteomics_data)),ind_IN_proteins)
+    
+  corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,]),subset_final_rnaseq_data[ind_OUT_genes,],subset_final_proteomics_data[ind_OUT_proteins,])),type="spearman") 
+  corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values
+  corr_OUT_val_list[[ii]]=corr_OUT_val
+  
+  sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+  sigpval[ii]=sigtestval$p.value
+  }
+ }
+}
+
+
+relevant_sigpval_ind=which(sigpval<10)
+relevant_sigpval=sigpval[relevant_sigpval_ind]
+sigpvaladj=p.adjust(relevant_sigpval,"fdr")
+sigpvaladj_ind=which(sigpvaladj<0.15)
+
+sorted_sigpvaladj=sort(sigpvaladj,index.return=T)
+mod_meta_names_mapped[relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]],c(1,8)]
+
+```
+
+```{r Pathway Analysis MASTER PATHWAYS RNAseq-Metabolites NCI60}
+sigpval=rep(10,nrow(final_metabolite_data))
+#sigpval=rep(10,20)
+
+corr_IN_val_list=vector("list", length = nrow(final_metabolite_data))
+corr_OUT_val_list=vector("list", length = nrow(final_metabolite_data))
+
+#For each metabolite,checking which pathways they belong to#
+for ( ii in 1:nrow(final_metabolite_data) )
+#for ( ii in 1:20 )
+{
+meta_name=final_metabolite_data[ii,1] 
+if (!is.na(meta_name))
+  { print(meta_name)
+  meta_name_pathway=MP_meta_data_SUPER_PATHWAY[ii]
+  print(meta_name_pathway)
+  
+#Find the genes within these pathways
+if(meta_name_pathway !="NA" & meta_name_pathway !="Peptide")
+  {
+  subset_data_rnaseq=subset(MP_rnaseq_data,V2 %in% meta_name_pathway)
+  
+  ind_IN_genes=which(rownames(subset_final_rnaseq_data) %in%  subset_data_rnaseq[,1]) #Index of genes in the rnaseq dataset within the Pathway
+  
+  corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,-1]),subset_final_rnaseq_data[ind_IN_genes,])),type="spearman") 
+  corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+  corr_IN_val_list[[ii]]=corr_IN_val
+  
+  ind_OUT_genes=setdiff(c(1:nrow(subset_final_rnaseq_data)),ind_IN_genes)
+    
+  corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,-1]),subset_final_rnaseq_data[ind_OUT_genes,])),type="spearman") 
+  corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values
+  corr_OUT_val_list[[ii]]=corr_OUT_val
+  
+  sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+  sigpval[ii]=sigtestval$p.value
+  }
+ }
+}
+
+
+relevant_sigpval_ind=which(sigpval<10)
+relevant_sigpval=sigpval[relevant_sigpval_ind]
+sigpvaladj=p.adjust(relevant_sigpval,"fdr")
+sigpvaladj_ind=which(sigpvaladj<0.15)
+
+sorted_sigpvaladj=sort(sigpvaladj,index.return=T)
+final_metabolite_data[relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]],1]
+
+```
+
+```{r Pathway Analysis MASTER PATHWAYS Proteomics-Metabolites NCI60}
+sigpval=rep(10,nrow(final_metabolite_data))
+#sigpval=rep(10,20)
+
+corr_IN_val_list=vector("list", length = nrow(final_metabolite_data))
+corr_OUT_val_list=vector("list", length = nrow(final_metabolite_data))
+
+#For each metabolite,checking which pathways they belong to#
+for ( ii in 1:nrow(final_metabolite_data) )
+#for ( ii in 1:20 )
+{
+meta_name=final_metabolite_data[ii,1] 
+if (!is.na(meta_name))
+  { print(meta_name)
+  meta_name_pathway=MP_meta_data_SUPER_PATHWAY[ii]
+  print(meta_name_pathway)
+  
+#Find the genes within these pathways
+if(meta_name_pathway !="NA" & meta_name_pathway !="Peptide")
+  {
+  subset_data_prot=subset(MP_prot_data,Pathway %in% meta_name_pathway)
+  
+  ind_IN_proteins=which(rownames(subset_final_proteomics_data) %in%  subset_data_prot[,3]) #Index of proteins in the Proteomics dataset within the Pathway
+  
+  corr_IN_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,-1]),subset_final_proteomics_data[ind_IN_proteins,])),type="spearman") 
+  corr_IN_val=corr_IN_mat$P[1,][-1]  #Correlation p-values 
+  corr_IN_val_list[[ii]]=corr_IN_val
+  
+  ind_OUT_proteins=setdiff(c(1:nrow(subset_final_proteomics_data)),ind_IN_proteins)
+    
+  corr_OUT_mat=rcorr(t(rbind(as.data.frame(final_metabolite_data[ii,-1]),subset_final_proteomics_data[ind_OUT_proteins,])),type="spearman") 
+  corr_OUT_val=corr_OUT_mat$P[1,][-1]  #Correlation p-values
+  corr_OUT_val_list[[ii]]=corr_OUT_val
+  
+  sigtestval=ks.test(corr_IN_val,corr_OUT_val,alternative = "greater") #One-tailed KS test
+  sigpval[ii]=sigtestval$p.value
+  }
+ }
+}
+
+
+relevant_sigpval_ind=which(sigpval<10)
+relevant_sigpval=sigpval[relevant_sigpval_ind]
+sigpvaladj=p.adjust(relevant_sigpval,"fdr")
+sigpvaladj_ind=which(sigpvaladj<0.15)
+
+sorted_sigpvaladj=sort(sigpvaladj,index.return=T)
+final_metabolite_data[relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]],1]
+
+```
+
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r Meta-RNAseq, echo=FALSE}
+
+##Number of Metabolites in SUPER PATHWAYS##
+tbl_master_pathway=table(mod_meta_names_mapped$MP_meta_data_SUPER_PATHWAY)
+tbl_master_pathway=tbl_master_pathway[which(tbl_master_pathway>1)]
+
+df=data.frame(Pathways=factor(names(tbl_master_pathway)),NumPathways=tbl_master_pathway)
+ggplot(data=df, aes(x=Pathways, y=NumPathways.Freq)) + geom_bar(stat="identity", position=position_dodge(), colour="black",width=0.6) + scale_fill_manual(values="#E69F00") + xlab("SUPER PATHWAYS") + ylab("Number of Metabolites") + ggtitle("") + theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size=9)) + theme(legend.title = element_blank())
+
+##qq plot##
+probsqq=seq(0, 1, 0.02)
+orig_ind_meta_sig=relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]]
+for(kk in 1:length(orig_ind_meta_sig))
+{
+ plottitle=paste(mod_meta_names_mapped[orig_ind_meta_sig[kk],1]," (",mod_meta_names_mapped[orig_ind_meta_sig[kk],8],")")
+  p <- ggplot() + geom_point(aes(x = quantile(-log10(corr_OUT_val_list[[orig_ind_meta_sig[kk]]]), probsqq), y = quantile(-log10(corr_IN_val_list[[orig_ind_meta_sig[kk]]]), probsqq) ), colour = "red") + geom_abline(intercept = 0, slope = 1, size = 0.5, alpha = 0.8) + xlim(0,4) + ylim(0,4) + xlab("Other genes [-log10(pvalue)]") + ylab("Pathway genes [-log10(pvalue)]") + ggtitle(plottitle) + theme_bw() + theme(plot.title = element_text(hjust = 0.5))  
+  plot(p)
+}
+
+##Correlation p-value plots##
+orig_ind_meta_sig=relevant_sigpval_ind[sorted_sigpvaladj$ix[1:length(sigpvaladj_ind)]]
+for(kk in 1:length(orig_ind_meta_sig))
+{
+  df=data.frame(Pathway=factor(rep(c("IN","OUT"),c(length(corr_IN_val_list[[orig_ind_meta_sig[kk]]]),length(corr_OUT_val_list[[orig_ind_meta_sig[kk]]])))),Pvalue=c(corr_IN_val_list[[orig_ind_meta_sig[kk]]],corr_OUT_val_list[[orig_ind_meta_sig[kk]]]))
+  p <- ggplot(df, aes(x=Pvalue, colour=Pathway)) + geom_density() + xlab("Correlation p-values") + theme_bw()
+  
+  plot(p)
+}
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
