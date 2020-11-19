@@ -488,43 +488,109 @@ library(purrrplus)
 
 IntraFeatureCorrelation <- function(dataset1,dataset2){
   
-  # dataset1 <- NCI_60_proteins
-  # dataset2 <- NCI_60_RNA
-  # dataset1 <- CCLE_proteins
-  # dataset2 <- RNA_seq
+  #dataset1 <- NCI_60_proteins
+  #dataset2 <- NCI_60_RNA
+  #dataset1 <- CCLE_proteins
+  #dataset2 <- RNA_seq
   Comparison_type <- paste(deparse(substitute(dataset1)),deparse(substitute(dataset2)))
   Common_Cell_lines <- intersect(colnames(dataset1),
                                  colnames(dataset2))
-    
+  
   dataset1 <- as.data.frame(dataset1) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
         .[,match(Common_Cell_lines,colnames(.))]
   dataset2 <- as.data.frame(dataset2) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
         .[,match(Common_Cell_lines,colnames(.))]
   
-  dataset1[is.na(dataset1)] <- 0
-  dataset2[is.na(dataset2)] <- 0
+  sample_info_dataset <- sample_info[sample_info$stripped_cell_line_name %in% Common_Cell_lines,]
+  
+  lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
+  list1 <- map(lineage_types, ~select(dataset1,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
+    set_names(lineage_types)
+  list2 <- map(lineage_types, ~select(dataset2,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
+    set_names(lineage_types)
+
+
+  
+  #dataset1[is.na(dataset1)] <- 0
+  #dataset2[is.na(dataset2)] <- 0
   annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") & 
                        (Uniprot %in% rownames(dataset1) & 
                           (ID %in% rownames(dataset2))))
   Matching <- rownames(dataset1)[rownames(dataset1) %in% annotation$Uniprot]
   
-  Correlation_intrafeature <- function(x){
-    Correlation_pairwise(dataset1[rownames(dataset1) == x,] %>% unlist(),
-                         dataset2[rownames(dataset2) == annotation$ID[annotation$Uniprot == x],] %>% unlist())
+  Correlation_intrafeature <- function(x,y,z){
+    Correlation_pairwise(y[rownames(y) == x,] %>% unlist(),
+                         z[rownames(z) == annotation$ID[annotation$Uniprot == x],] %>% unlist())
   }
+  Safe_intraFeature <- safely(Correlation_intrafeature)
   
-  listing <- map(Matching, safely(Correlation_intrafeature)) %>% 
+  Safe_intraFeature_tissue <- function(a,b,c){
+    map(Matching, ~Safe_intraFeature(.x,a, b)) %>% 
     set_names(Matching) %>% map("result") %>%
     compact() %>% unlist() %>% stack() %>% 
     setNames(c("Corr","Uniprot")) %>% 
-    left_join(Master_pathways, by = c("Uniprot" = "ID"))
+    left_join(Master_pathways, by = c("Uniprot" = "ID")) %>%
+      mutate(Tissue = c)
+  }
   
-  p <- ggplot(listing,aes(Corr,fill = Pathway, colour = Pathway)) +
+  Tissue_Intracorrelation <- pmap_df(list(list1,list2,lineage_types),Safe_intraFeature_tissue)
+  Tissue_Intracorrelation$Pathway[is.na(Tissue_Intracorrelation$Pathway)] <- "Not Known"
+  
+  Pan_Tissue_Intracorrelation <- map(Matching, ~Safe_intraFeature(.x,dataset1, dataset2)) %>% 
+    set_names(Matching) %>% map("result") %>%
+    compact() %>% unlist() %>% stack() %>% 
+    setNames(c("Corr","Uniprot")) %>% 
+    left_join(Master_pathways, by = c("Uniprot" = "ID")) %>% mutate(Tissue = "all")
+  
+  PanPathway_cor <- ggplot(Pan_Tissue_Intracorrelation,aes(Corr,fill = Pathway, colour = Pathway)) +
          geom_density(alpha = 0.05) +
         ggtitle(paste("IntraFeature Corr by Pathway",Comparison_type))
   
-  list(IntraFeature_data = listing, IntraFeature_plot = p)
-  }
+  
+  
+  Pathway_per_tissue <- map(unique(Tissue_Intracorrelation$Pathway), 
+                                 ~ggplot(Tissue_Intracorrelation[Tissue_Intracorrelation$Pathway ==.x,],
+                                         aes(Corr,fill = Tissue, colour = Tissue)) +
+                                   geom_density(alpha = 0.05) +
+                                   ggtitle(paste("IntraFeature Corr by Pathway",.x))) %>% 
+    set_names(unique(Tissue_Intracorrelation$Pathway))
+  
+  Pathway_per_tissue_grid <- ggplot(Tissue_Intracorrelation,
+                                         aes(Corr,fill = Pathway,colour = Pathway))+
+    geom_density(alpha = 0.1) +
+    facet_wrap(~ Tissue)+ 
+    ggtitle(paste("IntraFeature Corr by Pathway",""))
+  
+  Tissue_per_pathway<- map(unique(Tissue_Intracorrelation$Tissue), 
+                                 ~ggplot(Tissue_Intracorrelation[Tissue_Intracorrelation$Tissue ==.x,],
+                                         aes(Corr,fill = Pathway, colour = Pathway)) +
+                                   geom_density(alpha = 0.05) +
+                                   ggtitle(paste("IntraFeature Corr by Pathway",.x))) %>% 
+    set_names(unique(Tissue_Intracorrelation$Tissue))
+
+  Tissue_specific_pathway_grid <- ggplot(Tissue_Intracorrelation,
+                                         aes(Corr,fill = Tissue,colour = Tissue))+
+    geom_density(alpha = 0.1) +
+    facet_wrap(~ Pathway)+ 
+    ggtitle(paste("IntraFeature Corr by Pathway",""))
+  
+    PanCancer_Corr <- ggplot(Tissue_Intracorrelation, aes(Corr,fill = Tissue, colour = Tissue)) +
+                                   geom_density(alpha = 0.05) +
+                                   ggtitle("IntraFeature Corr Across Tissue")
+  
+  list(Pan_Tissue_Intracorrelation_df = Pan_Tissue_Intracorrelation,
+       PanCancer_Correlation_plot = PanCancer_Corr,
+       Tissue_specific_pathway_grid = Tissue_specific_pathway_grid,
+       Pathway_per_tissue_grid = Pathway_per_tissue_grid,
+       Tissue_per_pathway_plot = Tissue_per_pathway,
+       Pathway_per_tissue_plot = Pathway_per_tissue,
+       PanPathway_cor_plot = PanPathway_cor,
+       Tissue_Intracorrelation_df = Tissue_Intracorrelation)
+  
+
+}
+
+
 
 IntraFeature_CCLE <- IntraFeatureCorrelation(CCLE_proteins,
                                              RNA_seq)  
