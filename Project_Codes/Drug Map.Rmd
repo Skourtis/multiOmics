@@ -1,0 +1,364 @@
+---
+title: "Drug Map"
+date: "`r Sys.Date()`"
+output:
+    html_document:
+      code_folding: hide
+      toc: true
+      toc_depth: 2
+      highlight: tango
+
+
+---
+
+# Setup
+
+```{r setup,  echo=FALSE, cache=FALSE, warning= FALSE, message=FALSE}
+pacman::p_load(knitr,MultiAssayExperiment,tidyverse, MatrixCorrelation, here, ComplexHeatmap, circlize)
+#devtools::install_github("bioFAM/MOFA2", build_opts = c("--no-resave-data --no-build-vignettes"))
+
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(root.dir = "./../")
+
+```
+
+```{r file_loading}
+
+Files_to_load <- c(here::here("Project_Datasets","CCLE_OMICS.rda"),
+                    here::here("Project_Datasets","NCI60_OMICS.rda"),
+                    here::here("Project_Datasets","Metabolic_Pathway_annotations.RData"),
+                   here::here("Project_Datasets","Drug_sensitivity.RData"))
+                  
+HUMAN_9606_idmapping_file <- here::here("Project_Datasets","HUMAN_9606_idmapping.dat")
+
+if(intersect(map(Files_to_load, cgwtools::lsdata) %>% unlist(),
+             ls()) %>% length() == 0){
+  purrr::walk(Files_to_load, load,envir = .GlobalEnv)
+} else {
+  stop("Variable names in environment which clash with RData loading Names")
+             }
+
+#Mapping of Uniprots to all others sort of identifiers
+HUMAN_9606_idmapping <- read_tsv(HUMAN_9606_idmapping_file,
+                                 col_names = FALSE) %>%
+    setNames(c("Uniprot", "Type", "ID"))
+```
+
+```{r}
+# Master_of_interest <- Master_pathways %>%
+#   left_join(SMPDB_pathways[,c("Gene_Name","Pathway")], by = c("ID" = "Gene_Name")) %>%
+#     subset(Pathway.x == "Nucleotide")
+library(caret)
+humankegg_df_1 <- humankegg_df %>% na.omit() %>%
+  pivot_longer(cols = -Reactome_Pathway, names_to = "Type", values_to = "ID"  ) %>%
+  dplyr::select(-Type) %>% 
+  group_split(Reactome_Pathway) %>%
+  setNames(.,map_chr(.,~(unique(.x[['Reactome_Pathway']])))) %>%
+  map(~.x[["ID"]])
+
+Calculating_predictions <- function(List_of_features,pathway_name){
+  #List_of_features <- humankegg_df_1[[1]]
+  #pathway_name = "2-LTR circle Formation"
+# BiocManager::install("STRINGdb")
+# library(STRINGdb)
+# string_db <- STRINGdb$new( version="11", species=9606,
+#                            score_threshold=600, input_directory="")
+# Gene_OI = string_db$mp( "PDE3A" )
+# Gene_OI_neighbours_uniprot <- HUMAN_9606_idmapping %>% 
+#   subset(ID %in% c(Gene_OI,string_db$get_neighbors(Gene_OI))) %>% pull(Uniprot)
+# Gene_OI_neighbours_gene <- HUMAN_9606_idmapping %>% 
+#   subset((Uniprot %in% Gene_OI_neighbours_uniprot) & (Type == "Gene_Name")) %>%
+#   pull(ID)
+# Master_of_interest <- Master_pathways %>%
+#   left_join(SMPDB_pathways[,c("Gene_Name","Pathway")], by = c("ID" = "Gene_Name")) %>%
+#     subset(ID %in% c(Gene_OI_neighbours_uniprot,Gene_OI_neighbours_gene))
+
+Datasets_M <- list("RNAi_metabolism" = RNAi %>% .[rownames(.) %in% List_of_features, ] %>% as.data.frame(),
+                 "RNA_seq_metabolism" = RNA_seq %>% .[rownames(.) %in% List_of_features, ]%>% as.data.frame(), 
+                 "CCLE_proteins_metabolism" = CCLE_proteins %>% .[rownames(.) %in% List_of_features, ]%>% as.data.frame(),
+                 "Achilles_metabolism" = Achilles %>% .[rownames(.) %in% List_of_features, ]%>% as.data.frame())
+
+
+# blood_cell_lines_skin <- sample_info %>% 
+#     subset(str_detect(CCLE_Name,"HAEMATOPOIETIC_AND_LYMPHOID_TISSUE|SKIN")) %>%
+#     pull(stripped_cell_line_name)
+
+Common_Cell_lines <- Reduce(rlist::list.append,
+                            map(Datasets_M, colnames)) %>% 
+    table() %>% .[.>(length(Datasets_M)-1)] %>% 
+    names()# %>% .[!(. %in% blood_cell_lines_skin)]
+#deparse(substitute(c(RNAi,RNA_seq,CCLE_proteins, Metabolites,Achilles)))
+
+
+Filter_top40 <- function(x){
+    #x  = Datasets_M[[4]]
+  MAD <- apply(x,1, mad, na.rm = T)
+    Top_40 <- quantile(MAD, probs = 0.4)
+    most_variable_proteins <- names(MAD[MAD>Top_40])
+    x <- x[rowSums(is.na(x))< ncol(x)/2 & rownames(x)%in% most_variable_proteins,] %>% as.matrix()
+    x <- x[!duplicated(rownames(x)),colnames(x) %in% Common_Cell_lines ] %>% .[,match(Common_Cell_lines, colnames(.))]
+   x
+}
+
+endings <-  case_when(str_detect(names(Datasets_M),"RNAi") ~ "_i",
+              str_detect(names(Datasets_M),"seq") ~ "_seq",
+              str_detect(names(Datasets_M),"rotein") ~ "_prot",
+              str_detect(names(Datasets_M),"chilles") ~ "_KO",
+              str_detect(names(Datasets_M),"abolite") ~ "_met",
+              TRUE ~ "_other")
+
+
+Datasets_top40 <- map(Datasets_M, Filter_top40) #%>% 
+Datasets_top40 <- map2(Datasets_top40, endings, ~ paste0(rownames(.x), .y)) %>%
+    map2(Datasets_top40, ., ~ magrittr::set_rownames(.x,.y))
+
+
+MOFAobject <- MOFA2::create_mofa(Datasets_top40)
+
+MOFA2::plot_data_overview(MOFAobject)
+data_opts <- MOFA2::get_default_data_options(MOFAobject)
+data_opts$scale_views <- TRUE
+model_opts <- MOFA2::get_default_model_options(MOFAobject)
+train_opts <- MOFA2::get_default_training_options(MOFAobject)
+
+MOFAobject <- MOFA2::prepare_mofa(
+  object = MOFAobject,
+  data_options = data_opts,
+  model_options = model_opts,
+  training_options = train_opts
+)
+outfile = file.path(here::here("Project_Datasets","model.hdf5"))
+MOFAobject.trained <- MOFA2::run_mofa(MOFAobject, outfile)
+model <- MOFAobject.trained
+
+# Drug <- "DCEBIO"
+# Drug_ID <- CCLE_Drug_screening_info$broad_id[str_detect(CCLE_Drug_screening_info$name,fixed(Drug, ignore_case=TRUE))] %>%
+#   unique%>% na.omit() %>% str_match("BRD-([:graph:]*?)-")%>% .[,2] 
+
+MOFA_data <- model@expectations$Z$group1 %>% as.data.frame() %>%
+  rownames_to_column("Cell_line") %>%
+  left_join(CCLE_Drug_screening_1, by = c("Cell_line" = "stripped_cell_line_name") ) #%>%
+  # subset(broad_id == Drug_ID) %>%
+  # subset(Classification %in% c("Sensitive","Resistant"))
+
+# cor.test(MOFA_data$Factor6,MOFA_data$Sensitivity)
+
+# Uniprot_OI <- HUMAN_9606_idmapping$Uniprot[HUMAN_9606_idmapping$ID == "PDE3A"] %>% 
+#   table() %>% .[order(.)] %>% tail(1) %>% names()
+# Gene_OI_proteome <- CCLE_proteins[rownames(CCLE_proteins) == Uniprot_OI,] %>%
+#   unlist() 
+
+# if(length(Drug_ID) ==0){
+#   print("Not_Found")
+#  Drug_ID_Sensitivity <- Sanger_Drug_Screening[str_detect(Sanger_Drug_Screening$DRUG_NAME,fixed(Drug, ignore_case=TRUE)),] %>%
+#    pull(Z_SCORE_PUBLISHED,stripped_cell_line_name)  %>% .[names(.) %in% names(Gene_OI_proteome)]
+# } else {
+#   print("Found")
+#   Drug_ID_Sensitivity <- CCLE_Drug_screening_1 %>% subset(broad_id == Drug_ID) %>%
+#   pull(Sensitivity,stripped_cell_line_name) %>% .[names(.) %in% names(Gene_OI_proteome)]
+# }
+# 
+# 
+# Gene_OI_proteome <-Gene_OI_proteome %>% .[names(.) %in% names(Drug_ID_Sensitivity)] %>%
+#   .[match(names(Drug_ID_Sensitivity),names(.))]
+# 
+# cor.test(Gene_OI_proteome,Drug_ID_Sensitivity)  
+
+
+
+
+
+train_control <- trainControl(method="repeatedcv", number=10, repeats=3)
+Predicting_Drug_SVM <- function(x){
+  #x = MOFA_list_drug_of_interest[[1]]
+  
+  #x$Protein_expr <-  Gene_OI_proteome[x$Cell_line]
+  
+  drug = x[['broad_id']] %>% unique()
+  Correlation_with_factor <- map_dbl(dplyr::select(x,contains("Factor")),~cor.test(.x,x$Sensitivity)$p.value)%>% 
+    .[.<0.05] %>%    names()
+  if (length(Correlation_with_factor)>0) {
+    MOFA_data_drug <- x %>%
+    .[,str_detect(colnames(x),paste(c("Class",Correlation_with_factor), collapse = "|"))] %>%
+    #select(contains("Factor")|contains("Class")) %>% 
+    na.omit() %>% filter(Classification != "Vague")
+  
+  svm2 <-  train(
+  form = Classification ~ .,
+  data = MOFA_data_drug,
+  trControl = trainControl(method = "cv", number = 5),
+  method = "glm",
+  family = "binomial"
+)
+  res2<-as_tibble(svm2$results[which.min(svm2$results[,2]),]) %>% 
+    mutate(broad_id = drug,
+           model = "logistic",
+           C = NULL,
+           original_pathway = pathway_name)
+  } else{
+      MOFA_data_drug <- x %>%
+    select(contains("Factor")|contains("Class")) %>% 
+    na.omit() %>% filter(Classification != "Vague")
+  
+
+  
+  svm2 <- train(Classification ~ ., data = MOFA_data_drug, method = "svmLinear",  
+                trControl = train_control, tuneGrid = expand.grid(C = seq(0.1, 1.9, length = 19)))
+  
+  res2<-as_tibble(svm2$results[which.min(svm2$results[,2]),]) %>% 
+    mutate(broad_id = drug,
+           model = "SVMLinear",
+           parameter = NULL,
+           original_pathway = pathway_name)
+  }
+  
+  
+
+}
+Predicting_Drug_SVM_safe <- safely(Predicting_Drug_SVM)
+# Predicting_Drug_RF <- function(x){
+#   x = MOFA_list_drug_of_interest[[1]]
+#   drug = x[['broad_id']]%>% unique()
+#   MOFA_data_drug <- x %>%
+#     select(contains("Factor")|contains("Class")) %>% 
+#     na.omit() #%>% filter(Classification != "Vague")
+#   svm2 <- caret::train(Classification ~ ., data = MOFA_data_drug, method = "rf",  metric='Accuracy', 
+#                 trControl = train_control)#, tuneGrid = expand.grid(.mtry = sqrt(ncol(MOFA_data_drug))))
+#  
+#    res2<-as_tibble(svm2$results[which.min(svm2$results[,2]),]) %>% 
+#     mutate(broad_id = drug)
+# }
+# Predicting_Drug_RF_safe <- safely(Predicting_Drug_RF)
+
+MOFA_list_drug <- MOFA_data %>% na.omit() %>%
+  dplyr::select(contains("Factor")|contains("Class")|contains("broad_id")|contains("Sensitivity")) %>%
+  group_split(broad_id)  %>% setNames(.,map_chr(.,~(unique(.x[['broad_id']]))))
+
+
+  
+
+MOFA_list_drug_of_interest <- MOFA_list_drug#[names(MOFA_list_drug) %in% "K89299012"]
+                                               #drug_targets$Drug[drug_targets$Target_Pathway %in% c("Purine Metabolism","Pyrimidine Metabolism")]]
+# MOFA_list_drug_of_interest <- MOFA_list_drug_test[names(MOFA_list_drug_test) %in%
+#                                                na.omit(unique(Sanger_Drug_Screening$BROAD_ID[Sanger_Drug_Screening$Target_Pathway != "Non_Metabolic"]))]
+
+Drug_prediction_SVM <- map(MOFA_list_drug_of_interest,Predicting_Drug_SVM_safe)
+Drug_prediction_SVM_df <- Drug_prediction_SVM %>%
+  map("result") %>%  compact()%>% 
+  purrr::reduce(rbind)
+  
+}
+
+options(future.globals.maxSize= 600*1024^2)# maximum size of 600MB
+Calculating_predictions_safe <- safely(Calculating_predictions)
+library(future)
+plan(multisession, workers = 8)
+
+Drug_prediction_SVM_all <-  future({imap(humankegg_df_1,~Calculating_predictions_safe(List_of_features = .x,
+                                                                pathway_name = .y)) %>% 
+  map("result") %>%  compact()%>% 
+  purrr::reduce(rbind)
+}, seed = T)
+
+Drug_prediction_SVM_all <- value(Drug_prediction_SVM_all)
+plan(sequential)
+
+
+t1 = proc.time()
+Drug_prediction_RF <-  future({map(MOFA_list_drug_of_interest,Predicting_Drug_RF_safe)})
+Drug_prediction_RF <- value(Drug_prediction_RF)
+                              
+t2 <- proc.time()
+
+
+
+
+Drug_prediction_RF_df <- Drug_prediction_RF %>% 
+  map("result") 
+
+Drug_prediction_SVM_plot <- Drug_prediction_SVM_df %>% 
+  left_join(drug_targets, by = c("broad_id" = "Drug")) %>%
+  ggplot(aes(x = Accuracy, fill = Reactome_Pathway, colour = Reactome_Pathway)) +
+  geom_density(alpha = 0.05)+ theme(legend.position = "none") 
+
+Drug_prediction_RF_plot <- Drug_prediction_RF_df %>% 
+  left_join(drug_targets, by = c("broad_id" = "Drug")) %>%
+  ggplot(aes(x = Accuracy, fill = Target_Pathway.y, colour = Target_Pathway.y)) +
+  geom_density(alpha = 0.05) + ggtitle("Sensitive-Resistant Classification prediction per Drug")
+
+# svm3 <- train(Classification ~., data = MOFA_data_drug, method = "svmRadial", trControl = train_control, tuneLength = 10)
+# svm4 <- train(Classification ~., data = MOFA_data_drug, method = "svmPoly", trControl = train_control, tuneLength = 4)
+
+MOFA2::plot_variance_explained(model, x="view", y="factor")
+
+MOFA2::plot_data_heatmap(model,
+  view = "RNA_seq_metabolism",         # view of interest
+  factor = 1,             # factor of interest
+  features = 20,          # number of features to plot (they are selected by weight)
+  
+  # extra arguments that are passed to the `pheatmap` function
+  cluster_rows = TRUE, cluster_cols = FALSE,
+  show_rownames = TRUE, show_colnames = FALSE
+)
+
+plot_data_scatter(model,
+  view = "RNA_seq_metabolism",         # view of interest
+  factor = 1,             # factor of interest
+  features = 10,           # number of features to plot (they are selected by weight)
+  add_lm = TRUE,          # add linear regression
+)
+
+library(caret)
+
+set.seed(42)
+#model <- run_umap(model)
+model <- MOFA2::run_tsne(model)
+
+set.seed(42)
+tSNE_data <- MOFA2::plot_dimred(model,
+  method = "TSNE")[['data']] %>% 
+    left_join(sample_info[,c("stripped_cell_line_name","lineage")], 
+              by = c("sample" = "stripped_cell_line_name"))
+
+
+ggplot(tSNE_data, aes(x = x, y = y, colour = lineage)) + 
+    geom_point(size = 3)
+
+tSNE_data %>% 
+    left_join(CCLE_Drug_screening[CCLE_Drug_screening$broad_id == "K89299012",], 
+              by = c("sample" = "stripped_cell_line_name")) %>% na.omit() %>%
+    ggplot(aes(x = x, y = y, colour = Sensitivity))+
+    geom_point(size = 3)+
+scale_colour_gradient2(
+  low = "red",
+  mid = "white",
+  high = "blue",
+  space = "Lab",
+  na.value = "grey95",
+  guide = "colourbar",
+  aesthetics = "colour"
+)
+
+MOFA2::samples_metadata(model) <- CCLE_Drug_screening_1 %>% 
+  subset((broad_id == "K71847383") & (stripped_cell_line_name  %in% Common_Cell_lines)) %>% 
+  ungroup() %>% right_join(data.frame(stripped_cell_line_name = Common_Cell_lines)) %>%
+  select(matches("stripped|Sensitivity")) %>% 
+  mutate(Sensitivity = if_else(is.na(Sensitivity),0,Sensitivity)) %>%
+  rename("sample"= "stripped_cell_line_name") %>%
+  data.table::as.data.table()
+
+#pacman::p_load("psych")
+MOFA2::correlate_factors_with_covariates(model, 
+  covariates = "Sensitivity")
+
+
+  
+
+```

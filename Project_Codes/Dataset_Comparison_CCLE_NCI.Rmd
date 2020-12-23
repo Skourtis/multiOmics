@@ -14,7 +14,7 @@ output:
 # Setup
 
 ```{r setup,  echo=FALSE, cache=FALSE, warning= FALSE, message=FALSE}
-pacman::p_load(knitr,cgwtools,tidyverse, MatrixCorrelation, here, ComplexHeatmap, circlize)
+pacman::p_load(knitr,cgwtools,tidyverse, MatrixCorrelation, here, ComplexHeatmap, circlize, furrr, microbenchmark)
 
 
 ## Global options
@@ -26,6 +26,9 @@ opts_chunk$set(cache=FALSE,
                message=FALSE,
                warning=FALSE)
 opts_knit$set(root.dir = "./../")
+
+plan(multisession, workers = 3)
+
 ```
 
 # Overall Matrix agreement subsetted for cell lines ang genes in common and order. 
@@ -340,6 +343,7 @@ TCA: Not Known pathway genes
 # Sample correlation
 
 ```{r Sample_cor}
+
 map(omics, ~.x$Sample_Corr$Histogram)
 
 ```
@@ -511,13 +515,11 @@ IntraFeatureCorrelation <- function(dataset1,dataset2){
   lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
   # Cell_line <- sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage %in% lineage_types] %>% 
   #   .[match(Common_Cell_lines,Cell_line)]
-  list1 <- map(lineage_types, ~select(dataset1,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
-    set_names(lineage_types)
-  list2 <- map(lineage_types, ~select(dataset2,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
-    set_names(lineage_types)
+
+list1 <-     map(lineage_types, ~dplyr::select(dataset1,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>%     set_names(lineage_types)
 
 
-  
+   list2 <- map(lineage_types, ~dplyr::select(dataset2,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>%     set_names(lineage_types) 
   #dataset1[is.na(dataset1)] <- 0
   #dataset2[is.na(dataset2)] <- 0
   annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") & 
@@ -608,8 +610,8 @@ IntraFeature_CCLE <- IntraFeatureCorrelation(CCLE_proteins,
 
 IntraFeature_NCI <- IntraFeatureCorrelation(NCI_60_proteins,
                                              NCI_60_RNA)  
-IntraFeature_CCLE[str_detect(names(IntraFeature_CCLE),"plot|grid")] %>% map(print)
-IntraFeature_NCI[str_detect(names(IntraFeature_NCI),"plot|grid")] %>% map(print)
+IntraFeature_CCLE[str_detect(names(IntraFeature_CCLE),"plot|grid")] %>% imap(print)
+IntraFeature_NCI[str_detect(names(IntraFeature_NCI),"plot|grid")] %>% imap(print)
 ```
 
 ```{r Pathway_specific_trends}
@@ -655,167 +657,173 @@ map(unique(IntraFeature_CCLE$Tissue_Intracorrelation_df$Tissue),
     facet_wrap(~ Pathway)+ 
     ggtitle(paste("IntraFeature Corr by Pathway","")))
 ```
+
 ```{r eIF_diff}
 
-# PivotDasetTissue <- function(Dataset){ # this is for proteomics, adapt to RNAseq
-#   sample_info_dataset <- sample_info %>% .[.$stripped_cell_line_name %in% colnames(Dataset),]
-#   lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
-#   list1 <- map(lineage_types, 
-#                ~select(as.data.frame(Dataset),
-#                        any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
-#     set_names(lineage_types)
-#   map_dfr(list1, ~tibble::rownames_to_column(.x,var = "Uniprot") %>%
-#     pivot_longer(-Uniprot, names_to = "Cell_line", values_to = "Abundance"), .id = .x)
-# }
-# CCLE_pro_pivotted <- PivotDasetTissue(CCLE_proteins)  
-# NCI_pro_pivotted <- PivotDasetTissue(NCI_60_proteins)
-# 
-# 
-# 
-# 
-# Plot_markers_Abundance <- function(Dataset, markers){
-#   #Dataset <- NCI_pro_pivotted
-#   Dataset_name <- deparse(substitute(Dataset))
-#   markers <- markers[markers %in% Dataset$Uniprot]
-#   Dataset <- Dataset %>% filter(Uniprot %in% markers)
-#   map(markers, ~Dataset %>% filter(Uniprot == .x) %>% group_by(bone) %>% 
-#         ggplot(aes(x = bone, colour = bone,
-#                    y = Abundance)) + 
-#     geom_boxplot() + 
-#       geom_point() +
-#       ggtitle(paste(.x,HUMAN_9606_idmapping %>% filter(Uniprot == .x & 
-#                                                          Type == "UniProtKB-ID") %>% 
-#                       pull(ID), Dataset_name,"Abundance")))
-# }
-# Hypox_Prolif <- HUMAN_9606_idmapping %>% filter((str_detect(ID, 'HIF') & Type == "UniProtKB-ID")| (ID == "KI67_HUMAN")) %>% 
-#   pull(Uniprot) %>% unique()
-# Uniprot_eIF <- HUMAN_9606_idmapping %>% filter(str_detect(ID, 'EIF') & Type == "UniProtKB-ID") %>% 
-#   pull(Uniprot) %>% unique()
-# 
-# 
-# eIFs_CCLE <- Plot_markers_Abundance(CCLE_pro_pivotted,Uniprot_eIF)
-# eIFs_NCI <- Plot_markers_Abundance(NCI_pro_pivotted,Uniprot_eIF)
-# Hypoxia_prolif_CCLE <- Plot_markers_Abundance(CCLE_pro_pivotted,Hypox_Prolif)
-# Hypoxia_prolif_NCI <- Plot_markers_Abundance(NCI_pro_pivotted,Hypox_Prolif)
-# 
-# save(file = here("Project_Datasets","eIF_CCLE_NCI_hypoxia.RData"),eIFs_CCLE,eIFs_NCI,Hypoxia_prolif_CCLE,Hypoxia_prolif_NCI)
+PivotDasetTissue <- function(Dataset){ # this is for proteomics, adapt to RNAseq
+  #Dataset = CCLE_proteins
+    sample_info_dataset <- sample_info %>% .[.$stripped_cell_line_name %in% colnames(Dataset),]
+  lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
+  list1 <- map(lineage_types,
+               ~select(as.data.frame(Dataset),
+                       any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>%
+    set_names(lineage_types)
+  map_dfr(list1, ~tibble::rownames_to_column(.x,var = "Uniprot")) %>%
+    pivot_longer(-Uniprot, names_to = "Cell_line", values_to = "Abundance")
+}
+CCLE_pro_pivotted <- PivotDasetTissue(CCLE_proteins)
+NCI_pro_pivotted <- PivotDasetTissue(NCI_60_proteins)
+
+
+
+
+Plot_markers_Abundance <- function(Dataset, markers){
+  #Dataset <- NCI_pro_pivotted
+  #markers <-  Uniprot_eIF
+  Dataset_name <- deparse(substitute(Dataset))
+  markers <- markers[markers %in% Dataset$Uniprot]
+  Dataset <- Dataset %>% filter(Uniprot %in% markers) %>% 
+      left_join(sample_info_dataset[,c("stripped_cell_line_name","lineage")],
+                by = c("Cell_line" = "stripped_cell_line_name"))
+  map(markers, ~Dataset %>% filter(Uniprot == .x) %>% group_by(lineage) %>%
+        ggplot(aes(x = lineage, colour = lineage,
+                   y = Abundance)) +
+    geom_boxplot() +
+      geom_point() +
+      ggtitle(paste(.x,HUMAN_9606_idmapping %>% filter(Uniprot == .x &
+                                                         Type == "UniProtKB-ID") %>%
+                      pull(ID), Dataset_name,"Abundance")))
+}
+Hypox_Prolif <- HUMAN_9606_idmapping %>% filter((str_detect(ID, 'HIF') & Type == "UniProtKB-ID")| (ID == "KI67_HUMAN")) %>%
+  pull(Uniprot) %>% unique()
+Uniprot_eIF <- HUMAN_9606_idmapping %>% filter(str_detect(ID, 'EIF|^EF') & Type == "UniProtKB-ID") %>%
+  pull(Uniprot) %>% unique()
+
+
+eIFs_CCLE <- Plot_markers_Abundance(CCLE_pro_pivotted,Uniprot_eIF)
+eIFs_NCI <- Plot_markers_Abundance(NCI_pro_pivotted,Uniprot_eIF)
+Hypoxia_prolif_CCLE <- Plot_markers_Abundance(CCLE_pro_pivotted,Hypox_Prolif)
+Hypoxia_prolif_NCI <- Plot_markers_Abundance(NCI_pro_pivotted,Hypox_Prolif)
+
+save(file = here("Project_Datasets","eIF_CCLE_NCI_hypoxia.RData"),eIFs_CCLE,eIFs_NCI,Hypoxia_prolif_CCLE,Hypoxia_prolif_NCI)
 load(here("Project_Datasets","eIF_CCLE_NCI_hypoxia.RData"))
 map(list(eIFs_CCLE,eIFs_NCI,Hypoxia_prolif_CCLE,Hypoxia_prolif_NCI), print)
 
 ```
 
-# ```{r marker_gene_corr}
+```{r marker_gene_corr}
 # TranslationalEfficiency <- function(Proteome = dataset1,
 #                                     Transcriptome = dataset2){
-#   #create tests lineage type and cell lines?
-#   
-#   #dataset1 <- NCI_60_proteins
-#   #dataset2 <- NCI_60_RNA
-#   dataset1 <- CCLE_proteins 
-#   dataset2 <- RNA_seq
-#   
-#   dataset1 <- CCLE_proteins %>% apply(1, scales::rescale) %>% t()
-#   dataset2 <- dataset2
-#   dataset1[dataset1 == 0 ] <- 0.000001
-#   dataset2[dataset2 == 0 ] <- 0.000001
-#   Comparison_type <- paste(deparse(substitute(dataset1)),deparse(substitute(dataset2)))
-#   Common_Cell_lines <- intersect(colnames(dataset1),
-#                                  colnames(dataset2))
-#   
-#   dataset1 <- as.data.frame(dataset1) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
-#         .[,match(Common_Cell_lines,colnames(.))]
-#   dataset2 <- as.data.frame(dataset2) %>% .[colnames(.) %in% Common_Cell_lines]%>% 
-#         .[,match(Common_Cell_lines,colnames(.))]
-#   
-#   sample_info_dataset <- sample_info[sample_info$stripped_cell_line_name %in% Common_Cell_lines,]
-#   
-#   lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
-#   # Cell_line <- sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage %in% lineage_types] %>% 
-#   #   .[match(Common_Cell_lines,Cell_line)]
-#   list1 <- map(lineage_types, ~select(dataset1,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
-#     set_names(lineage_types)
-#   list2 <- map(lineage_types, ~select(dataset2,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>% 
-#     set_names(lineage_types)
-# 
-# 
-#   
-#   #dataset1[is.na(dataset1)] <- 0
-#   #dataset2[is.na(dataset2)] <- 0
-#   annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") & 
-#                        (Uniprot %in% rownames(dataset1) & 
-#                           (ID %in% rownames(dataset2))))
-#   Matching <- rownames(dataset1)[rownames(dataset1) %in% annotation$Uniprot]
-#   
-#   # 
-#     y = list1[["breast"]]
-#     z = list2[["breast"]]
-#     x = Matching[2]
-#   Translation_Ratio <- function(x,y,z){
-#     tst1 <-  (y[rownames(y) == x,] %>% unlist())/ (z[rownames(z) == annotation$ID[annotation$Uniprot == x],] %>% unlist())
-#     tst1 %>% .[!is.na(.) & !is.infinite(.)] %>% stack %>% setNames(c("TE","Cell_line")) %>% mutate(Uniprot = x)
-#   }
-#   Safe_Translation_Ratio <- safely(Translation_Ratio)
-#   
-#   Safe_Translation_Ratio_tissue <- function(a,b){
-#     # a = list1$breast
-#     # b = list2$breast
-#     # .x = Matching[2]
-#     # 
-#     map(Matching, ~Safe_Translation_Ratio(.x,a, b)) %>% 
-#      map("result") %>% compact() %>% reduce(rbind) %>% 
-#     left_join(Master_pathways, by = c("Uniprot" = "ID"))
-#   }
-#   
-#   Tissue_Translation_Ratio <- map2_df(list1,list2,Safe_Translation_Ratio_tissue)
-#   Tissue_Translation_Ratio$Pathway[is.na(Tissue_Translation_Ratio$Pathway)] <- "Not Known"
-#   
-#   Tissue_Translation_Ratio <- Tissue_Translation_Ratio %>% group_split(Uniprot) 
-#   Tissue_Translation_Ratio <- map(Tissue_Translation_Ratio, "Uniprot") %>% unlist() %>%unique() %>% 
-#     setNames(Tissue_Translation_Ratio,.)
-# 
-#   # x <- Combinations %>% pull(Proteins)
-#   # y <- Combinations %>% pull(eIFs)
-#   
-#   eIFCorrProtein <- function(x,y){
-#     eIF_dataset1 <- dataset1 %>% .[rownames(.)== y,] %>% select_if(~ !any(is.na(.)))#done with protein levels
-#     Protein_dataset <- Tissue_Translation_Ratio[[x]]
-#     common_lines <- intersect(colnames(eIF_dataset1), Protein_dataset %>% pull(Cell_line))
-#     
-#     correlation <- cor(Protein_dataset %>% subset(Cell_line %in% common_lines) %>% .[match(common_lines,.$Cell_line),] %>% pull(TE),
-#         eIF_dataset1 %>% select(all_of(common_lines)) %>% .[,match(common_lines,colnames(.))] %>% unlist())
-#     
-#     data.frame(Protein = x, Factor = y, Correlation = correlation)
-#     #browser()
-#   } 
-#   
-#   Proteins <- names(Tissue_Translation_Ratio) 
-#   eIFs <- dataset1[row.names(dataset1) %in% Uniprot_eIF,] %>% row.names()
-#   Combinations <- tidyr::crossing(Proteins, eIFs)
-#   
-#   
-#   eIFCorrProtein_safe <- safely(eIFCorrProtein)
-#   eIF_correlations <- map2(Combinations %>% pull(Proteins),Combinations %>% pull(eIFs),~eIFCorrProtein_safe(.x,.y)) %>%
-#     map("result") %>% compact() %>% reduce(rbind)
-#  save(file = here("Project_Datasets","eIF_CCLE_Correlations.RData"),eIF_correlations)
-# 
-# ```
+  #create tests lineage type and cell lines?
+
+  #dataset1 <- NCI_60_proteins
+  #dataset2 <- NCI_60_RNA
+  dataset1 <- CCLE_proteins
+  dataset2 <- RNA_seq
+
+  dataset1 <- CCLE_proteins %>% apply(1, scales::rescale) %>% t()
+  dataset2 <- dataset2
+  dataset1[dataset1 == 0 ] <- 0.000001
+  dataset2[dataset2 == 0 ] <- 0.000001
+  Comparison_type <- paste(deparse(substitute(dataset1)),deparse(substitute(dataset2)))
+  Common_Cell_lines <- intersect(colnames(dataset1),
+                                 colnames(dataset2))
+
+  dataset1 <- as.data.frame(dataset1) %>% .[colnames(.) %in% Common_Cell_lines]%>%
+        .[,match(Common_Cell_lines,colnames(.))]
+  dataset2 <- as.data.frame(dataset2) %>% .[colnames(.) %in% Common_Cell_lines]%>%
+        .[,match(Common_Cell_lines,colnames(.))]
+
+  sample_info_dataset <- sample_info[sample_info$stripped_cell_line_name %in% Common_Cell_lines,]
+
+  lineage_types <- sample_info_dataset$lineage %>% table() %>% .[. >4] %>% names()
+  # Cell_line <- sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage %in% lineage_types] %>%
+  #   .[match(Common_Cell_lines,Cell_line)]
+  list1 <- map(lineage_types, ~select(dataset1,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>%
+    set_names(lineage_types)
+  list2 <- map(lineage_types, ~select(dataset2,any_of(sample_info_dataset$stripped_cell_line_name[sample_info_dataset$lineage == .x]))) %>%
+    set_names(lineage_types)
+
+
+
+  #dataset1[is.na(dataset1)] <- 0
+  #dataset2[is.na(dataset2)] <- 0
+  annotation <- subset(HUMAN_9606_idmapping, (Type == "Gene_Name") &
+                       (Uniprot %in% rownames(dataset1) &
+                          (ID %in% rownames(dataset2))))
+  Matching <- rownames(dataset1)[rownames(dataset1) %in% annotation$Uniprot]
+
+  #
+    y = list1[["breast"]]
+    z = list2[["breast"]]
+    x = Matching[2]
+  Translation_Ratio <- function(x,y,z){
+    tst1 <-  (y[rownames(y) == x,] %>% unlist())/ (z[rownames(z) == annotation$ID[annotation$Uniprot == x],] %>% unlist())
+    tst1 %>% .[!is.na(.) & !is.infinite(.)] %>% stack %>% setNames(c("TE","Cell_line")) %>% mutate(Uniprot = x)
+  }
+  Safe_Translation_Ratio <- safely(Translation_Ratio)
+
+  Safe_Translation_Ratio_tissue <- function(a,b){
+    # a = list1$breast
+    # b = list2$breast
+    # .x = Matching[2]
+    #
+    map(Matching, ~Safe_Translation_Ratio(.x,a, b)) %>%
+     map("result") %>% compact() %>% reduce(rbind) %>%
+    left_join(Master_pathways, by = c("Uniprot" = "ID"))
+  }
+
+  Tissue_Translation_Ratio <- map2_df(list1,list2,Safe_Translation_Ratio_tissue)
+  Tissue_Translation_Ratio$Pathway[is.na(Tissue_Translation_Ratio$Pathway)] <- "Not Known"
+
+  Tissue_Translation_Ratio <- Tissue_Translation_Ratio %>% group_split(Uniprot)
+  Tissue_Translation_Ratio <- map(Tissue_Translation_Ratio, "Uniprot") %>% unlist() %>%unique() %>%
+    setNames(Tissue_Translation_Ratio,.)
+
+  # x <- Combinations %>% pull(Proteins)
+  # y <- Combinations %>% pull(eIFs)
+
+  eIFCorrProtein <- function(x,y){
+    eIF_dataset1 <- dataset1 %>% .[rownames(.)== y,] %>% select_if(~ !any(is.na(.)))#done with protein levels
+    Protein_dataset <- Tissue_Translation_Ratio[[x]]
+    common_lines <- intersect(colnames(eIF_dataset1), Protein_dataset %>% pull(Cell_line))
+
+    correlation <- cor(Protein_dataset %>% subset(Cell_line %in% common_lines) %>% .[match(common_lines,.$Cell_line),] %>% pull(TE),
+        eIF_dataset1 %>% select(all_of(common_lines)) %>% .[,match(common_lines,colnames(.))] %>% unlist())
+
+    data.frame(Protein = x, Factor = y, Correlation = correlation)
+    #browser()
+  }
+
+  Proteins <- names(Tissue_Translation_Ratio)
+  eIFs <- dataset1[row.names(dataset1) %in% Uniprot_eIF,] %>% row.names()
+  Combinations <- tidyr::crossing(Proteins, eIFs)
+
+
+  eIFCorrProtein_safe <- safely(eIFCorrProtein)
+  eIF_correlations <- map2(Combinations %>% pull(Proteins),Combinations %>% pull(eIFs),~eIFCorrProtein_safe(.x,.y)) %>%
+    map("result") %>% compact() %>% reduce(rbind)
+ save(file = here("Project_Datasets","eIF_CCLE_Correlations.RData"),eIF_correlations)
+
+```
+
 ```{r}
 load(here("Project_Datasets","eIF_CCLE_Correlations.RData"))
 
 eIF_correlations <- eIF_correlations %>% 
   left_join(Master_pathways %>% 
               select(!c("Type")), by = c("Protein" = "ID"))
-.x <- "P41214"
+
 eIF_correlations[is.na(eIF_correlations)] <- "Not Known"
 eIF_correlations$Correlation <- eIF_correlations$Correlation %>% as.numeric()
 Per_eIF_corr <-  map(unique(eIF_correlations$Factor), 
                                  ~ggplot(eIF_correlations[eIF_correlations$Factor ==.x,],
                                          aes(Correlation,fill = Pathway, colour = Pathway)) +
                                    geom_density(alpha = 0.05) +
-                                   ggtitle(paste("eIF Corr by Pathway",.x))) %>% 
+                                   ggtitle(paste("EEF Corr by Pathway",.x))) %>% 
     set_names(unique(eIF_correlations$Factor))
 
-map(Per_eIF_corr, plot)
+walk(Per_eIF_corr, plot)
 
 ```
 
