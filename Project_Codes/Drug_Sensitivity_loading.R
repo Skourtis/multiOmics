@@ -1,9 +1,9 @@
 ### Preparing Drug sensitivity ###
 pacman::p_load("stringr", "readr","tidyverse","renv")
-renv::init()
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install(version = "3.12")
+#renv::init()
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install(version = "3.12")
 renv::snapshot()
 ###downloaded from https://dgidb.org/downloads 12/12/2020
 DGIdb <- read_tsv(here::here("Project_datasets","interactions.tsv"))
@@ -14,44 +14,55 @@ Metabolic_drugs <- openxlsx::read.xlsx(here::here("Project_Datasets",
 
 CCLE_Drug_screening_info <- readr::read_csv(here::here("Project_Datasets",
                                                        "primary-screen-replicate-treatment-info.csv"))
-
+humankegg_df <- humankegg_df %>% 
+    add_count(Reactome_Pathway, name = "Proteins_per_pathway")
 CCLE_metabolic_drug <- intersect(Metabolic_drugs$Product.Name,str_to_title(CCLE_Drug_screening_info$name))
 Purine_Drug <- CCLE_Drug_screening_info$name[str_detect(CCLE_Drug_screening_info$moa,"purine")] %>% 
     na.omit() %>% as.vector()
 CCLE_Drug_screening_original <- read_csv(here::here("Project_Datasets",
                                                     "primary-screen-replicate-collapsed-logfold-change.csv"))
-drug_targets <- CCLE_Drug_screening_info %>% 
+drug_targets_1 <- CCLE_Drug_screening_info %>% 
     dplyr::select(broad_id,target) %>% distinct()%>%
     na.omit() %>% separate_rows(target, sep = ", ") %>% 
     #left_join(Master_pathways[,-2], by = c("target" = "ID")) %>%
-    left_join(humankegg_df[,c("Gene_name","Reactome_Pathway")], by = c("target" = "Gene_name")) %>%
+    left_join(humankegg_df[,c("Gene_name","Reactome_Pathway","Proteins_per_pathway")], by = c("target" = "Gene_name")) %>%
     mutate(Reactome_Pathway = if_else(is.na(Reactome_Pathway),"Not_Found_reactome",Reactome_Pathway),
-           broad_id = str_match(broad_id,"^BRD-([:graph:]*?)-")[,2])
-drug_targets_2 <- CCLE_Drug_screening_info %>% 
-    dplyr::select(broad_id,target) %>% distinct()%>%
-    na.omit() %>% separate_rows(target, sep = ", ") %>% 
-    left_join(Master_pathways[,-2], by = c("target" = "ID")) %>%
-    #left_join(SMPDB_pathways[,c("Gene_Name","Pathway")], by = c("target" = "Gene_Name")) %>%
-    mutate(Pathway = if_else(is.na(Pathway),"Non_Metabolic",Pathway),
-           broad_id = str_match(broad_id,"^BRD-([:graph:]*?)-")[,2])
+           broad_id = str_match(broad_id,"^BRD-([:graph:]*?)-")[,2]) %>%
+    distinct()%>%
+    group_by(broad_id,Reactome_Pathway) %>%
+    add_count(name = "Hits_in_pathway") %>%
+    mutate(Pathway_coverage = Hits_in_pathway/Proteins_per_pathway)
+
+# drug_targets_2 <- CCLE_Drug_screening_info %>% 
+#     dplyr::select(broad_id,target) %>% distinct()%>%
+#     na.omit() %>% separate_rows(target, sep = ", ") %>% 
+#     left_join(Master_pathways[,-2], by = c("target" = "ID")) %>%
+#     #left_join(SMPDB_pathways[,c("Gene_Name","Pathway")], by = c("target" = "Gene_Name")) %>%
+#     mutate(Pathway = if_else(is.na(Pathway),"Non_Metabolic",Pathway),
+#            broad_id = str_match(broad_id,"^BRD-([:graph:]*?)-")[,2])
 
 
 Detecting_dominant_target <- function(x,y,z){
+    # x = "K35559145"
+    # y = drug_targets_1
+    # z = "Reactome_Pathway"
     Pathway <- subset(y, broad_id == x) %>%
-        pull({{z}}) %>% table() %>% names() %>% .[1]
-    data.frame(Drug = x) %>%
+        filter(Pathway_coverage > (quantile(.$Pathway_coverage,prob = seq(0, 1, length = 50), 
+                                            type = 5,  na.rm =T)[[49]])) %>% 
+        pull({{z}}) %>% unique()
+    data.frame(Drug = rep(x,length(Pathway))) %>%
         mutate({{z}} := Pathway)
 }
 
-drug_targets <- map_dfr(unique(drug_targets$broad_id),
-                        ~Detecting_dominant_target(x = .x, y = drug_targets,z = "Reactome_Pathway")) %>%
-    left_join(map_dfr(unique(drug_targets_2$broad_id),
-                      ~Detecting_dominant_target(x = .x, y = drug_targets_2, z = "Pathway")), by = "Drug")
+drug_targets <- map_dfr(unique(drug_targets_1$broad_id),
+                        ~Detecting_dominant_target(x = .x, y = drug_targets_1,z = "Reactome_Pathway"))# %>%
+    # left_join(map_dfr(unique(drug_targets_2$broad_id),
+    #                   ~Detecting_dominant_target(x = .x, y = drug_targets_2, z = "Pathway")), by = "Drug")
 
-Sanger_Drug_Screening_original <- read_csv(here::here("Project_Datasets",
+Sanger_Drug_Screening_original <- read.csv(here::here("Project_Datasets",
                                                       "sanger-viability.csv"))
 sample_info <- read_csv(here::here("Project_Datasets","sample_info.csv"))
-Sanger_Drug_Screening <- inner_join(Sanger_Drug_Screening_original[,c(7,10,11,12)], 
+Sanger_Drug_Screening <- inner_join(Sanger_Drug_Screening_original[,c("viability","ARXSPAN_ID","DRUG_NAME","BROAD_ID")], 
                                     sample_info[,1:2],
                                     by = c("ARXSPAN_ID" = "DepMap_ID"))[,-2] 
 #Sanger_metabolic_drug <- intersect(toupper(Metabolic_drugs$Product.Name),toupper(Sanger_Drug_Screening$DRUG_NAME))
@@ -105,7 +116,7 @@ Sanger_Drug_Screening <- Sanger_Drug_Screening %>%
 
 CancerDAP <- read_tsv(here::here("Project_Datasets","SubpathwayEntry.txt"), col_names = F) %>%
     setNames(c("Drug","Status","Pathway","Pathway_ID","N_gene","Score","p_val","Gene","Gene_ID")) %>% 
-    select(-c(Status,Pathway_ID,Gene_ID)) %>%
+    dplyr::select(-c(Status,Pathway_ID,Gene_ID)) %>%
     mutate(Drug = str_remove(Drug," rep."))
 
-save(CCLE_Drug_screening,Sanger_Drug_Screening,CancerDAP,CCLE_Drug_screening_1, file = here::here("Project_Datasets","Drug_sensitivity.RData"))
+save(CCLE_Drug_screening,drug_targets,Sanger_Drug_Screening,CancerDAP,CCLE_Drug_screening_1, file = here::here("Project_Datasets","Drug_sensitivity.RData"))

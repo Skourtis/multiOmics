@@ -1,0 +1,134 @@
+---
+title: "Drug Map  MOFA wo skin and blood"
+date: "`r Sys.Date()`"
+output:
+    html_document:
+      code_folding: hide
+      toc: true
+      toc_depth: 2
+      highlight: tango
+
+
+---
+
+# Setup
+
+```{r setup,  echo=FALSE, cache=FALSE, warning= FALSE, message=FALSE}
+pacman::p_load(knitr,MultiAssayExperiment,tidyverse, MatrixCorrelation, here, ComplexHeatmap, circlize)
+#devtools::install_github("bioFAM/MOFA2", build_opts = c("--no-resave-data --no-build-vignettes"))
+
+## Global options
+options(max.print="75")
+opts_chunk$set(cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+#opts_knit$set(root.dir = "./../")
+Files_to_load <- c(here::here("Project_Datasets","Metabolic_Pathway_annotations.RData"),
+                   here::here("Project_Datasets","Drug_sensitivity.RData"))
+                  
+HUMAN_9606_idmapping_file <- here::here("Project_Datasets","HUMAN_9606_idmapping.dat")
+
+if(intersect(map(Files_to_load, cgwtools::lsdata) %>% unlist(),
+             ls()) %>% length() == 0){
+  purrr::walk(Files_to_load, load, env= .GlobalEnv)
+} else {
+  stop("Variable names in environment which clash with RData loading Names")
+             }
+
+#Mapping of Uniprots to all others sort of identifiers
+HUMAN_9606_idmapping <- read_tsv(HUMAN_9606_idmapping_file,
+                                 col_names = FALSE) %>%
+    setNames(c("Uniprot", "Type", "ID"))
+
+```
+
+
+```{r Drug_predictions}
+Importing_pathways <- function(x){
+     # x = list.files(path = here::here("Project_Datasets",
+     #                          "Pathway_analysis_cluster"),
+     #                          pattern = "*wo_blood_skin.csv")[1]
+  pathway <- read_csv(here::here("Project_Datasets",
+                             "Pathway_analysis_cluster",x),
+                      col_names = F) %>%
+    dplyr::select(-X1,-X8)
+
+  if(ncol(pathway) == 7){
+    return(pathway)
+  }else{
+    stop("Irregular columns")
+  }
+}
+Importing_pathways_safe <- safely(Importing_pathways)
+library(future)
+plan(multisession, workers = 8)
+Cluster_pathways_f <-  future({purrr::map(list.files(path = here::here("Project_Datasets",
+                             "Pathway_analysis_cluster"),
+           pattern = "wo_blood_skin.csv"),Importing_pathways_safe)%>%
+  map("result") %>%  compact()},
+           seed = T)
+
+Cluster_pathways <- value(Cluster_pathways_f) 
+
+plan(sequential)
+Cluster_pathways <- Cluster_pathways%>% 
+  purrr::reduce(rbind)%>%
+  setNames(c( "Accuracy", "Kappa", "AccuracySD", "KappaSD","Drug","model","Pathway"))
+
+Best_prediction <- Cluster_pathways %>%
+  group_by(Drug) %>% summarise(max_accuracy = max(Accuracy))
+Best_prediction %>% pull(max_accuracy) %>% hist(main="Histogram for Best prediction per drug")
+Unpredicted_Drugs <-  Best_prediction %>%
+  filter(max_accuracy<0.75) %>% pull(Drug)
+
+Cluster_pathways2 <- Cluster_pathways %>% 
+  filter(!(Drug %in% Unpredicted_Drugs))  %>%
+  inner_join(drug_targets[,1:2], by = "Drug")
+
+Cluster_pathways3 <- Cluster_pathways2 %>% 
+  group_by(Pathway,Reactome_Pathway) %>% 
+  add_tally(name = "Drugs_per_pathway")%>% 
+  filter(Drugs_per_pathway>3) %>% ungroup() %>%
+  group_split(Pathway) %>%
+  setNames(.,map_chr(.,~(unique(.x[['Pathway']]))))
+
+
+Drug_prediction_plot <- function(x){
+  #x = Cluster_pathways2 %>% filter(Pathway == "Constitutive Signaling by Ligand-Responsive EGFR Cancer Variants")
+  #x
+  high_Pathways <- x %>% group_by(Reactome_Pathway,Pathway) %>%
+    summarise(mean_drug = mean(Accuracy)) %>%  ungroup %>%
+    filter(mean_drug > (quantile(.$mean_drug,prob = seq(0, 1, length = 50), 
+                                 type = 5, na.rm =T)[[49]])) %>% 
+    pull(Reactome_Pathway)
+  Pathway_of_interest = "Activation of BAD and translocation to mitochondria"
+  test <- x %>% filter(Reactome_Pathway %in% high_Pathways) 
+  if(nrow(test) <2){
+    unique(x$Pathway)
+  }else{
+  test %>%
+    ggplot(aes(x = Accuracy, fill = Reactome_Pathway, colour = Reactome_Pathway))+ ggtitle(unique(x$Pathway)) +
+  #geom_histogram(alpha=0.6, position = 'identity') #theme(legend.position = "none") 
+  geom_density(alpha = 0.05)+theme_bw() #+ theme(legend.position = "none") 
+    }
+}
+map(Cluster_pathways3[60:80],Drug_prediction_plot)
+chosen_pathways <- c("Constitutive Signaling by Ligand-Responsive EGFR Cancer Variants",
+                     "Amplification of signal from the kinetochores",
+                     "Autophagy",
+                     "Asymmetric localization of PCP proteins")
+map(Cluster_pathways3[chosen_pathways],Drug_prediction_plot)
+
+```
+ABCB1 belongs to Transport of small molecules and is anticorrelated with tepoxalin[K89714990] but the drug prediction accuracy is only 0.552402 with a large SD (this pathway has 685 features which might be diluting the signal)
+EGFR is a direct target and predictor of gefitinib[K64052750]. So when checking for "Constitutive Signaling by Ligand-Responsive EGFR Cancer Variants", small pathway containing EGFR, then the predictions for ERBB2 pathways become very sharp ~ 4-5 other drugs also target the same pathways and are predicted well = 	
+PD-168393 an irreversible inactivator of EGFR and ERBB2
+AEE788 is a multitargeted human epidermal receptor (HER)
+poziotinib is irreversible tyrosine kinase inhibitor targeting EGFR and HER2
+BMS-599626 is a highly selective and potent inhibitor of HER1 and HER2
+canertinib it is an irreversible tyrosine-kinase inhibitor with activity against EGFR
+Afatinib It is mainly used to treat cases of NSCLC that harbour mutations in the epidermal growth factor receptor (EGFR) gene
+

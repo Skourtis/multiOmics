@@ -25,7 +25,7 @@ opts_chunk$set(cache=FALSE,
                comment=NA,
                message=FALSE,
                warning=FALSE)
-opts_knit$set(root.dir = "./../")
+#opts_knit$set(root.dir = "./../")
 
 ```
 
@@ -64,8 +64,8 @@ humankegg_df_1 <- humankegg_df %>% na.omit() %>%
   map(~.x[["ID"]])
 
 Calculating_predictions <- function(List_of_features,pathway_name){
-  #List_of_features <- humankegg_df_1[[1]]
-  #pathway_name = "2-LTR circle Formation"
+  List_of_features <- humankegg_df_1[["Cellular Senescence"]]
+  pathway_name = "Cellular Senescence"
 # BiocManager::install("STRINGdb")
 # library(STRINGdb)
 # string_db <- STRINGdb$new( version="11", species=9606,
@@ -86,14 +86,14 @@ Datasets_M <- list("RNAi_metabolism" = RNAi %>% .[rownames(.) %in% List_of_featu
                  "Achilles_metabolism" = Achilles %>% .[rownames(.) %in% List_of_features, ]%>% as.data.frame())
 
 
-# blood_cell_lines_skin <- sample_info %>% 
-#     subset(str_detect(CCLE_Name,"HAEMATOPOIETIC_AND_LYMPHOID_TISSUE|SKIN")) %>%
-#     pull(stripped_cell_line_name)
+blood_cell_lines_skin <- sample_info %>% 
+     subset(str_detect(CCLE_Name,"HAEMATOPOIETIC_AND_LYMPHOID_TISSUE|SKIN")) %>%
+     pull(stripped_cell_line_name)
 
 Common_Cell_lines <- Reduce(rlist::list.append,
                             map(Datasets_M, colnames)) %>% 
     table() %>% .[.>(length(Datasets_M)-1)] %>% 
-    names()# %>% .[!(. %in% blood_cell_lines_skin)]
+    names() %>% .[!(. %in% blood_cell_lines_skin)]
 #deparse(substitute(c(RNAi,RNA_seq,CCLE_proteins, Metabolites,Achilles)))
 
 
@@ -362,3 +362,5 @@ MOFA2::correlate_factors_with_covariates(model,
   
 
 ```
+
+

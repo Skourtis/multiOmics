@@ -1,6 +1,7 @@
 library(pacman)
 p_load(tidyverse, openxlsx, piggyback, matrixStats)
-# devtools::install_github("ropensci/piggyback@87f71e8")
+devtools::install_github("ropensci/piggyback@87f71e8")
+#devtools::install_github("ropensci/piggyback")
 piggyback::pb_track("Project_Datasets/*")
 sample_info <- read.csv("./Project_Datasets/sample_info.csv", stringsAsFactors = FALSE)
 #Raw from https://depmap.org/portal/download/ downloaded 2/11/2020
@@ -95,6 +96,6 @@ save(NCI_60_proteins,
      Vizcaino_Proteome,
      file = "./Project_Datasets/NCI60_OMICS.rda")
 
-pb_new_release("Skourtis/multiOmics", "v1")
-pb_track() %>% pb_upload(repo = "Skourtis/multiOmics")
+piggyback::pb_new_release("Skourtis/multiOmics", "v2")
+piggyback::pb_track() %>% piggyback::pb_upload(repo = "Skourtis/multiOmics", tag = "v0.01")
 

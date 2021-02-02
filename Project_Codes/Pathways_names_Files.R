@@ -13,25 +13,26 @@ humankegg <- pathways("hsapiens", "reactome")
 humankegg_df <- data.frame(SubPathway = NULL,
                            ID = NULL)
 for(i in names(humankegg)){
-    print(i)
+    #print(i)
     if(length(nodes(humankegg[[i]]))>0){
         humankegg_df <- rbind(humankegg_df,data.frame(SubPathway = i,
                                   ID = nodes(humankegg[[i]])))
     }
     
 }
-humankegg_df <- humankegg_df %>% subset(!duplicated(ID)) %>%
-    mutate(ID = str_remove_all(ID,"ENTREZID:")) %>% 
-    left_join(Entrez, by = c("ID" = "Entrez")) %>% na.omit() %>%
-    dplyr::select(-ID)
-
-
-
-
-
-HUMAN_9606_idmapping <- read_tsv("./Project_Datasets/HUMAN_9606_idmapping.dat",
+HUMAN_9606_idmapping <- read_tsv(here::here("Project_Datasets","HUMAN_9606_idmapping.dat"),
                                  col_names = FALSE) %>% 
     setNames(c("Uniprot", "Type", "ID"))
+
+humankegg_df <- humankegg_df %>% #subset(!duplicated(ID)) %>%
+    mutate(ID = str_remove_all(ID,"UNIPROT:")) %>% 
+    left_join(HUMAN_9606_idmapping %>% filter(Type == "Gene_Name"), by = c("ID" = "Uniprot")) %>% na.omit() %>%
+    dplyr::select(-Type) %>% setNames(c("Reactome_Pathway","Uniprot","Gene_name"))
+
+
+
+
+
 
 HUMAN_9606_idmapping_hsa <- HUMAN_9606_idmapping[str_detect(HUMAN_9606_idmapping$ID, "hsa:"),-2] %>% 
     left_join(HUMAN_9606_idmapping[HUMAN_9606_idmapping$Type == "Gene_Name", -2], by = "Uniprot") %>% 
